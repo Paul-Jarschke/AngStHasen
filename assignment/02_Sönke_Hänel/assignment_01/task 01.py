@@ -5,4 +5,4 @@
 # data reception
 name = input("Hi, what\'s is your name?\n")
 # creating output
-print("Hi " + name + "! Hand over your flesh and a new world awaits you.\nWe demand it.")
+print("Hi " + name + "! I luv you. :3")
