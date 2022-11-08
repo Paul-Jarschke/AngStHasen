@@ -6,3 +6,5 @@ name = input()
 
 print('Hi ' + name + '! Nice to meet you!')
 print('Welcome to the Programming Course!')
+
+#test paul
