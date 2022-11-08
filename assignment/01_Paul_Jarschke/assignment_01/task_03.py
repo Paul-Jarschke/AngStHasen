@@ -8,16 +8,19 @@ upper_bound = int(input())
 
 f_0 = 0
 f_1 = 1
-f_n = 0
+f_n = 1
 
-print('Your Fibonacci Sequence is:')
-print(str(f_0) + ', ' + str(f_1), end=', ')
+if upper_bound 0:
+    print('Fibonacci sequence is:'+ str(f_0) + ','+ str(f_1))
 
-while f_n < upper_bound:
-    f_n = f_0 + f_1
-    f_0 = f_1
-    f_1 = f_n
-    print(f_n, end=', ')
+elif :
 
-# not working :(
-# gives 1 number too much
+else:
+    print('Your Fibonacci Sequence is:')
+    print(str(f_0), end=', ')
+
+    while f_n <= upper_bound:
+        f_n = f_1 + f_0
+        f_0 = f_1
+        f_1 = f_n
+        print(f_0, end=', ')
