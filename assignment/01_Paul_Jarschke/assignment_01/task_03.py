@@ -19,5 +19,5 @@ while f_n < upper_bound:
     f_1 = f_n
     print(f_n, end=', ')
 
-# funktioniert noch nicht :(
+# not working :(
 # gives 1 number too much
