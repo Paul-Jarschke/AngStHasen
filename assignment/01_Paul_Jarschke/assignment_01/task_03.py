@@ -1,7 +1,7 @@
 # Task 03
 
-# Write a program that reads in an upper bound (number) provided by the user and prints the sequence of Fibonacci numbers that are less or equal to the number given by the user.
-# Use a while-loop for this task.
+# Write a program that reads in an upper bound (number) provided by the user and prints the sequence of Fibonacci
+# numbers that are less or equal to the number given by the user. Use a while-loop for this task.
 
 print('Please provide and upper bound (number) for the Fibonacci sequence.')
 upper_bound = int(input())
