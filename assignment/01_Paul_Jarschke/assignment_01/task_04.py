@@ -4,7 +4,7 @@
 # except the integer numbers that are divisible by 3.
 # Use the continue statement. For example, if the user enters 6 as the upper bound, the output should be 0, 1, 2, 4, 5.
 
-# Hint for the Tutor: 0 is divisible by 3 and should not be p. In the given example 0 is printed out which is why I print 0 as well.
+# Hint for Tutor: 0 is divisible by 3 and should not be p. In the given example 0 is printed out which is why I print 0 as well.
 
 print('Please provide and upper bound (number) for sequence.')
 upper_bound = int(input())
