@@ -3,21 +3,25 @@
 # Write a program that reads in an upper bound (number) provided by the user and prints the sequence of Fibonacci numbers that are less or equal to the number given by the user.
 # Use a while-loop for this task.
 
-print('Please provide and upper bound for the Fibonacci sequence.')
+print('Please provide and upper bound (number) for the Fibonacci sequence.')
 upper_bound = int(input())
 
-f_0 = 0
-f_1 = 1
-f_n = 0
+f_0 = 0  # First Number of Fibonacci Sequence
+f_1 = 1  # Second Number of Fibonacci Sequence
+f_n = 1  # Iteration Variable
 
-print('Your Fibonacci Sequence is:')
-print(str(f_0) + ', ' + str(f_1), end=', ')
+if upper_bound == 0:
+    print(f'Your Fibonacci Sequence is:\n{f_0}')
 
-while f_n < upper_bound:
-    f_n = f_0 + f_1
-    f_0 = f_1
-    f_1 = f_n
-    print(f_n, end=', ')
+elif upper_bound == 1:
+    print(f'Your Fibonacci Sequence is:\n{f_0}, {f_1}, {f_1}')
 
-# not working :(
-# gives 1 number too much
+else:
+    print('Your Fibonacci Sequence is:')
+    print(f_0, end='')
+
+    while f_n <= upper_bound:
+        f_n = f_1 + f_0
+        f_0 = f_1
+        f_1 = f_n
+        print(f', {f_0}', end='')
