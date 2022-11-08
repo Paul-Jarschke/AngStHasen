@@ -14,7 +14,7 @@ if upper_bound == 0:
     print(f'Your Fibonacci Sequence is:\n{f_0}')
 
 elif upper_bound == 1:
-    print(f'Your Fibonacci Sequence is:\n{f_0}, {f_1}')
+    print(f'Your Fibonacci Sequence is:\n{f_0}, {f_1}, {f_1}')
 
 else:
     print('Your Fibonacci Sequence is:')
