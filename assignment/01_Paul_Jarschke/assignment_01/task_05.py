@@ -16,6 +16,7 @@ while sum(lengths) <= 2*max(lengths):
 
 print(f'Length of x: {x} (cm)\nLength of y: {y} (cm)\nLength of z: {z} (cm)\n')
 
+# Check if triangle is equilateral, scalene or isosceles
 if x == y == z:
     print('Your triangle is equilateral.')
 elif x != y != z:
