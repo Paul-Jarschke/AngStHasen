@@ -5,7 +5,8 @@
 # Use the continue statement. For example, if the user enters 6 as the upper bound, the output should be 0, 1, 2, 4, 5.
 
 # Hint for Tutor:
-# 0 is divisible by 3 and should not be p. In the given example 0 is printed out which is why I print 0 as well.
+# 0 is divisible by 3 and therefore should not be printed out after executing the code.
+# In the given example 0 is printed out which is why I print 0 as well.
 
 print('Please provide and upper bound (number) for sequence.')
 upper_bound = int(input())
