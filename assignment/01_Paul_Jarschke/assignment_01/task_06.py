@@ -2,16 +2,21 @@
 # Write a program that reads a non-negative integer number in the decimal representation provided by the user and prints
 # the octal representation of the number. For example, if the user enters 167, the output should be 247.
 
-num_dec = int(input('Please enter a non-negative number that should be converted into the octal system\n'))
-num_dec = str(num_dec)
+num_dec = int(input('Please enter a non-negative number (integer) that should be converted into the octal system\n'))
 
 num_oct = ''
-for i in num_dec:
-    octal = (i+1)*8**i
-    num_oct += octal
+div = 2     # 2 resembles arbitrary value >= 1 to start loop
 
-print(num_dec)
+while div >= 1:
+    i = int(num_dec % 8)
+    div = num_dec / 8
+    num_dec = div
+    num_oct = str(i) + num_oct
+
+print(num_oct)
 
 # Write a more general program that reads in a non-negative number (potentially including decimal places) in the decimal
 # representation provided by the user and prints the octal representation of the number. For example, if the user enters
 # 25.11, the output should be 31.0702436560507534.
+
+num_dec = int(input('Please enter a non-negative number (float) that should be converted into the octal system\n'))
