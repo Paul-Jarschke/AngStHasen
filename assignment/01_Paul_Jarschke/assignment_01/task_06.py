@@ -40,12 +40,22 @@ while div >= 1:
     integer = div
     int_oct = str(i) + int_oct
 
-# convert float part to octal
+# Convert float part to octal
 float_oct = ''
 while float(frac % 1) != 0:
     frac = frac * 8
     float_oct = float_oct + str(int(frac))
     frac = float(frac % 1)
 
-float_oct = float(int_oct + '.' + float_oct)
-print(f'The converted float is: {float_oct}')
+# Set value for decimals to avoid empty string
+if int(float_dec) == float_dec:
+    float_oct = '0'
+
+# Concatenate string to resemble the float
+print(f'The converted float is: {int_oct}.{float_oct}')
+
+# We could also concatenate the string for integers and the convert it to a float. The output type would then be a float
+# and not a string!
+# print(float(int_oct + '.' + float_oct))
+# Unfortunately, floats are limited to 16 digits, which is why the output for 25.11 would be 31.070243656050753 instead
+# of 31.0702436560507534. This is why I decided to use an if statement and to return a string.
