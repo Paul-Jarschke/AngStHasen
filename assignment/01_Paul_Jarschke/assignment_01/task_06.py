@@ -5,24 +5,28 @@
 num_dec = int(input('Please enter a non-negative number (integer) that should be converted into the octal system.\n'))
 
 while num_dec < 0:
-    input('You have to enter a non-negative number! Please enter a new value.\n')
+    num_dec = int(input('You have to enter a non-negative number! Please enter a new value.\n'))
 
+# convert integer to octal
 num_oct = ''
 div = 2     # 2 resembles arbitrary value >= 1 to start loop
-
 while div >= 1:
     i = int(num_dec % 8)
     div = num_dec / 8
     num_dec = div
     num_oct = str(i) + num_oct
 
-print(f'The converted number (integer) is: {num_oct}.')
+num_oct = int(num_oct)
+print(f'The converted integer is: {num_oct}')
 
 # Write a more general program that reads in a non-negative number (potentially including decimal places) in the decimal
 # representation provided by the user and prints the octal representation of the number. For example, if the user enters
 # 25.11, the output should be 31.0702436560507534.
 
 float_dec = float(input('Please enter a non-negative number (float) that should be converted into the octal system.\n'))
+
+while float_dec < 0:
+    float_dec = float(input('You have to enter a non-negative number! Please enter a new value.\n'))
 
 integer = int(float_dec)
 frac = float(float_dec % 1)
@@ -43,4 +47,5 @@ while float(frac % 1) != 0:
     float_oct = float_oct + str(int(frac))
     frac = float(frac % 1)
 
-print(f'The converted number is: {int_oct}.{float_oct}')
+float_oct = float(int_oct + '.' + float_oct)
+print(f'The converted float is: {float_oct}')
