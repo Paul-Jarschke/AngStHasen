@@ -34,3 +34,5 @@ def main():
         print("Your triangle is isosceles!")
 
 main()
+
+
