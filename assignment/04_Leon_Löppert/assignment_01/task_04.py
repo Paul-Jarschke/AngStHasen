@@ -25,4 +25,3 @@ for i in list[:]:
         list.remove(i)
 
 print("Your sequence is: \n ", list)
-
