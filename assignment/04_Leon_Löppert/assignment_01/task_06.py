@@ -14,36 +14,33 @@
 # For example, if the user enters 25.11, the output should be 31.0702436560507534.
 
 # a) Only non-negative integers
-def main_a():
 
-    nni = input("Type in non-negative integer number in decimal representation: \n")
-
-    test = bool(True)
-    try:
-        int(nni)
-    except ValueError:
-        test = bool(False)
-
-
-    if not test: # Not valid when float
-        print("Not a valid number. Try again.")
-        main_a()
-    nni = int(nni)
-    if nni < 0: # Not valid when negative
-        print("Not a valid number. Try again.")
-        main_a()
-
-    octa = str(oct(nni))
-    octa = octa.replace("0o", "")
-    print("Converted to octal representation your number equals:\n", octa, sep = "")
-
-main_a()
+#def main_a():
+#    nni = input("Type in non-negative integer number in decimal representation: \n")
+#
+#    test = bool(True)
+#    try:
+#        int(nni)
+#    except ValueError:
+#        test = bool(False)
+#
+#
+#    if not test: # Not valid when float
+#        print("Not a valid number. Try again.")
+#        main_a()
+#    nni = int(nni)
+#    if nni < 0: # Not valid when negative
+#        print("Not a valid number. Try again.")
+#        main_a()
+#
+#    octa = str(oct(nni))
+#    octa = octa.replace("0o", "")
+#    print("Converted to octal representation your number equals:\n", octa, sep = "")
+#
+#main_a()
 
 # b) non-negative number (potentially including decimal places)
-def decimal_converter(num):
-        while num > 1:
-          num /= 10
-        return num
+
 
 def main_b():
 
@@ -52,21 +49,27 @@ def main_b():
     # separate into whole and decimal places
     whole, dec = str(nnn).split(".")
 
-    whole = int(whole)
+    separator = int(dec)
+    leadingzero = len(dec.split(str(separator), 1)[0])
+
     dec = int(dec)
+    whole = int(whole)
+    length = len(str(dec))
 
-    octwhole = oct(whole).lstrip("0o") + "."
 
+    #octwhole = oct(whole).lstrip("0o")
+    octwhole = oct(whole).replace("0o", "")
 
-
-    for x in range(16):
-        whole, dec = str((decimal_converter(dec)) * 8).split(".")
-
+    i = 0
+    octdec = [""]
+    while i < 16:
+        newdec, dec = str(dec/(10**(length+leadingzero)) * 8).split(".")
+        octdec.append(newdec)
         dec = int(dec)
+        i = i + 1
 
-        octwhole += whole
+    jointdec = "".join(octdec)
+    result = str(octwhole) + "." + jointdec
+    print("The resulting octal representation is: \n", result, sep = "")
 
-    return octwhole
-
-
-print(main_b())
+main_b()
