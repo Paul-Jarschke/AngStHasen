@@ -6,6 +6,10 @@
 # import random module to generate random integers
 import random
 
+###############
+# Solution 01 #
+###############
+
 
 # function that creates a list of random integers (by default 10 integers between 1 and 100)
 def random_numbers(range_min=1, range_max=100, n=10, lst=None):
@@ -17,10 +21,27 @@ def random_numbers(range_min=1, range_max=100, n=10, lst=None):
     return lst
 
 
+print('Solution 01:')
+
 # call function and assign it
 nums = random_numbers()
 print(f'Your randomly generated list:\n{nums}')
 
 # sort in ascending order
 nums = sorted(nums)
-print(f'The largest value:\n{nums[-1]}')
+print(f'The largest value:\n{nums[-1]}\n')
+
+
+###############
+# Solution 02 #
+###############
+
+print('Solution 02:')
+
+# generation via list comprehension
+list_comp = [random.randint(1, 100) for x in range(10)]
+print(f'Your randomly generated list:\n{list_comp}')
+
+# sort in ascending order
+list_comp = sorted(list_comp)
+print(f'The largest value:\n{list_comp[-1]}')
