@@ -23,7 +23,7 @@ def random_numbers(range_min=1, range_max=100, n=10, lst=None):
 
 print('Solution 01:')
 
-# call function and assign it
+# generation via function
 nums = random_numbers()
 print(f'Your randomly generated list:\n{nums}')
 

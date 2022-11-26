@@ -16,11 +16,10 @@ dic = {}
 
 # add letter to dic or increase counter by 1
 for i in stripped:
-    if i in dic:
+    if i in dic.keys():
         dic[i] += 1
     else:
         dic[i] = 1
 
 # print result
 print(f'Dictionary output:\n {dic}')
-
