@@ -13,10 +13,12 @@
 #     ((()())(())
 #     (3+)((4)))
 #     ())(()
+
+# for this exercise I simplified the code that I used for task_06, by removing one unnecessary check
 expression = input('Please enter a mathematical expression:\n')
 
 
-def bracket_strip(string=expression):
+def bracket_strip(string):
     """Extracts all round brackets from a string."""
 
     # initiate var with relevant bracket and empty string
@@ -30,23 +32,33 @@ def bracket_strip(string=expression):
     return stripped
 
 
-def check_brackets(string=expression):
-    """Strip input from everything but round brackets. Check if the """
+def is_valid(string):
+    """
+    Function that checks if there is a closing bracket for every kind of opening bracket in the input string.
+    :param string: string (with brackets, that should be checked for validity)
+    :return: boolean
+    """
+    # len(str) is not even, the constellation of brackets can not be correct -> INVALID
+    if len(string) % 2 != 0:
+        return False
 
-    # initiate empty lists for opening/closing brackets
-    opened = []
-    closed = []
+    # initialize dictionary with all sorts of brackets
+    bracket_dict = {'(': ')'}
+    stack = []
+    for i in string:
 
-    # add
-    for _ in string:
-        if _ == '(':
-            opened.append(_)
+        # push bracket to stack if it is an opening bracket
+        if i in bracket_dict.keys():
+            stack.append(i)
         else:
-            closed.append(_)
-    if len(closed) != len(opened):
-        print(f'Your expression is INVALID!')
-    else:
-        print(f'Your expression is VALID!')
+            # return False if there is a closing bracket with n corresponding opening bracket
+            if stack == []:
+                return False
+            # if closing bracket -> pop top item in stack (which should be an opening bracket)
+            stack.pop()
+    # check if stack is empty -> True if there are no opening brackets without closing brackets
+    return stack == []
 
 
-check_brackets(bracket_strip())
+check = is_valid(bracket_strip(expression))
+print(f'The constellation of brackets is valid: {check}')
