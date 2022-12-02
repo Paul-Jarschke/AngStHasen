@@ -47,4 +47,5 @@ while added_term > 0.000001:
     taylor_approx += added_term
     i += 1
 
+# output
 print(f'The Taylor Series approximation for e^{x} = {taylor_approx}')
