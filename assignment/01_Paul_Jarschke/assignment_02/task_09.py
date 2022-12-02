@@ -37,14 +37,14 @@ x = int(input('Please enter an exponent for e^x:\n'))
 # initiate global vars for loop
 i = 0
 added_term = 1
-approximation = 0
+taylor_approx = 0
 
 # loop that sums up all parts of the taylor series until the threshold is met
 while added_term > 0.000001:
     # compute term of the sum for i
     added_term = power(base=x, exponent=i) / factorial(i)
-    # sum all additive terms to compute taylor approximation
-    approximation += added_term
+    # sum additive terms to compute taylor approximation
+    taylor_approx += added_term
     i += 1
 
-print(f'The Taylor Series approximation for e^{x} = {approximation}')
+print(f'The Taylor Series approximation for e^{x} = {taylor_approx}')
