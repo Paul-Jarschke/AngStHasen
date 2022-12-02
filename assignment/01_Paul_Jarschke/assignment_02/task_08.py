@@ -2,22 +2,22 @@
 # Write a function with two arguments – x and n. The function returns the value of xn. Use recursion.
 
 # user input
-base = int(input('Which number do you want to multiply with itself ?\n'))
-exponent = int(input('How often do you want to multiply the number with itself ?\n'))
+x = int(input('Which number do you want to multiply with itself ?\n'))
+n = int(input('How often do you want to multiply the number with itself ?\n'))
 
 
-def power(x, n):
-    """Recursive function that multiplies x n-times with itself"""
+def power(base, exponent):
+    """Recursive function that multiplies x n-times with itself."""
     # base case
-    if n == 0:
+    if exponent == 0:
         return 1
-    elif n == 1:
-        return x
+    elif exponent == 1:
+        return base
 
     # recursive case
     else:
-        return x * power(x, (n-1))
+        return base * power(base, (exponent - 1))
 
 
 # output
-print(f'Your result is {power(base, exponent)}')
+print(f'Your result is: {power(base=x, exponent=n)}')
