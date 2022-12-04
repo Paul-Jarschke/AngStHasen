@@ -19,7 +19,7 @@ i = 0
 while i <= 9:
     random_ints.append(random.randrange(1, 100))
     i += 1
-print("My list of random integers is:\n" + str(random_ints))
+print("My list of random integers is:\n" + str(random_ints) + "\n")
 
 maximum = 0
 for index, int in enumerate(random_ints):
