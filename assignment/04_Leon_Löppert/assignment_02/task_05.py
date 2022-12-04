@@ -24,9 +24,6 @@
 
 eq = str(input("Give me an equation, please:\n"))
 
-#left = eq.count("(")
-#right = eq.count(")")
-
 left_count = 0
 right_count = 0
 
