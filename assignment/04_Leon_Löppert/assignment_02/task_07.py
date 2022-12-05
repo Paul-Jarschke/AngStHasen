@@ -25,5 +25,3 @@ while queue:
 
 
 print("The queue is empty.")
-
-
