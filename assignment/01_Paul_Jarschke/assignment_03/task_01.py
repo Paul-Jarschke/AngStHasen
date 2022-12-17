@@ -30,7 +30,7 @@ print(book)
 b = lambda people: (dict.fromkeys(item, 0) for item in people)
 
 dictionary = dict.fromkeys(cust, 0)
-print(f'Hier das dict {dictionary}')
+print(f'\nHier ist das dict {dictionary}')
 # 2 elegant ways to add or remove single and multiple customers
 
 # You can remove an item with pop() or delete it completely with del(). Popitem() removes that last added item
@@ -54,7 +54,12 @@ def withdraw(customer, withdraw_amount):
     else:
         book[customer] -= withdraw_amount
 
+# Paul tries to withdraw more money than he has
+
+# Paul deposits 1000 euros
 deposit('Paul', 1000)
-print()
+print('New Book:\n {book}')
+
+# Paul
 withdraw('Paul', 10)
 print(book)
