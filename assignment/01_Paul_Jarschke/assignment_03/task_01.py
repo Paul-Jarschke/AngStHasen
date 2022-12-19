@@ -49,17 +49,18 @@ def deposit(customer, deposit_amount):
 def withdraw(customer, withdraw_amount):
     if withdraw_amount < 0:
         print('You cannot withdraw negative amounts.')
-    if withdraw_amount > book[customer]:
-        print(f'{customer} does not have enough money in her bank account!\nYou can withdraw up to {book[customer]}$')
+    elif withdraw_amount > book[customer]:
+        print(f'{customer} does not have enough money in his/her bank account!\nYou can only withdraw up to {book[customer]}$.')
     else:
-        book[customer] -= withdraw_amount
+        book[customer] += -withdraw_amount
 
 # Paul tries to withdraw more money than he has
 
 # Paul deposits 1000 euros
 deposit('Paul', 1000)
-print('New Book:\n {book}')
+print(f'New Book:\n{book}')
 
 # Paul
-withdraw('Paul', 10)
-print(book)
+withdraw('Paul', 2000)
+print(f'New Book:\n{book}')
+
