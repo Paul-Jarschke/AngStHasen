@@ -103,4 +103,3 @@ print('Account after test')
 # p.transfer_to_savings(50)
 
 print(f'Name: {p.name}  Balance: {p.balance}$  Savings: {p.savings}$\n')
-
