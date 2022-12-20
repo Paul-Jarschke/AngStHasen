@@ -1,7 +1,6 @@
 # Task 01 - Dictionary
 
 # Imagine you have to write a bookkeepingsystem for a bank that keeps track of the account balances of each of its customers.
-#
 # Write a function that spans a dictionary holding a default balance of 0 for an initial list of customers.
 # For simplicity, assume customer names are unique identifier.
 # (optional) Can you express that same functionality using a lambda function?
@@ -11,56 +10,71 @@
 # e.g., withdrawing negative amounts or overdrawing the account, etc.
 
 
+# Functions
+# dictionary spanning
+def create_book(names=[]):
+    """Creates a dictionary.
+    names"""
+    dictionary = {}
+    for item in names:
+        dictionary[item] = 0
+    return dictionary
+
+
+def deposit(customer, deposit_amount):
+    """Adds value to a specific account."""
+    if deposit_amount < 0:
+        print('You cannot deposit negative amounts!')
+    else:
+        book[customer] += deposit_amount
+    print(f'Book after deposition:\n{book}')
+
+
+def withdraw(customer, withdraw_amount):
+    if withdraw_amount < 0:
+        print('You cannot withdraw negative amounts!')
+    elif withdraw_amount > book[customer]:
+        print(f'{customer} does not have enough money in his/her bank account! '
+              f'You can only withdraw up to {book[customer]}$.')
+    else:
+        book[customer] += -withdraw_amount
+    print(f'Book after withdrawal:\n{book}')
+
+
 # initial list of customers
 cust = ['Paul', 'Leon', 'Laura', 'Jan']
 
-
-# 1 dictionary spanning function
-def create_book(names=[]):
-    book = {}
-    for item in names:
-        book[item] = 0
-    return book
-
-
+# create a book for given names (cust)
 book = create_book(names=cust)
-print(book)
+print(f'This is your new book:\n{book}')
 
-# 1 dictionary spanning function (lambda) DOES NOT WORK!
-b = lambda people: (dict.fromkeys(item, 0) for item in people)
+# deposit a positive value
+print('\nTask: 100$ deposit for Paul')
+deposit('Paul', 100)
 
-dictionary = dict.fromkeys(cust, 0)
-print(f'\nHier ist das dict {dictionary}')
-# 2 elegant ways to add or remove single and multiple customers
+# deposit a negative value
+print('\nTask: -100$ deposit for Paul')
+deposit('Paul', -100)
 
+# withdraw a positive amount
+print('\nTask: 50$ withdrawal for Paul')
+withdraw('Paul', 50)
+
+# withdraw a negative amount
+print('\nTask: -50$ withdrawal for Paul')
+withdraw('Paul', -50)
+
+# try to withdraw an unavailable amount of money
+print('\nTask: 1000000$ withdrawal for Paul')
+withdraw('Paul', 1000000)
+
+
+# Question:
+# What are elegant ways to add or remove single and multiple customers ?
+
+# Answer:
 # You can remove an item with pop() or delete it completely with del(). Popitem() removes that last added item
 # With clear() you can clear the whole dictionary.
 # Using dict["key"] = "item" or you can merge 2 dictionaries using update()
 # You could also use a more complex comprehension like this:
 # final_dict = {key: value for key, value in d if key not in [key1, key2]}
-
-# 3 deposit and withdraw money from customer
-
-
-def deposit(customer, deposit_amount):
-    book[customer] += deposit_amount
-
-
-def withdraw(customer, withdraw_amount):
-    if withdraw_amount < 0:
-        print('You cannot withdraw negative amounts.')
-    elif withdraw_amount > book[customer]:
-        print(f'{customer} does not have enough money in his/her bank account!\nYou can only withdraw up to {book[customer]}$.')
-    else:
-        book[customer] += -withdraw_amount
-
-# Paul tries to withdraw more money than he has
-
-# Paul deposits 1000 euros
-deposit('Paul', 1000)
-print(f'New Book:\n{book}')
-
-# Paul
-withdraw('Paul', 2000)
-print(f'New Book:\n{book}')
-
