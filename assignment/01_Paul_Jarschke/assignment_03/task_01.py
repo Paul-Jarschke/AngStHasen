@@ -13,31 +13,39 @@
 # Functions
 # dictionary spanning
 def create_book(names=[]):
-    """Creates a dictionary.
-    names"""
+    """Creates a dictionary."""
     dictionary = {}
     for item in names:
         dictionary[item] = 0
     return dictionary
 
 
-def deposit(customer, deposit_amount):
+def deposit(customer, value):
     """Adds value to a specific account."""
-    if deposit_amount < 0:
+    if customer not in cust:
+        print(f'This person has no account.')
+    elif type(value) != int and type(value) != float:
+        print('You can only enter numerical values!')
+    elif value < 0:
         print('You cannot deposit negative amounts!')
     else:
-        book[customer] += deposit_amount
+        book[customer] += value
     print(f'Book after deposition:\n{book}')
 
 
-def withdraw(customer, withdraw_amount):
-    if withdraw_amount < 0:
+def withdraw(customer, value):
+    """Decreases value of a specific account."""
+    if customer not in cust:
+        print(f'This person has no account.')
+    elif type(value) != int and type(value) != float:
+        print('You can only enter numerical values!')
+    elif value < 0:
         print('You cannot withdraw negative amounts!')
-    elif withdraw_amount > book[customer]:
+    elif value > book[customer]:
         print(f'{customer} does not have enough money in his/her bank account! '
               f'You can only withdraw up to {book[customer]}$.')
     else:
-        book[customer] += -withdraw_amount
+        book[customer] += -value
     print(f'Book after withdrawal:\n{book}')
 
 
@@ -67,6 +75,22 @@ withdraw('Paul', -50)
 # try to withdraw an unavailable amount of money
 print('\nTask: 1000000$ withdrawal for Paul')
 withdraw('Paul', 1000000)
+
+# name not in cust (deposit)
+print('\nTask: 1$ deposit for Simon')
+deposit('Simon', 1)
+
+# non-numerical input (deposit)
+print('\nTask: 1$ deposit for Paul')
+deposit('Paul', 'money')
+
+# name not in cust (withdrawal)
+print('\nTask: 1$ withdrawal for Simon')
+withdraw('Simon', 1)
+
+# non-numerical input (withdrawal)
+print('\nTask: 1$ withdrawal for Paul')
+withdraw('Paul', 'money')
 
 
 # Question:
