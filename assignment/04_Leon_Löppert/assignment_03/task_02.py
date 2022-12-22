@@ -72,8 +72,7 @@ class SavingsCustomer(Customer):
                 self.savings -= amount
                 self.balance += amount
         else:
-            print("Not a valid specification for the direction! Type either 'cts' for 'checking to savings \
-            or 'stc' for 'savings to checking'.")
+            print("Not a valid specification for the direction! Type either 'cts' for 'checking to savings or 'stc' for 'savings to checking'.")
 
 
 # Testing
@@ -123,3 +122,4 @@ Tim.transfer('cts', 0)
 Tim.transfer('stc', 0)
 Tim.balance
 Tim.savings
+Tim.transfer('dunno', 20)
