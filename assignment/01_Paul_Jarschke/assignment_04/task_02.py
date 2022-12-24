@@ -10,5 +10,20 @@
 #   -  removes all words that are longer than n characters from the list, thereby creating a new list
 #   -  prints the list to stdout
 
-s = input('Please enter a sentence: ')
-print(s)
+# sentence input
+sentence = input('Please enter a sentence: ')
+
+# integer input
+number = int(input('Please enter a positive integer: '))
+
+
+def remove_long_words(s, n):
+    """Removes items from input sentence that are longer than the input integer.
+       Prints list with filtered words."""
+    lst = s.split()
+    out = [word for word in lst if len(word) <= n]
+    print(f'\nYour filtered list of words:\n{out}')
+
+
+# call function on input parameters
+remove_long_words(sentence, number)
