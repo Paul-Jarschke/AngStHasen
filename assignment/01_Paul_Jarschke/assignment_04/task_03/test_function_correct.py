@@ -1,14 +1,30 @@
 import unittest
-import sys
-import os
-# set parent directory
-# sys.path.append(os.path.join(os.path.dirname(__file__), os.path.pardir))
-
-from . import function_correct
+from . import function_correct as f
 
 
 class Decimal2BinaryTestCase(unittest.TestCase):
     """Test for function.py (includes decimal2binary function)"""
     def test_negative_one_to_binary(self):
-        result = function_correct.decimal_to_binary_correct(1)
-        self.assertEqual(result, 1)
+        """Test if -1 is converted to -1"""
+        result = f.decimal_to_binary_correct(-1)
+        self.assertEqual(-1, result)
+
+    def test_zero_to_binary(self):
+        """Test if 0 is converted 0"""
+        result = f.decimal_to_binary_correct(0)
+        self.assertEqual(0, result)
+
+    def test_one_to_binary(self):
+        """Test if 1 is converted to 1"""
+        result = f.decimal_to_binary_correct(1)
+        self.assertEqual(1, result)
+
+    def test_two_to_binary(self):
+        """Test if 2 is converted to 10"""
+        result = f.decimal_to_binary_correct(2)
+        self.assertEqual(10, result)
+
+    def test_three_to_binary(self):
+        """Test if 3 is converted to 11"""
+        result = f.decimal_to_binary_correct(3)
+        self.assertEqual(11, result)
