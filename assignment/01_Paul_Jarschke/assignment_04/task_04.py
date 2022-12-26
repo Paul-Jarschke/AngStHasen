@@ -9,6 +9,7 @@
 from urllib.request import urlopen
 from urllib.error import HTTPError
 from urllib.error import URLError
+from urllib.error import ContentTooShortError
 
 
 def open_url(url):
@@ -18,10 +19,15 @@ def open_url(url):
         html.close()
         return doc
     except HTTPError as http_e:
+        print(f'{http_e} while connecting to : {url}')
         print("%s while connecting to: %s" % (http_e, url))
         return None
     except URLError as url_e:
+        print(f'{url_e} while connecting to : {url}')
         print("%s while connecting to: %s" % (url_e, url))
+    except ContentTooShortError as content_e:
+        print(f'{content_e} while connecting to : {url}')
+        print("%s while connecting to: %s" % (content_e, url))
         return None
 
 
@@ -32,5 +38,6 @@ url = "http://www.umsl.edu/~siegelj/newcourse/part1/URL-HTTP.html"
 print("Trying to connect to: " + url)
 html = open_url(url)
 
-if html != None:
-    print(html[0:1000])
+# printing the whole html script
+if html is not None:
+    print(html)
