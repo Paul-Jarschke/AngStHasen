@@ -28,9 +28,9 @@ def open_url(url):
 print("\nHTTP Connection:")
 print("===========================")
 
-url = "http://www.umsl.edu/~siegelj/newcourse/part1/URL-HTTP.html" # provide an invalid url such as "https://iamapotato"
+url = "http://www.umsl.edu/~siegelj/newcourse/part1/URL-HTTP.html"
 print("Trying to connect to: " + url)
 html = open_url(url)
 
 if html != None:
-    print(html[0:200])
+    print(html[0:1000])
