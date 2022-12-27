@@ -12,7 +12,6 @@ from urllib.error import HTTPError, URLError
 # 'http://www.iamnotarealaddress.de'
 
 
-
 def init_log(file_name, file_mode, level, format, date_format):
     logging.basicConfig(level=level,
                         format=format,
@@ -20,12 +19,13 @@ def init_log(file_name, file_mode, level, format, date_format):
                         filename=file_name,
                         filemode=file_mode)
 
-# call in
-init_log(file_name= 'log_file',
-         file_mode='w',
+
+# initialize logging with
+init_log(file_name='log_file',
          level=logging.ERROR,
-         format='%(asctime)s %(name)-12s %(levelname)-8s %(message)s',
-         date_format='%m-%d %H:%M')
+         file_mode='w',
+         format="%(asctime)s %(levelname)s %(message)s",
+         date_format='%d-%m-%y %H:%M')
 
 
 def open_url(url):
@@ -44,7 +44,7 @@ def open_url(url):
 
 print("\nHTTP Connection:")
 print("_______________________________________________________________________________________________________________")
-url = 'http://www.iamnotarealaddress.de'
+url = 'https://www.uni-goettingen.de/de/hilfskraft+php/sql+gesucht+%2810+std./monat%29/667669.html'
 print("Trying to connect to: " + url)
 html = open_url(url)
 
