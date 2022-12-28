@@ -1,4 +1,17 @@
-# from task_04 import open_url
+# Task 05 - Logging
+
+#The logging module in Python provides functionality for logging and debugging purposes. Use the logging module to
+# extend the error handling for the function that you implemented to establish a HTTP connection (Task 4).
+# All exceptions thrown by your function shall be logged as errors.
+
+# To accomplish the task:
+# - write a Python function init_log(file_name, file_mode, level, format, date_format) that initializes a custom log
+#   file to which all debugging information and errors are appended using a format that includes the date, time, level
+#   and the message of the logging event
+# - log occurring errors by calling logging.error(...)
+# - close the log after completing your task by calling logging.shutdown()
+# - If you choose not to complete Tasks 4, test the logging functionality with a few examples of your own.
+
 import logging
 from urllib.request import urlopen
 from urllib.error import HTTPError, URLError
@@ -15,11 +28,7 @@ from urllib.error import HTTPError, URLError
 def init_log(file_name, file_mode, level, format, date_format):
     """Initiates basic configuration for a logger.
     Level, format, dateformat, log filename and filemode have to be specified."""
-    logging.basicConfig(level=level,
-                        format=format,
-                        datefmt=date_format,
-                        filename=file_name,
-                        filemode=file_mode)
+    logging.basicConfig(level=level, format=format, datefmt=date_format, filename=file_name, filemode=file_mode)
 
 
 # initialize logging with
