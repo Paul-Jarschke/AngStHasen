@@ -16,27 +16,11 @@ import logging
 from urllib.request import urlopen
 from urllib.error import HTTPError, URLError
 
-# Urls for testing:
-# working url
-# 'https://docs.python.org/3/library/urllib.error.html#urllib.error.ContentTooShortError'
-# raise http error (404)
-# 'https://www.uni-goettingen.de/de/hilfskraft+php/sql+gesucht+%2810+std./monat%29/667669.html'
-# raise url error
-# 'http://www.iamnotarealaddress.de'
-
 
 def init_log(file_name, file_mode, level, format, date_format):
     """Initiates basic configuration for a logger.
     Level, format, dateformat, log filename and filemode have to be specified."""
     logging.basicConfig(level=level, format=format, datefmt=date_format, filename=file_name, filemode=file_mode)
-
-
-# initialize logging with
-init_log(file_name='log_file.txt',                          # creates a txt file called 'log_file.txt' with all logs
-         level=logging.ERROR,                               # set root logger level to error (40 would also work)
-         file_mode='a',                                     # appends all logs to log_file.txt
-         format="%(asctime)s %(levelname)s %(message)s",    # show date/time, levelname and message in logs
-         date_format='%d-%m-%y %H:%M')                      # date format = dd-mm-yy , time format = hh:mm
 
 
 def open_url(url):
@@ -56,16 +40,33 @@ def open_url(url):
         return None
 
 
-print("\nHTTP Connection:")
-print("_______________________________________________________________________________________________________________")
-url = 'http://www.iamnotarealaddress.de'
-print("Trying to connect to: " + url)
-html = open_url(url)
+if __name__ == '__main__':
+    # initialize logging using our own function
+    init_log(file_name='log_file.txt',                         # creates a txt file called 'log_file.txt' with all logs
+             level=logging.ERROR,                              # set root logger level to error (40 would also work)
+             file_mode='a',                                    # appends all logs to log_file.txt
+             format="%(asctime)s %(levelname)s %(message)s",   # show date/time, levelname and message in logs
+             date_format='%d-%m-%y %H:%M')                     # date format = dd-mm-yy , time format = hh:mm
 
-# printing the whole html script if no exception is thrown
-# use print(html) to get full information
-if html is not None:
-    print(html[0:200])
+    url = 'http://www.iamnotarealaddress.de'
+    # Urls for testing:
+    # working url
+    # 'https://docs.python.org/3/library/urllib.error.html#urllib.error.ContentTooShortError'
+    # raise http error (404)
+    # 'https://www.uni-goettingen.de/de/hilfskraft+php/sql+gesucht+%2810+std./monat%29/667669.html'
+    # raise url error
+    # 'http://www.iamnotarealaddress.de'
 
-# shutdown logging
-logging.shutdown()
+    print("\nHTTP Connection:")
+    print("___________________________________________________________________________________________________________")
+    print("Trying to connect to: " + url)
+
+    # create html file by opening the given url
+    html = open_url(url)
+
+    # printing the whole html script if no exception is thrown (delete [0:200] to get full script)
+    if html is not None:
+        print(html[0:200])
+
+    # shutdown logging
+    logging.shutdown()
