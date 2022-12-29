@@ -1,7 +1,7 @@
 # Task 05 - Logging
 
-#The logging module in Python provides functionality for logging and debugging purposes. Use the logging module to
-# extend the error handling for the function that you implemented to establish a HTTP connection (Task 4).
+# The logging module in Python provides functionality for logging and debugging purposes. Use the logging module to
+# extend the error handling for the function that you implemented to establish an HTTP connection (Task 4).
 # All exceptions thrown by your function shall be logged as errors.
 
 # To accomplish the task:
