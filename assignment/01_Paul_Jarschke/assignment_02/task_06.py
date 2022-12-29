@@ -2,7 +2,7 @@
 # Extend previous program, so it can handle also square and curly brackets. Note that expressions in brackets cannot
 # overlap. So, expression {[()()]([[]])}{} is correct, but expression ([)] is not.
 
-# for this exercise, I used the algorithm from task_05 and added one additional check to the is_valid function
+# for this exercise, I used the algorithm from task_05_06 and added one additional check to the is_valid function
 expression = input('Please enter a mathematical expression:\n')
 
 
@@ -12,7 +12,7 @@ def bracket_strip(string):
     :return: stripped (str): a new variable that holds just the brackets from th input string
     """
     # initiate var with relevant bracket and empty string
-    # compared to task_05 we also include box brackets curly brackets
+    # compared to task_05_06 we also include box brackets curly brackets
     brackets = '()[]{}'
     stripped = ''
 
