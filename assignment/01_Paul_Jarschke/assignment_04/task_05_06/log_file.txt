@@ -3,3 +3,12 @@
 27-12-22 23:02 ERROR HTTP Error 404: Not Found while connecting to : https://www.uni-goettingen.de/de/hilfskraft+php/sql+gesucht+%2810+std./monat%29/667669.html
 27-12-22 23:03 ERROR <urlopen error [Errno 11001] getaddrinfo failed> while connecting to : http://www.iamnotarealaddress.de
 27-12-22 23:04 ERROR <urlopen error [Errno 11001] getaddrinfo failed> while connecting to : http://www.iamnotarealaddress.de
+29-12-22 16:35 ERROR <urlopen error [Errno 11001] getaddrinfo failed> while connecting to : http://www.iamnotarealaddress.de
+29-12-22 16:36 ERROR <urlopen error [Errno 11001] getaddrinfo failed> while connecting to : http://www.iamnotarealaddress.de
+29-12-22 16:40 ERROR <urlopen error [Errno 11001] getaddrinfo failed> while connecting to : http://www.iamnotarealaddress.de
+29-12-22 16:44 ERROR <urlopen error [Errno 11001] getaddrinfo failed> while connecting to : http://www.iamnotarealaddress.de
+29-12-22 16:59 ERROR <urlopen error [Errno 11001] getaddrinfo failed> while connecting to : http://www.iamnotarealaddress.de
+29-12-22 16:59 ERROR <urlopen error [Errno 11001] getaddrinfo failed> while connecting to : http://www.iamnotarealaddress.de
+29-12-22 20:05 ERROR <urlopen error [Errno 11001] getaddrinfo failed> while connecting to : http://www.iamnotarealaddress.de
+29-12-22 20:28 ERROR <urlopen error [Errno 11001] getaddrinfo failed> while connecting to : http://www.iamnotarealaddress.de
+29-12-22 20:50 ERROR Input url does not point to a ".txt" file!
