@@ -12,3 +12,9 @@
 29-12-22 20:05 ERROR <urlopen error [Errno 11001] getaddrinfo failed> while connecting to : http://www.iamnotarealaddress.de
 29-12-22 20:28 ERROR <urlopen error [Errno 11001] getaddrinfo failed> while connecting to : http://www.iamnotarealaddress.de
 29-12-22 20:50 ERROR Input url does not point to a ".txt" file!
+29-12-22 20:59 ERROR Input url does not point to a ".txt" file!
+29-12-22 21:28 ERROR No text file found at given URL, download aborted!
+31-12-22 13:04 ERROR No text file found at given URL, download aborted!
+31-12-22 13:04 ERROR No text file found at given URL, download aborted!
+31-12-22 13:04 ERROR No text file found at given URL, download aborted!
+31-12-22 13:04 ERROR No text file found at given URL, download aborted!
