@@ -14,8 +14,8 @@ import numpy as np
 
 array = np.array([[1, 2, 3, 4], \
                   [5, 6, 7, 8]])
-print('The input array is:\n', array, sep = '')
+print(f'The input array is:\n {array}')
 
 result = (lambda l: l[l % 2 == 0])(array)
 
-print('\nThe filtered output array is:\n', result, sep = '')
+print(f'\nThe filtered output array is:\n {result}')
