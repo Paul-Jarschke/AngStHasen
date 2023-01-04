@@ -5,7 +5,7 @@
 # of your choosing. Print the input array and the filtered output array to stdout.
 
 # input to list
-lst = list(map(int, input("Please enter an arbitrary number of integers and separate them by pressing space)\n").split()))
+lst = list(map(int, input("Please enter an arbitrary number of integers and separate them by pressing space:\n").split()))
 print(f'Your list of integers:\n{lst}')
 
 # filter list for even values
