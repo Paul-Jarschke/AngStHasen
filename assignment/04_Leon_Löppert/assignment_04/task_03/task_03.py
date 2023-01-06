@@ -18,6 +18,7 @@
 
 # Overview:
 # - decimal2binary_incorrect.py: contains the possibly wrong function which should be tested
-# - unittest.py: contains unit tests for the function in the interval [-1,3]
-# - decimal2binary_correct.py: contains a corrected version of the function
+# - testing.py: contains unit tests for the possibly wrong function in the interval [-1,3]
 
+# - decimal2binary_correct.py: contains a corrected version of the function
+# - testing2.py: contains unit tests for the corrected function in the interval [-1,3]
