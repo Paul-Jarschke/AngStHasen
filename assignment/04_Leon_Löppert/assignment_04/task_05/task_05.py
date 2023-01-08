@@ -54,10 +54,10 @@ def open_url(url):
         return None
 
 # initialize logging using  own function
-init_log(file_name='task_05_log.txt',                      # creates a txt file called 'task_05_log.txt' with all logs
-         level=logging.ERROR,                              # set root logger level to error (40 would also work)
-         file_mode='a',                                    # appends all logs to log_file.txt
-         format="%(asctime)s %(levelname)s %(message)s",   # show date/time, levelname and message in logs
+init_log(file_name='task_05_log.txt',  # creates a txt file called 'task_05_log.txt' with all logs
+         level=logging.ERROR,  # set root logger level to error (40 would also work)
+         file_mode='a',  # appends all logs to log_file.txt
+         format="%(asctime)s %(levelname)s %(message)s",  # show date/time, levelname and message in logs
          date_format='%d-%m-%y %H:%M')                     # date format = dd-mm-yy , time format = hh:mm
 
 # Read URL page
