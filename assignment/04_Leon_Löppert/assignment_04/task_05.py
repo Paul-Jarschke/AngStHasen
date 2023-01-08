@@ -54,7 +54,7 @@ def open_url(url):
         return None
 
 # initialize logging using  own function
-init_log(file_name='task_05_log.txt',                         # creates a txt file called 'log_file.txt' with all logs
+init_log(file_name='task_05_log.txt',                      # creates a txt file called 'task_05_log.txt' with all logs
          level=logging.ERROR,                              # set root logger level to error (40 would also work)
          file_mode='a',                                    # appends all logs to log_file.txt
          format="%(asctime)s %(levelname)s %(message)s",   # show date/time, levelname and message in logs
@@ -70,7 +70,5 @@ if website != None:
     print("Connecting to", url)
     print("===========================================================================================================")
     print(website[0:200])
-
-
 
 logging.shutdown()
