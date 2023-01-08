@@ -1,0 +1,7 @@
+08-01-23 13:20 ERROR <urlopen error [Errno 11001] getaddrinfo failed> while connecting to: http://diveintopyhon.org/
+08-01-23 13:20 ERROR HTTP Error 403: Forbidden while connecting to: https://realpython.com/python-f-strings/
+08-01-23 13:21 ERROR unknown url type: 'ww.asdf.com' while connecting to: ww.asdf.com
+08-01-23 15:36 ERROR unknown url type: 'd' while connecting to: d
+08-01-23 16:01 ERROR unknown url type: '#https://ia802707.us.archive.org/1/items/macbeth02264gut/0ws3410.txt' while connecting to: #https://ia802707.us.archive.org/1/items/macbeth02264gut/0ws3410.txt
+08-01-23 16:01 ERROR unknown url type: '#https://ia802707.us.archive.org/1/items/macbeth02264gut/0ws3410.txt' while connecting to: #https://ia802707.us.archive.org/1/items/macbeth02264gut/0ws3410.txt
+08-01-23 16:01 ERROR No text file found at given URL, download aborted!

@@ -49,26 +49,28 @@ def open_url(url):
         return None
     except HTTPError as e2:
         logging.error(f'{e2} while connecting to: {url}') # example: https://realpython.com/python-f-strings/
+        return None
     except ValueError as e3:
         logging.error(f'{e3} while connecting to: {url}') # example: ww.asdf.com
         return None
 
+if __name__ == "__main__":
 # initialize logging using  own function
-init_log(file_name='task_05_log.txt',  # creates a txt file called 'task_05_log.txt' with all logs
-         level=logging.ERROR,  # set root logger level to error (40 would also work)
-         file_mode='a',  # appends all logs to log_file.txt
-         format="%(asctime)s %(levelname)s %(message)s",  # show date/time, levelname and message in logs
-         date_format='%d-%m-%y %H:%M')                     # date format = dd-mm-yy , time format = hh:mm
+    init_log(file_name='task_05_06_log.txt',  # creates a txt file called 'task_05_06_log.txt' with all logs
+             level=logging.ERROR,  # set root logger level to error (40 would also work)
+             file_mode='a',  # appends all logs to log file
+             format="%(asctime)s %(levelname)s %(message)s",  # show date/time, levelname and message in logs
+             date_format='%d-%m-%y %H:%M')                     # date format = dd-mm-yy , time format = hh:mm
 
-# Read URL page
-url = input("Type in URL:\n")
+    # Read URL page
+    url = input("Type in URL:\n")
 
 
-website = open_url(url)
-if website != None:
-    print("===========================================================================================================")
-    print("Connecting to", url)
-    print("===========================================================================================================")
-    print(website[0:200])
+    website = open_url(url)
+    if website != None:
+        print("===========================================================================================================")
+        print("Connecting to", url)
+        print("===========================================================================================================")
+        print(website[0:200])
 
-logging.shutdown()
+    logging.shutdown()
