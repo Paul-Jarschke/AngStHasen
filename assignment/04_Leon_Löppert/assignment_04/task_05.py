@@ -45,12 +45,12 @@ def open_url(url):
         html.close()
         return doc
     except URLError as e1:
-        logging.error(f'{e1} while connecting to: {url}') # example: "http://diveintopyhon.org/"
+        logging.error(f'{e1} while connecting to: {url}') # example: http://diveintopyhon.org/
         return None
     except HTTPError as e2:
         logging.error(f'{e2} while connecting to: {url}') # example: https://realpython.com/python-f-strings/
     except ValueError as e3:
-        logging.error(f'{e3} while connecting to: {url}') # example: ww.asdf.com"
+        logging.error(f'{e3} while connecting to: {url}') # example: ww.asdf.com
         return None
 
 # initialize logging using  own function
