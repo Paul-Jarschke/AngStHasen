@@ -56,5 +56,5 @@ if __name__ == "__main__":
     download_file(url=url, path=path)
     logging.shutdown()
 
-#C:/Users/Work/OneDrive/GAU
-#https://ia802707.us.archive.org/1/items/macbeth02264gut/0ws3410.txt
+# C:/Users/Work/OneDrive/GAU
+# https://ia802707.us.archive.org/1/items/macbeth02264gut/0ws3410.txt
