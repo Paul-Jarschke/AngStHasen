@@ -16,26 +16,31 @@
 # properly handles exceptions
 
 import logging
+import os
 from task_05 import init_log
 from urllib.error import HTTPError, URLError
 from urllib.request import urlretrieve
 
 def download_file(url, path):
-    if url.endswith(".txt"):
-        path = path + "/file_download.txt"
-        try:
-            print("Downloading...")
-            urlretrieve(url = url,
-                        filename = path)
-            print("Download complete.")
-        except URLError as e1:
-            logging.error(f'{e1} while connecting to: {url}') # example: http://diveintopyhon.org/
-        except HTTPError as e2:
-            logging.error(f'{e2} while connecting to: {url}') # example: https://realpython.com/python-f-strings/
-        except ValueError as e3:
-            logging.error(f'{e3} while connecting to: {url}') # example: ww.asdf.com
-    else:
-        logging.error("No text file found at given URL, download aborted!")
+    for i in range(999):
+        if not os.path.exists(path + "/file_download" + str(i+1) + ".txt"):
+            if url.endswith(".txt"):
+                path = path + "/file_download" + str(i+1) + ".txt"
+                try:
+                    print("Downloading...")
+                    urlretrieve(url = url,
+                                filename = path)
+                    print("Download complete.")
+                except URLError as e1:
+                    logging.error(f'{e1} while connecting to: {url}') # example: http://diveintopyhon.org/
+                except HTTPError as e2:
+                    logging.error(f'{e2} while connecting to: {url}') # example: https://realpython.com/python-f-strings/
+                except ValueError as e3:
+                    logging.error(f'{e3} while connecting to: {url}') # example: ww.asdf.com
+            else:
+                logging.error("No text file found at given URL, download aborted!")
+            break
+
 
 if __name__ == "__main__":
         # initialize logging using  own function
