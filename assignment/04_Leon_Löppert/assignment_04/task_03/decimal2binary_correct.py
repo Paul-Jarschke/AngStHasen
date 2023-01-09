@@ -15,5 +15,3 @@ def decimal_to_binary_correct(n):
     binary = x[::-1]
     return int(''.join([str(d) for d in binary]))*sign
 
-
-# negatives Ding noch einbauen. Brauch man das Join dann überhaupt?
