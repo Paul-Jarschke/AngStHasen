@@ -6,7 +6,7 @@
 
 # Task 06 - Logging ----
 
-# In Task 4, you used the urllib library to establish a http connection. You can also use the urllib library to perform simple file downloads.
+# In Task 4, you used the urllib library to establish a http connection. You can also use the urllib library to perform simple file data.
 #
 # Write a Python function download_file(url, path) that:
 #
