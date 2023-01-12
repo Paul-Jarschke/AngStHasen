@@ -12,14 +12,17 @@ from urllib.error import HTTPError, URLError
 
 def open_url(url):
     try:
+        # read html code from url
         html = urlopen(url)
         doc = html.read().decode("utf-8")
         html.close()
         return doc
     except HTTPError as http_e:
+        # print message to stderr if HTTPError occurs
         print(f'{http_e} while connecting to : {url}')
         return None
     except URLError as url_e:
+        # print message to stderr if URLError occurs
         print(f'{url_e} while connecting to : {url}')
         return None
 
@@ -35,7 +38,7 @@ print("_________________________________________________________________________
 # raise url error
 # 'http://www.iamnotarealaddress.de'
 
-url = 'https://docs.python.org/3/library/urllib.error.html#urllib.error.ContentTooShortError'
+url = 'http://www.iamnotarealaddress.de'
 print("Trying to connect to: " + url)
 html = open_url(url)
 
