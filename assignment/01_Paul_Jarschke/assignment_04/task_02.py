@@ -20,8 +20,11 @@ number = int(input('Please enter a positive integer: '))
 def remove_long_words(s, n):
     """Removes items from input sentence that are longer than the input integer.
        Prints list with filtered words."""
+    # split elements in list
     lst = s.split()
+    # keep words that do have less than n letters
     out = [word for word in lst if len(word) <= n]
+    # print output list to stdout
     print(f'\nYour filtered list of words:\n{out}')
 
 
