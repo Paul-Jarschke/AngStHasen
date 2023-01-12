@@ -1,0 +1,6 @@
+{% extends "flightseats/base.html" %}
+{% block content %}
+    {% for seat in seats %}
+            <h1>{{ seat.column_a }} {{ seat.column_b }} {{ seat.column_c }}</h1>
+    {% endfor %}
+{% endblock content %}
