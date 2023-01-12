@@ -1,8 +1,9 @@
+# This file provides two different functions that transform decimal to binary
 import math
 
 
 def decimal2binary(n):
-    # function to convert decimal integers to binary
+    # function that converts decimal to binary (false transformation)
     x = []
     while n > 0:
         x.append(n % 2)
@@ -11,5 +12,5 @@ def decimal2binary(n):
 
 
 def decimal_to_binary_correct(n):
-    # function that converts decimal to binary correctly
+    # function that converts decimal to binary (correct transformation)
     return int(bin(n).replace("0b", ""))
