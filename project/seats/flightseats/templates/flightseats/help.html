@@ -1,0 +1,12 @@
+{% extends "flightseats/base.html" %}
+{% block content %}
+    <h1>Instruction:<br></h>
+            <ol>
+                <li>First do this</li>
+                <li>Then do that</li>
+                <li>Finally do this</li>
+            </ol>
+
+            <a href = "{% url 'flightseats-home' %}" > Back to main menu </a>
+
+{% endblock content %}
