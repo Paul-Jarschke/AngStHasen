@@ -41,24 +41,26 @@ from task_06 import download_file
 
 dpath = "C:/Users/Work/PycharmProjects/AngStHasen/assignment/04_Leon_Löppert/assignment_05/data/"
 opath = "C:/Users/Work/PycharmProjects/AngStHasen/assignment/04_Leon_Löppert/assignment_05/data/processed/"
-download_file(url="https://ia802707.us.archive.org/1/items/macbeth02264gut/0ws3410.txt",  # MacBeth
-              path=dpath)
-download_file(url="https://ia801309.us.archive.org/24/items/newatlantis02434gut/nwatl10.txt",  # Net Atlantis
-              path=dpath)
 
-try:
-    os.remove(dpath + "MacBeth.txt")
-except:
-    pass
-try:
-    os.remove(dpath + "NewAtlantis.txt")
-except:
-    pass
+if __name__ == "__main__":
+    download_file(url="https://ia802707.us.archive.org/1/items/macbeth02264gut/0ws3410.txt",  # MacBeth
+                  path=dpath)
+    download_file(url="https://ia801309.us.archive.org/24/items/newatlantis02434gut/nwatl10.txt",  # Net Atlantis
+                  path=dpath)
 
-os.rename(dpath + "file_download1.txt",
-          dpath + "MacBeth.txt")
-os.rename(dpath + "file_download2.txt",
-          dpath + "NewAtlantis.txt")
+    try:
+        os.remove(dpath + "MacBeth.txt")
+    except:
+        pass
+    try:
+        os.remove(dpath + "NewAtlantis.txt")
+    except:
+        pass
+
+    os.rename(dpath + "file_download1.txt",
+              dpath + "MacBeth.txt")
+    os.rename(dpath + "file_download2.txt",
+              dpath + "NewAtlantis.txt")
 
 
 def get_speaker_text(file):
@@ -165,7 +167,6 @@ def tokenize_text(file):
     words = sum(words, [])
     return words
 
-
 # get_speaker_text(
 #     "C:/Users/Work/PycharmProjects/AngStHasen/assignment/04_Leon_Löppert/assignment_05/data/NewAtlantis.txt"
 # )
@@ -180,18 +181,3 @@ def tokenize_text(file):
 #     "C:/Users/Work/PycharmProjects/AngStHasen/assignment/04_Leon_Löppert/assignment_05/data/processed/NewAtlantis_getspeaker_normal_nostop.txt"
 # )
 # print(preprocessed)
-
-
-def preprocess_text(file):
-    out = get_speaker_text(file)
-    out = normalize_text(out)
-    out = remove_stopwords(out)
-    newout = "/".join(out.rsplit("/")[0:-1]) + "/" + file.rsplit("/")[-1] + "_preprocessed.txt"
-    shutil.copy(out, newout)
-    return tokenize_text(out)
-
-
-preprocessed = preprocess_text(
-    "C:/Users/Work/PycharmProjects/AngStHasen/assignment/04_Leon_Löppert/assignment_05/data/MacBeth.txt")
-
-print(preprocessed)
