@@ -1,6 +1,28 @@
 {% extends "flightseats/base.html" %}
 {% block content %}
-    {% for seat in seats %}
-            <h1>{{ seat.column_a }} {{ seat.column_b }} {{ seat.column_c }}</h1>
-    {% endfor %}
+
+
+<div style="font-size:40px; font-weight: bold" id="rap">
+    <table class="table_on_the_left">
+        {% for seat in seats %}
+        <tr>
+            <td>{{ seat.column_a }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    &nbsp;
+    <table class="table_on_the_right">
+        {% for seat in seats %}
+        <tr>
+            <td> {{ seat.column_b }}&nbsp;</td>
+            <td> {{ seat.column_c }}&nbsp;</td>
+            <td> {{ seat.column_d }}&nbsp;</td>
+            <td>&nbsp;|&ensp;|&nbsp;</td>
+            <td> {{ seat.column_e }}&nbsp;</td>
+            <td> {{ seat.column_f }}&nbsp;</td>
+            <td> {{ seat.column_g }}&nbsp;</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
 {% endblock content %}

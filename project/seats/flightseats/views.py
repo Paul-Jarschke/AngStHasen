@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Flight, Seats
+import numpy as np
 
 flights = [
     {
@@ -36,6 +37,19 @@ def home(request):
 def booking(request, flightnumber):
     context = {'flightnumber': flightnumber}
     return render(request, 'flightseats/booking.html', context)
+
+
+seat_data = np.loadtxt("flightseats/data/chartIn.txt", dtype='str')
+for i in range(len(seat_data)):
+    Seats.objects.create(
+        column_a=seat_data[i][0],
+        column_b=seat_data[i][1],
+        column_c=seat_data[i][2],
+        column_d=seat_data[i][3],
+        column_e=seat_data[i][4],
+        column_f=seat_data[i][5],
+        column_g=seat_data[i][6]
+    )
 
 
 def login(request):

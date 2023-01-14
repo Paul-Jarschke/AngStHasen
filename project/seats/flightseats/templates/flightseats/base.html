@@ -11,7 +11,7 @@
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     {% if title %}
-    <title>AngstHasenFlights - {{ title }}</title>
+    <title>AngstHasenFlights - {{ name }}</title>
     {% else %}
     <title>AngstHasenFlights</title>
     {% endif %}
@@ -31,11 +31,39 @@
 
     ol li{
     font-size: 24px;
+    text-align: left;
     }
 
     a {
     font-size: 16px
     }
+
+    .tab {
+    display: inline-block;
+    min-width: 30px
+    }
+
+    p {text-align: center;}
+    h1 {text-align: center;}
+
+table.table_on_the_left, table.table_on_the_right {
+  display:inline-block;
+}
+
+body {
+  text-align:center;
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 

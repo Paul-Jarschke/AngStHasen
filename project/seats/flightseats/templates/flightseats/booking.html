@@ -1,7 +1,10 @@
 {% extends "flightseats/base.html" %}
 {% block content %}
-    <h1>book here for flight number {{ flightnumber }}</h1>
-    <a href = "{% url 'login' %}" > Confirm </a>
+<h1>book here for flight number {{ flightnumber }}</h1>
+<p style='text-align: center;'>
+    <a href="{% url 'login' %}" style='font-size: 24px;'> Confirm </a>
+</p>
+
 {% endblock content %}
 
 
