@@ -18,9 +18,12 @@ class Flight(models.Model):
         return self.airline
 
 
-class book(models.Model):
-    airline = models.CharField(max_length=250, default="Airline")  # put this as foreign key
-    # load different datasets dependend on airline foreign key from seats
+class Book(models.Model):
+    seat_choice = models.CharField(max_length=30, default="none")
+
+    def __str__(self):
+        return self.seat_choice
+
 
 
 class Seats(models.Model):
