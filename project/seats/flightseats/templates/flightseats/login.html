@@ -24,5 +24,12 @@
         </tr>
         {% endfor %}
     </table>
+
+    <form action="" method="POST">
+        {% csrf_token %}
+    <label for="seat_choice">Please enter your Seat</label>
+    <input type="text" id="seat_choice" name="seat_choice"><br><br>
+    <input type="submit" value="Submit" class="btn btn-secondary">
+    </form>
 </div>
 {% endblock content %}
