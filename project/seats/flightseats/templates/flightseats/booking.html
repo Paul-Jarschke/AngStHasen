@@ -1,10 +1,12 @@
 {% extends "flightseats/base.html" %}
 {% block content %}
-<h1>book here for flight number {{ flightnumber }}</h1>
+<h1>book here flight number {{ flightnumber }}</h1>
 <p style='text-align: center;'>
     <a href="{% url 'login' %}" style='font-size: 24px;'> Confirm </a>
 </p>
-
+<form>
+    <input type="button" value="Go back!" onclick="history.back()">
+</form>
 {% endblock content %}
 
 

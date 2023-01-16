@@ -18,6 +18,17 @@
 </head>
 
 <style>
+    header {
+    font-family: 'Open Sans';
+    font-weight: bold;
+    background-color: rgba(69,123,181);
+    letter-spacing:5px;
+    color: white;
+    margin: 0;
+    }
+
+
+
     button {
     height: 60px;
     width: 60px;
@@ -27,6 +38,12 @@
     position: absolute;
     right: 25px;
     bottom: 25px
+    }
+
+    form {
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
     }
 
     ol li{
@@ -52,7 +69,22 @@ table.table_on_the_left, table.table_on_the_right {
 
 body {
   text-align:center;
+  background-color: rgba(0,0,0, 0.1);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -73,13 +105,18 @@ body {
 </style>
 
 <body>
+<header>
+    <h1>
+        AngStHasenFlights
+    </h1>
+</header>
 <div class="container">
     {% if messages %}
-        {% for message in messages %}
-            <div class="alert alert-{{ message.tags }}">
-                {{ message }}
-            </div>
-        {% endfor %}
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }}">
+        {{ message }}
+    </div>
+    {% endfor %}
     {% endif %}
     {% block content %}{% endblock %}
 </div>

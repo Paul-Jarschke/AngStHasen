@@ -7,6 +7,10 @@
                 <li>Finally do this</li>
             </ol>
 
-            <a href = "{% url 'flightseats-home' %}" > Back to main menu </a>
-
+            <a href = "{% url 'flightseats-home' %}" style="font-size: 24px""> Back to main menu </a>
+        <p>
+        <form>
+ <input type="button" value="Go back!" onclick="history.back()">
+        </form>
+            </p>
 {% endblock content %}
