@@ -3,7 +3,7 @@
 
 
 <div>
-    <table class="table_on_the_left" style="font-size:40px; font-weight: bold" id="rap">
+    <table class="table_on_the_left" style="font-size:35px; font-weight: bold" id="rap">
         {% for seat in seats %}
         <tr>
             <td>{{ seat.column_a }}</td>
@@ -11,7 +11,7 @@
         {% endfor %}
     </table>
     &nbsp;
-    <table class="table_on_the_right" style="font-size:40px; id="rap">
+    <table class="table_on_the_right" style="font-size:35px; id="rap">
         {% for seat in seats %}
         <tr>
             <td> {{ seat.column_b }}&nbsp;</td>
@@ -28,13 +28,28 @@
 </div>
  <br/>
     <br/>
-<form action="" method="POST">
+<p style = "font-weight:bold"> Please enter your desired seat: </p>
+<form action="" method="POST" style = "font-weight:normal">
         {% csrf_token %}
-    <label for="seat_choice">Please enter your Seat</label>
-    <input type="text" id="seat_choice" name="seat_choice"><br><br>
-    <input type="submit" value="Submit" class="btn btn-secondary">
-    </form><p></p>
+    <input type="number" id="seat_choice_row" name="seat_choice_row" required oninvalid="this.setCustomValidity('Please enter valid seat row.')" oninput="this.setCustomValidity('')" min = '1' max = '10' step = '1' placeholder="row"><br><br>
+    <input list="choices" type = "text" name = "seat_letter" maxlength = "1" pattern = "[A-F]" required oninvalid="this.setCustomValidity('Please enter valid seat letter.')" oninput="this.setCustomValidity('')" placeholder="seat letter">
+      <datalist id="choices">
+        <option value="A">
+        <option value="B">
+        <option value="C">
+        <option value="D">
+        <option value="E">
+        <option value="F">
+      </datalist>
+    <p> </p><p> </p><p> </p><p> </p><p> </p><p> </p><p> </p><p> </p>
+  <input type="submit" value="Submit" class="btn btn-secondary">
+</form>
+
+<p></p>
+
 <form>
     <input type="button" value="Go back!" onclick="history.back()">
 </form>
+<p></p>
+
 {% endblock content %}

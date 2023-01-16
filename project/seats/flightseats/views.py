@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Flight, Seats, Book
 import numpy as np
+import re
 
 
 def home(request):
@@ -17,9 +18,10 @@ def booking(request, flightnumber):
 
 def login(request):
     if request.method == 'POST':
-        if request.POST.get('seat_choice'):
+        if (request.POST.get('seat_choice_row') in list(map(str, list(range(11))[1:])) and \
+                (request.POST.get('seat_letter') in ['A', 'B', 'C', 'D', 'F'])):
             book = Book()
-            book.seat_choice = request.POST.get('seat_choice')
+            book.seat_choice = request.POST.get('seat_choice_row') + request.POST.get('seat_letter')
             book.save()
 
     context = {
