@@ -23,7 +23,7 @@ def download_file(url, path):
         try:
             # open url, retrieve content and close connection
             site = request.urlopen(url)
-            doc = site.read().decode("utf-8")
+            doc = site.read().decode('utf-8', 'ignore')
             site.close()
             # open file path and write content into it
             f = open(path, "w")
@@ -41,6 +41,9 @@ def download_file(url, path):
 
     else:
         logging.error(f'No text file found at given URL, download aborted!')
+
+
+
 
 
 # Main block
