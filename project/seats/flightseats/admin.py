@@ -3,6 +3,9 @@ from django.urls import path
 from .models import Flight, Book, Seats
 from django.shortcuts import render
 from django import forms
+from django.contrib import messages
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 from django.core.files.storage import default_storage
 
 
@@ -20,6 +23,15 @@ class SeatAdmin(admin.ModelAdmin):
     def upload_txt(self, request):
         if request.method == "POST":
             txt_file= request.FILES["txt_upload"]
+            file_data = txt_file.read().decode('utf8')
+            txt_data = file_data.split("\n")
+
+            for i in txt_data:
+                fields = i.split()
+                print(fields)
+
+
+
 
 
 
