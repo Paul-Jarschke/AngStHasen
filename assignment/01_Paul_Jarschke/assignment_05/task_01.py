@@ -37,17 +37,16 @@ from urllib.error import HTTPError, URLError
 # Functions #
 
 
-def download_file(url, path):
+def download_file(url, path, filename='file'):
     # only open url if it is a txt file
     if url.endswith('.txt'):
         try:
             # open url and read content
             html = urlopen(url)
-            content = html.read().decode('utf-8')
-            # give name to downloaded file
-            name_of_file = 'Macbeth'
+            # Net Atlantis cannot be decoded with utf-8 -> latin1 works for both
+            content = html.read().decode('latin1')
             # add filename to path and
-            my_file_path = os.path.join(path, name_of_file + ".txt")
+            my_file_path = os.path.join(path, filename + ".txt")
             # open file and write content to it
             f = open(my_file_path, "w")
             f.write(content)
@@ -64,6 +63,17 @@ def download_file(url, path):
 
 
 # execution
+dl_path = r'C:\Users\Paul\PycharmProjects\AngStHasen\assignment\01_Paul_Jarschke\assignment_05\text'
+out_path = r'C:\Users\Paul\PycharmProjects\AngStHasen\assignment\01_Paul_Jarschke\assignment_05\text\processed_text'
 
-data_path = "C:/Users/Work/PycharmProjects/AngStHasen/assignment/04_Leon_Löppert/assignment_05/data/"
-out_path = "C:/Users/Work/PycharmProjects/AngStHasen/assignment/04_Leon_Löppert/assignment_05/data/processed/"
+if __name__ == "__main__":
+    # File Download
+    # MacBeth
+    download_file(url="https://ia802707.us.archive.org/1/items/macbeth02264gut/0ws3410.txt",
+                  path=dl_path,
+                  filename='MacBeth')
+
+    # Net Atlantis
+    download_file(url="https://ia801309.us.archive.org/24/items/newatlantis02434gut/nwatl10.txt",
+                  path=dl_path,
+                  filename='Net_Atlantis')
