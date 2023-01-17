@@ -1,0 +1,2 @@
+23-01-17 18:20 ERROR <urlopen error [Errno 11002] getaddrinfo failed> while connecting to : https://ia802707.us.archive.org/1/items/macbeth02264gut/0ws3410.txt
+23-01-17 18:21 ERROR <urlopen error [Errno 11002] getaddrinfo failed> while connecting to : https://ia802707.us.archive.org/1/items/macbeth02264gut/0ws3410.txt
