@@ -30,6 +30,8 @@
 # – splits the cleaned text into words
 
 import os
+import sys
+import re
 import logging
 from urllib.request import urlopen
 from urllib.error import HTTPError, URLError
@@ -60,6 +62,63 @@ def download_file(url, path, filename='file'):
         except URLError as url_e:
             logging.error(f'{url_e} while connecting to : {url}')
             return None
+
+
+def get_speaker_text(file):
+    play = file.rsplit('/')[-1].replace(".txt", "")
+    text = open(file, "rt")
+
+    newname = out_path + file.rsplit('/')[-1].replace(".txt", "") + "_getspeaker.txt"
+    output = open(newname, "wt")
+
+    if play == "MacBeth":
+
+        body = False
+        paragraph = False
+
+        for line in text:
+            if line.startswith("Actus Primus"):
+                body = True
+            elif line.startswith(" "):
+                paragraph = True
+            elif line == "\n":
+                paragraph = False
+            elif body == True:
+                if paragraph == True:
+                    if re.match(r'\s', line):
+                        try:
+                            line = line.split(". ")[1]
+                        except:
+                            pass
+                    for nr in range(10):
+                        line = line.replace(str(nr), "").lstrip()
+                    output.write(line)
+
+    if play == "NewAtlantis":
+
+        body = False
+        speaking = False
+
+        for line in text:
+            if line.startswith("We sailed from Peru"):
+                body = True
+            if line.startswith("[The rest was not perfected.]"):
+                body = False
+
+            if body == True:
+                for line in text:
+                    new_line = ""
+                    for letter in line:
+                        if letter == '"':
+                            speaking = not speaking
+                        if speaking == True:
+                            new_line = new_line + letter
+                    new_line = new_line.replace('"', " ")
+                    if new_line != "":
+                        output.write(new_line)
+                        if not new_line.endswith("\n"):
+                            output.write("\n")
+    return newname
 
 
 # execution
