@@ -38,7 +38,7 @@ class Seats(models.Model):
     column_g = models.CharField(max_length=250, default="A")
 
     def __str__(self):
-        return self.column_i
+        return self.column_a
 
 
 class User(models.Model):
@@ -51,4 +51,5 @@ class User(models.Model):
 
 
 class Seats2(models.Model):
-    rows = seat_data
+    rows= models.CharField(max_length=250, default="A")
+
