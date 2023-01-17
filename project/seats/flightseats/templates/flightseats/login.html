@@ -32,7 +32,7 @@
 <form action="" method="POST" style = "font-weight:normal">
         {% csrf_token %}
     <input type="number" id="seat_choice_row" name="seat_choice_row" required oninvalid="this.setCustomValidity('Please enter valid seat row.')" oninput="this.setCustomValidity('')" min = '1' max = '10' step = '1' placeholder="row"><br><br>
-    <input list="choices" type = "text" name = "seat_letter" maxlength = "1" pattern = "[A-F]" required oninvalid="this.setCustomValidity('Please enter valid seat letter.')" oninput="this.setCustomValidity('')" placeholder="seat letter">
+    <input type = "text" name = "seat_choice" id="seat_choice" maxlength = "1" pattern = "[A-F]" required oninvalid="this.setCustomValidity('Please enter valid seat letter.')" oninput="this.setCustomValidity('')" placeholder="seat letter" list="choices">
       <datalist id="choices">
         <option value="A">
         <option value="B">
@@ -42,7 +42,7 @@
         <option value="F">
       </datalist>
     <p> </p><p> </p><p> </p><p> </p><p> </p><p> </p><p> </p><p> </p>
-  <input type="submit" value="Submit" class="btn btn-secondary">
+  <input id = "subm" type="submit" value="Submit" class="btn btn-secondary">
 </form>
 
 <p></p>
