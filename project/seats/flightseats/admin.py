@@ -22,7 +22,7 @@ class SeatAdmin(admin.ModelAdmin):
 
     def upload_txt(self, request):
         if request.method == "POST":
-            txt_file= request.FILES["txt_upload"]
+            txt_file = request.FILES["txt_upload"]
             file_data = txt_file.read().decode('utf8')
             txt_data = file_data.split("\n")
 
@@ -40,6 +40,12 @@ class SeatAdmin(admin.ModelAdmin):
         data = {"form":form}
         return render(request, "admin/txt_upload.html", data)
 
+
+    #def seat_layout(self, n_col):
+        #f = open('flightseats/data/seat_layout.txt', "w")
+        #for i in range(n_col):
+        #    f.write(f'1	A	B	C	D	E	F\n')
+        #f.close()
 
 admin.site.register(Book)
 admin.site.register(Flight,SeatAdmin)
