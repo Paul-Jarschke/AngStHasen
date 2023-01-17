@@ -19,9 +19,9 @@ def booking(request, flightnumber):
 def login(request):
     if request.method == 'POST':
         if (request.POST.get('seat_choice_row') in list(map(str, list(range(11))[1:])) and \
-                (request.POST.get('seat_letter') in ['A', 'B', 'C', 'D', 'F'])):
+                (request.POST.get('seatletter') in ['A', 'B', 'C', 'D', 'F'])):
             book = Book()
-            book.seat_choice = request.POST.get('seat_choice_row') + request.POST.get('seat_letter')
+            book.seat_choice = request.POST.get('seat_choice_row') + request.POST.get('seatletter')
             book.save()
 
     context = {
