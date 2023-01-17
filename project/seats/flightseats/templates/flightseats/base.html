@@ -102,6 +102,9 @@ body {
 
 
 
+
+
+
 </style>
 
 <body>
@@ -144,12 +147,30 @@ body {
         event.preventDefault();
 
         if(!(["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"].includes(row)) || !(["A", "B", "C", "D", "E", "F"].includes(seat))){
-            swal({
+            if(!(["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"].includes(row)) && (["A", "B", "C", "D", "E", "F"].includes(seat))){
+                swal({
+                      title: "Booking failed!",
+                      text: "Please check row again. ",
+                      icon: "error",
+                      button: "Try again",
+                });
+            }else{
+                if((["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"].includes(row)) && !(["A", "B", "C", "D", "E", "F"].includes(seat))){
+                swal({
                   title: "Booking failed!",
-                  text: "Please check booking fields. ",
+                  text: "Please check seat letter again. ",
                   icon: "error",
                   button: "Try again",
             });
+                }else{
+                    swal({
+                          title: "Booking failed!",
+                          text: "Please check both fields again. ",
+                          icon: "error",
+                          button: "Try again",
+                    });
+                }
+            }
         }else{
         swal({
                   title: "Booking successful!",
@@ -159,6 +180,9 @@ body {
             });
         }
     })
+
+
+
 
 
 
