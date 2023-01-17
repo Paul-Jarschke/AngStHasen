@@ -105,6 +105,26 @@ body {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </style>
 
 <body>
@@ -135,20 +155,25 @@ body {
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+<button>
+    <a href="{% url 'help' %}"> Help </a>
+</button>
 
 <script>
 
     $("#subm").click(function() {
 
         var row = $("#seat_choice_row").val();
-        var seat = $("#seat_choice").val();
+        var seat = $("#seatlet").val();
 
         event.preventDefault();
 
         if(!(["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"].includes(row)) || !(["A", "B", "C", "D", "E", "F"].includes(seat))){
             if(!(["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"].includes(row)) && (["A", "B", "C", "D", "E", "F"].includes(seat))){
-                swal({
+                Swal.fire({
                       title: "Booking failed!",
                       text: "Please check row again. ",
                       icon: "error",
@@ -156,14 +181,14 @@ body {
                 });
             }else{
                 if((["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"].includes(row)) && !(["A", "B", "C", "D", "E", "F"].includes(seat))){
-                swal({
+                Swal.fire({
                   title: "Booking failed!",
                   text: "Please check seat letter again. ",
                   icon: "error",
                   button: "Try again",
-            });
+                });
                 }else{
-                    swal({
+                    Swal.fire({
                           title: "Booking failed!",
                           text: "Please check both fields again. ",
                           icon: "error",
@@ -172,52 +197,19 @@ body {
                 }
             }
         }else{
-        swal({
+        Swal.fire({
                   title: "Booking successful!",
                   text: "Your seat " + row +  seat + " is now reserved. ",
                   icon: "success",
                   button: "Continue",
-            });
+            }).then(function() {
+                     $('#submissionform').submit();
+                  })
+
         }
-    })
+    });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+</script>
 
 
 
@@ -239,10 +231,6 @@ body {
 
 
 </script>
-
-<button>
-    <a href="{% url 'help' %}"> Help </a>
-</button>
 
 </body>
 </html>
