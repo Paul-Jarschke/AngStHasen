@@ -171,6 +171,7 @@ body {
 
         event.preventDefault();
 
+
         if(!(["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"].includes(row)) || !(["A", "B", "C", "D", "E", "F"].includes(seat))){
             if(!(["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"].includes(row)) && (["A", "B", "C", "D", "E", "F"].includes(seat))){
                 Swal.fire({
@@ -178,6 +179,7 @@ body {
                       text: "Please check row again. ",
                       icon: "error",
                       button: "Try again",
+                      closeOnClickOutside: false,
                 });
             }else{
                 if((["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"].includes(row)) && !(["A", "B", "C", "D", "E", "F"].includes(seat))){
@@ -186,6 +188,7 @@ body {
                   text: "Please check seat letter again. ",
                   icon: "error",
                   button: "Try again",
+                  allowOutsideClick: false,
                 });
                 }else{
                     Swal.fire({
@@ -193,7 +196,8 @@ body {
                           text: "Please check both fields again. ",
                           icon: "error",
                           button: "Try again",
-                    });
+                          allowOutsideClick: false,
+                    })
                 }
             }
         }else{
@@ -201,11 +205,12 @@ body {
                   title: "Booking successful!",
                   text: "Your seat " + row +  seat + " is now reserved. ",
                   icon: "success",
-                  button: "Continue",
-            }).then(function() {
+                  allowOutsideClick: false,
+                  showConfirmButton:false,
+            });
+            setTimeout(function () {
                      $('#submissionform').submit();
-                  })
-
+                      }, 2000);
         }
     });
 
