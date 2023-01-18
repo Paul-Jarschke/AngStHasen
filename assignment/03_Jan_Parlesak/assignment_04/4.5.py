@@ -7,6 +7,7 @@ url_python= 'https://en.wnotreallythoughedia.org/wiki/Python_(programming_langua
 
 logging.basicConfig(level=logging.INFO,filename="log.log",filemode="a",format="%(asctime)s - %(levelname)s - %(message)s")
 
+#for some reason data_time bugged and therefore it is not used
 
 
 def open_url(url):
