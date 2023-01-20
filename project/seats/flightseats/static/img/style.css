@@ -1,0 +1,115 @@
+body,html{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100vh;
+    font-family: sans-serif;
+}
+.Section_top{
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    position: relative;
+    background-image: url(images/Airport-Backgrounds-HD.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transition: 1s;
+
+    text-align: center;
+    justify-content: center;
+
+
+    animation-name: change;
+    animation-iteration-count: infinite;
+    animation-play-state:running;
+    animation-duration: 60s;
+
+
+
+}
+.content{
+    position: absolute;
+    top: 12.5%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-transform:;
+}
+.outer{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0,0,0,0.1)
+}
+.content h1{
+    text-align: right;
+    color: #fff;
+    font-size: 4vw;
+    letter-spacing: 15px;
+    user-select: none;
+}
+.content h1 span{
+    color: #fff;
+}
+
+.content a{
+    padding: 10px 24px;
+    text-decoration: none;
+    font-size: 3vw;
+    border-radius: 20px;
+    color: black;
+    background-color: white;
+    text-decoration: none;
+}
+
+
+
+@keyframes change{
+    0%
+    {
+        background-image: url(images/Airport-Backgrounds-HD.jpg);
+    }
+    15%
+    {
+        background-image: url(images/Airport-Backgrounds-HD.jpg);
+    }
+    20%
+    {
+        background-image: url(images/Airport-Backgrounds-HD2.jpg);
+    }
+    35%
+    {
+        background-image: url(images/Airport-Backgrounds-HD2.jpg);
+    }
+    40%
+    {
+        background-image: url(images/Airport-Backgrounds-HD3.jpg);
+    }
+
+    55%
+    {
+        background-image: url(images/Airport-Backgrounds-HD3.jpg);
+    }
+    60%
+    {
+        background-image: url(images/Airport-Backgrounds-HD4.jpg);
+    }
+    75%
+    {
+        background-image: url(images/Airport-Backgrounds-HD4.jpg);
+    }
+    80%
+    {
+        background-image: url(images/Airport-Backgrounds-HD5.jpg);
+    }
+    95%
+    {
+        background-image: url(images/Airport-Backgrounds-HD5.jpg);
+    }
+    100%
+    {
+        background-image: url(images/Airport-Backgrounds-HD.jpg);
+    }
+}

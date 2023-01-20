@@ -1,9 +1,26 @@
 {% extends "flightseats/base.html" %}
+{% load static %}
 {% block content %}
-{% for flight in flights %}
-<a href="{% url  'booking' flight.flight_number %}"><h1> From {{ flight.origin_airport }} to
-    {{ flight.dest_airport }} </h1></a>
-<p>Operated by {{ flight.airline }} on {{ flight.day }}.{{ flight.month }}.{{ flight.year }}
-    at {{ flight.departure }}</p>
-{% endfor %}
+<link rel="stylesheet" href="{% static 'img/style.css' %}">
+
+
+
+<body style="background-image:url('{% static 'img/Airport-Backgrounds-HD.jpg' %}'); background-repeat: no-repeat;background-size: 100%;">
+ <!-- Dont put stuff here or it smushes the background image -->  <!-- Dont put stuff here or it smushes the background image -->
+        <div class="Section_top">
+            hamlo
+            <br>
+            <div class="outer">
+
+                <div class="content">
+
+                <h1>AngSthasenFlights</h1>
+                <a href = "{% url 'login' %}" style="font-size: 1vw">Login</a>
+                </div>
+            </div>
+    </div>
+</body>
+
+</html>
+
 {% endblock content %}
