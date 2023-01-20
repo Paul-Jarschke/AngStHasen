@@ -25,7 +25,6 @@ class Book(models.Model):
         return self.seat_choice
 
 
-
 class Seats(models.Model):
     # booked = models.BooleanField()
     # update datasets
@@ -47,7 +46,7 @@ class User(models.Model):
     password = models.CharField(max_length=250, default="empty")
 
     def __str__(self):
-        return self.airline
+        return self.name
 
 
 class Seats2(models.Model):
