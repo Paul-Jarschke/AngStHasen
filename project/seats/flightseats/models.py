@@ -50,5 +50,5 @@ class User(models.Model):
 
 
 class Seats2(models.Model):
-    rows= models.CharField(max_length=250, default="A")
+    rows = models.CharField(max_length=250, default="A")
 
