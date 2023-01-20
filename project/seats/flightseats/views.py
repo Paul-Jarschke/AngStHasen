@@ -16,7 +16,7 @@ def booking(request, flightnumber):
     return render(request, 'flightseats/booking.html', context)
 
 
-def login(request):
+def login2(request):
     if request.method == 'POST':
         if (request.POST.get('seat_choice_row') in list(map(str, list(range(11))[1:])) and \
                 (request.POST.get('seatletter') in ['A', 'B', 'C', 'D', 'F'])):
@@ -42,7 +42,7 @@ def login(request):
             column_f=seat_data[i][5],
             column_g=seat_data[i][6]
         )
-    return render(request, 'flightseats/login.html', context)
+    return render(request, 'flightseats/login2.html', context)
 
 
 def help(request):
