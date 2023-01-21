@@ -17,7 +17,7 @@ def flights(request):
     return render(request, 'flightseats/flights.html', context)
 
 
-def booking(request, flightnumber):
+def booking(request):
     global seat_data
     seat_data = np.loadtxt("flightseats/data/chartIn.txt", dtype='str')
     rowcount = len(seat_data)
@@ -53,8 +53,7 @@ def booking(request, flightnumber):
         'seats': Seats.objects.all(),
         'rowcount': rowcount,
         'rowlist': rowlist,
-        'bookedseats': bookedseats,
-        'flightnumber': flightnumber
+        'bookedseats': bookedseats
     }
     entries = Seats.objects.all()
     entries.delete()
