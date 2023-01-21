@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Flight, Seats, Book
 import numpy as np
+from django.contrib.admin.models import LogEntry
 
 
 def home(request):
@@ -18,6 +19,10 @@ def flights(request):
 
 
 def booking(request):
+    # x = LogEntry.objects.all().order_by("-id")[:200]
+    # for y in x:
+    #    print("%s - %s" % (y.action_time, y.change_message))
+    #
     global seat_data
     seat_data = np.loadtxt("flightseats/data/chartIn.txt", dtype='str')
     rowcount = len(seat_data)
