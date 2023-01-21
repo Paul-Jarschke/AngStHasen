@@ -53,7 +53,7 @@ def booking(request):
         'seats': Seats.objects.all(),
         'rowcount': rowcount,
         'rowlist': rowlist,
-        'bookedseats': bookedseats
+        'bookedseats': bookedseats,
     }
     entries = Seats.objects.all()
     entries.delete()
