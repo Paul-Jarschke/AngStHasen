@@ -30,7 +30,7 @@
                 <!-- Navbar Right Side -->
                 <div class="navbar-nav">
                     {% if user.is_authenticated %}
-                    <a class="nav-item nav-link" href="{% url 'booking' %}">Book a seat</a>
+                    <a class="nav-item nav-link" href="{% url 'flights' %}">Book seat</a>
                     <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
                     {% else %}
                     <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
@@ -96,66 +96,34 @@
     p {text-align: center;}
     h1 {text-align: center;}
 
-table.table_on_the_left, table.table_on_the_right {
-  display:inline-block;
-}
+    table.table_on_the_left, table.table_on_the_right {
+      display:inline-block;
+    }
 
-body {
-  text-align:center;
-  background-color: rgba(0,0,0, 0.1);
-}
-::placeholder {
-   text-align: center;
-}
+    body {
+      text-align:center;
+      background-color: rgba(0,0,0, 0.1);
+    }
+    ::placeholder {
+       text-align: center;
+    }
 
-.swal-button {
-  padding: 0px 0px;
-  border-radius: 2px;
-  font-size: 12px;
-  background-color: #4962B3;
-}
-
-
-.color-red {
-  color: red;
-}
-
-.color-black {
-  color: black;
-}
+    .swal2-styled.swal2-confirm{
+      padding: 0px 0px;
+      border-radius: 6px;
+      width:100px;
+      font-size: 16px;
+      background-color: #4962B3;
+    }
 
 
+    .color-red {
+      color: red;
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    .color-black {
+      color: black;
+    }
 
 
 
@@ -228,105 +196,83 @@ body {
         var row = $("#seat_choice_row").val();
         var seat = $("#seatlet").val();
         var rowseat = row + seat;
+        var auth_ind = "{{auth_ind|safe}}";
 
         event.preventDefault();
 
-        if(bookedl.includes(rowseat)){
-            Swal.fire({
-                          title: "Booking failed!",
-                          text: "Seat is already booked.",
-                          icon: "error",
-                          button: "Try again",
-                          allowOutsideClick: false
-            });
-        }else{
-            if(!(rowl.includes(row)) || !(["A", "B", "C", "D", "E", "F"].includes(seat))){
-                if(!(rowl.includes(row)) && (["A", "B", "C", "D", "E", "F"].includes(seat))){
+        if(auth_ind == "True"){
+            if(rowseat == ""){
+                Swal.fire({
+                    title: "Booking failed!",
+                    text: "You did not enter anything.",
+                    icon: "error",
+                    confirmButtonText: "Try again.",
+                    allowOutsideClick: false
+                })
+		    }else{
+                if(bookedl.includes(rowseat)){
                     Swal.fire({
-                          title: "Booking failed!",
-                          text: "Please check row again.",
-                          icon: "error",
-                          button: "Try again",
-                          allowOutsideClick: false
+                        title: "Booking failed!",
+                        text: "Seat is already booked.",
+                        icon: "error",
+                        confirmButtonText: "Try again.",
+                        allowOutsideClick: false
                     });
                 }else{
-                    if((rowl.includes(row)) && !(["A", "B", "C", "D", "E", "F"].includes(seat))){
-                    Swal.fire({
-                      title: "Booking failed!",
-                      text: "Please check seat letter again.",
-                      icon: "error",
-                      button: "Try again",
-                      allowOutsideClick: false,
-                    });
-                    }else{
-                        Swal.fire({
+                    if(!(rowl.includes(row)) || !(["A", "B", "C", "D", "E", "F"].includes(seat))){
+                        if(!(rowl.includes(row)) && (["A", "B", "C", "D", "E", "F"].includes(seat))){
+                            Swal.fire({
+                                  title: "Booking failed!",
+                                  text: "Please check row again.",
+                                  icon: "error",
+                                  confirmButtonText: "Try again.",
+                                  allowOutsideClick: false
+                            });
+                        }else{
+                            if((rowl.includes(row)) && !(["A", "B", "C", "D", "E", "F"].includes(seat))){
+                            Swal.fire({
                               title: "Booking failed!",
-                              text: "Please check both fields again.",
+                              text: "Please check seat letter again.",
                               icon: "error",
-                              button: "Try again",
-                              allowOutsideClick: false,
-                        })
+                              confirmButtonText: "Try again.",
+                              allowOutsideClick: false
+                            });
+                            }else{
+                                Swal.fire({
+                                      title: "Booking failed!",
+                                      text: "Please check both fields again.",
+                                      icon: "error",
+                                      confirmButtonText: "Try again.",
+                                      allowOutsideClick: false
+                                })
+                            }
+                        }
+                        }else{
+                        Swal.fire({
+                                  title: "Booking successful!",
+                                  text: "Your seat " + row +  seat + " is now reserved.",
+                                  icon: "success",
+                                  allowOutsideClick: false,
+                                  showConfirmButton:false
+                            });
+                            setTimeout(function () {
+                                     $('#submissionform').submit();
+                                      }, 2000);
+                        };
                     }
                 }
-                }else{
-                Swal.fire({
-                          title: "Booking successful!",
-                          text: "Your seat " + row +  seat + " is now reserved.",
-                          icon: "success",
-                          allowOutsideClick: false,
-                          showConfirmButton:false,
-                    });
-                    setTimeout(function () {
-                             $('#submissionform').submit();
-                              }, 2000);
-                };
-            }
+        } else {
+            Swal.fire({
+                title: "Booking failed!",
+                text: "Please login first.",
+                icon: "error",
+                confirmButtonText: "Login now.",
+                allowOutsideClick: false
+            }).then(function() {
+    window.location = "/login/";
+});
+        }
     });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

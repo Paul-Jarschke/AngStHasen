@@ -22,38 +22,43 @@ def booking(request):
     seat_data = np.loadtxt("flightseats/data/chartIn.txt", dtype='str')
     rowcount = len(seat_data)
     rowlist = str(list(map(str, range(rowcount + 1)))[1:])
-    bookedseats = list(map(str, Book.objects.all()))
+    bookedseats = str(list(map(str, Book.objects.all()))).replace(" ", "")
 
-    if request.method == 'POST':
-        if (request.POST.get('seat_choice_row') in list(map(str, list(range(rowcount + 1))[1:])) and \
-            (request.POST.get('seatletter') in ['A', 'B', 'C', 'D', 'F']) and \
-            (request.POST.get('seat_choice_row') + request.POST.get('seatletter'))) not in bookedseats:
-            book = Book()
-            book.seat_choice = request.POST.get('seat_choice_row') + request.POST.get('seatletter')
-            book.save()
+    if request.user.is_authenticated:
+        auth_ind = "True"
+        if request.method == 'POST':
+            if (request.POST.get('seat_choice_row') in list(map(str, list(range(rowcount + 1))[1:])) and \
+                (request.POST.get('seatletter') in ['A', 'B', 'C', 'D', 'F']) and \
+                (request.POST.get('seat_choice_row') + request.POST.get('seatletter'))) not in bookedseats:
+                book = Book()
+                book.seat_choice = request.POST.get('seat_choice_row') + request.POST.get('seatletter')
+                book.save()
 
-        try:
-            with open("flightseats/data/chartIn.txt",
-                      'r+') as file:
-                lines = file.readlines()
-                bookedline = lines[int(request.POST.get('seat_choice_row')) - 1]
-                bookedline = bookedline.replace(request.POST.get('seatletter'), "X")
+            try:
+                with open("flightseats/data/chartIn.txt",
+                          'r+') as file:
+                    lines = file.readlines()
+                    bookedline = lines[int(request.POST.get('seat_choice_row')) - 1]
+                    bookedline = bookedline.replace(request.POST.get('seatletter'), "X")
 
-                lines[int(request.POST.get('seat_choice_row')) - 1] = bookedline
+                    lines[int(request.POST.get('seat_choice_row')) - 1] = bookedline
 
-                file.seek(0)
-                file.truncate()
-                for line in lines:
-                    file.write(line)
-                file.close
-        except:
-            pass
+                    file.seek(0)
+                    file.truncate()
+                    for line in lines:
+                        file.write(line)
+                    file.close
+            except:
+                pass
+    else:
+        auth_ind = "False"
 
     context = {
         'seats': Seats.objects.all(),
         'rowcount': rowcount,
         'rowlist': rowlist,
         'bookedseats': bookedseats,
+        'auth_ind': auth_ind
     }
     entries = Seats.objects.all()
     entries.delete()
