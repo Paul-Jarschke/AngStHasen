@@ -5,17 +5,19 @@ import numpy as np
 
 def home(request):
     context = {
-        'flights': Flight.objects.all()
     }
     return render(request, 'flightseats/home.html', context)
 
 
+def flights(request):
+    context = {
+        'flights_bookable': Flight.objects.all()[0:1],
+        'flights_rest': Flight.objects.all()[1:]
+    }
+    return render(request, 'flightseats/flights.html', context)
+
+
 def booking(request, flightnumber):
-    context = {'flightnumber': flightnumber}
-    return render(request, 'flightseats/booking.html', context)
-
-
-def login2(request):
     global seat_data
     seat_data = np.loadtxt("flightseats/data/chartIn.txt", dtype='str')
     rowcount = len(seat_data)
@@ -51,7 +53,8 @@ def login2(request):
         'seats': Seats.objects.all(),
         'rowcount': rowcount,
         'rowlist': rowlist,
-        'bookedseats': bookedseats
+        'bookedseats': bookedseats,
+        'flightnumber': flightnumber
     }
     entries = Seats.objects.all()
     entries.delete()
@@ -66,7 +69,8 @@ def login2(request):
             column_f=seat_data[i][5],
             column_g=seat_data[i][6]
         )
-    return render(request, 'flightseats/login2.html', context)
+    return render(request, 'flightseats/booking.html', context)
+
 
 def help(request):
     return render(request, 'flightseats/help.html')
