@@ -10,12 +10,7 @@ def home(request):
     return render(request, 'flightseats/home.html', context)
 
 
-def booking(request, flightnumber):
-    context = {'flightnumber': flightnumber}
-    return render(request, 'flightseats/booking.html', context)
-
-
-def login2(request):
+def booking(request):
     global seat_data
     seat_data = np.loadtxt("flightseats/data/chartIn.txt", dtype='str')
     rowcount = len(seat_data)
@@ -66,7 +61,8 @@ def login2(request):
             column_f=seat_data[i][5],
             column_g=seat_data[i][6]
         )
-    return render(request, 'flightseats/login2.html', context)
+    return render(request, 'flightseats/booking.html', context)
+
 
 def help(request):
     return render(request, 'flightseats/help.html')

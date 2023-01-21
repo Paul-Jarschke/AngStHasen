@@ -1,15 +1,77 @@
 {% extends "flightseats/base.html" %}
 {% block content %}
-<h1>book here flight number {{ flightnumber }}</h1>
-<p style='text-align: center;'>
-    <a href="{% url 'login' %}" style='font-size: 24px;'> Confirm </a>
-</p>
+<script>
+setTimeout(function () {
+    window.onload = function() {
+        if (!window.location.hash) {
+            window.location = window.location + '#booking';
+            window.location.reload();
+            }
+        }
+     }, 10)
+
+</script>
+<div>
+    <table class="table_on_the_left" style="font-size:35px; font-weight: bold" id="rap">
+        {% for seat in seats %}
+        <tr>
+            <td>{{ seat.column_a }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    &nbsp;
+    <table class="table_on_the_right" style="font-size:35px; color:green" id="seattable">
+        {% for seat in seats %}
+        <tr>
+            <td> {{ seat.column_b }}&nbsp;</td>
+            <td> {{ seat.column_c }}&nbsp;</td>
+            <td> {{ seat.column_d }}&nbsp;</td>
+            <td>&nbsp;|&nbsp;&nbsp;|&nbsp;&nbsp;</td>
+            <td> {{ seat.column_e }}&nbsp;</td>
+            <td> {{ seat.column_f }}&nbsp;</td>
+            <td> {{ seat.column_g }}&nbsp;</td>
+        </tr>
+        {% endfor %}
+    </table
+
+</div>
+ <br/>
+    <br/>
+<p style = "font-weight:bold"> Please enter your desired seat: </p>
+<form action="/booking/" method="POST" style = "font-weight:normal" id="submissionform">
+        {% csrf_token %}
+    <input type="number" id="seat_choice_row" name="seat_choice_row" required oninvalid="this.setCustomValidity('Please enter valid seat row.')" oninput="this.setCustomValidity('')" min = '1' max = '{{ rowcount }}' step = '1' placeholder="row"><br><br>
+    <input list="choices" type = "text" name="seatletter" id="seatlet" maxlength = "1" pattern = "[A-F]" required oninvalid="this.setCustomValidity('Please enter valid seat letter.')" oninput="this.setCustomValidity('')" placeholder="seat letter">
+      <datalist id="choices">
+        <option value="A">
+        <option value="B">
+        <option value="C">
+        <option value="D">
+        <option value="E">
+        <option value="F">
+      </datalist>
+    <p> </p><p> </p><p> </p><p> </p><p> </p><p> </p><p> </p><p> </p>
+  <input id = "subm" type="submit" value="Submit" class="btn btn-secondary">
+
+</form>
+
+
+<p></p>
+
 <form>
     <input type="button" value="Go back!" onclick="history.back()">
 </form>
+<p></p>
+
+<script>
+Array.prototype.forEach.call(document.getElementsByTagName("table"), function(el) {
+  el.innerHTML = el.innerHTML.replace(/\X/g, "<span class='color-red'>X</span>");
+});
+
+Array.prototype.forEach.call(document.getElementsByTagName("table"), function(el) {
+  el.innerHTML = el.innerHTML.replace(/\|/g, "<span class='color-black'>|</span>");
+});
+
+</script>
+
 {% endblock content %}
-
-
-
-
-
