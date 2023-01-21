@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from .models import Flight, Seats, Book
 import numpy as np
-import re
 
 
 def home(request):
@@ -17,18 +16,43 @@ def booking(request, flightnumber):
 
 
 def login2(request):
+    global seat_data
+    seat_data = np.loadtxt("flightseats/data/chartIn.txt", dtype='str')
+    rowcount = len(seat_data)
+    rowlist = str(list(map(str, range(rowcount + 1)))[1:])
+    bookedseats = list(map(str, Book.objects.all()))
+
     if request.method == 'POST':
-        if (request.POST.get('seat_choice_row') in list(map(str, list(range(11))[1:])) and \
-                (request.POST.get('seatletter') in ['A', 'B', 'C', 'D', 'F'])):
+        if (request.POST.get('seat_choice_row') in list(map(str, list(range(rowcount + 1))[1:])) and \
+            (request.POST.get('seatletter') in ['A', 'B', 'C', 'D', 'F']) and \
+            (request.POST.get('seat_choice_row') + request.POST.get('seatletter'))) not in bookedseats:
             book = Book()
             book.seat_choice = request.POST.get('seat_choice_row') + request.POST.get('seatletter')
             book.save()
 
+        try:
+            with open("flightseats/data/chartIn.txt",
+                      'r+') as file:
+                lines = file.readlines()
+                bookedline = lines[int(request.POST.get('seat_choice_row')) - 1]
+                bookedline = bookedline.replace(request.POST.get('seatletter'), "X")
+
+                lines[int(request.POST.get('seat_choice_row')) - 1] = bookedline
+
+                file.seek(0)
+                file.truncate()
+                for line in lines:
+                    file.write(line)
+                file.close
+        except:
+            pass
+
     context = {
-        'seats': Seats.objects.all()
+        'seats': Seats.objects.all(),
+        'rowcount': rowcount,
+        'rowlist': rowlist,
+        'bookedseats': bookedseats
     }
-    global seat_data
-    seat_data = np.loadtxt("flightseats/data/chartIn.txt", dtype='str')
     entries = Seats.objects.all()
     entries.delete()
 
@@ -43,7 +67,6 @@ def login2(request):
             column_g=seat_data[i][6]
         )
     return render(request, 'flightseats/login2.html', context)
-
 
 def help(request):
     return render(request, 'flightseats/help.html')
