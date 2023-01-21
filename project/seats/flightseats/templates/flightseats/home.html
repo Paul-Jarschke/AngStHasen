@@ -1,21 +1,27 @@
-{% extends "flightseats/base.html" %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AngstHasenFlights</title>
+</head>
 {% load static %}
+
 {% block content %}
 <link rel="stylesheet" href="{% static 'img/style.css' %}">
 
-
-
-<body style="background-image:url('{% static 'img/Airport-Backgrounds-HD.jpg' %}'); background-repeat: no-repeat;background-size: 100%;">
- <!-- Dont put stuff here or it smushes the background image -->  <!-- Dont put stuff here or it smushes the background image -->
+<body> <!-- Dont put stuff here or it smushes the background image -->  <!-- Dont put stuff here or it smushes the background image -->
         <div class="Section_top">
-            hamlo
-            <br>
             <div class="outer">
 
                 <div class="content">
+                    <div>
+                        <h1>AngStHasenFlights</h1>
+                        <a href = "{% url 'login' %}" style="font-size: 1vw; relative: ":>Login</a>
+                    </div>
 
-                <h1>AngSthasenFlights</h1>
-                <a href = "{% url 'login' %}" style="font-size: 1vw">Login</a>
                 </div>
             </div>
     </div>

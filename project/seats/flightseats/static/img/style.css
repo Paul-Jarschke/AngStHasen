@@ -8,7 +8,7 @@ body,html{
 .Section_top{
     width: 100%;
     height: 100%;
-    overflow: visible;
+    overflow: hidden;
     position: relative;
     background-image: url(images/Airport-Backgrounds-HD.jpg);
     background-position: center;
@@ -23,15 +23,19 @@ body,html{
     animation-name: change;
     animation-iteration-count: infinite;
     animation-play-state:running;
-    animation-duration: 60s;
+    animation-duration: 40s;
 
 
 
 }
 .content{
-    position: absolute;
+    font-family: 'Open Sans';
+    text-shadow: 1px 1px #000000;
+    text-align: right;
+    color: #f2f2f2;
+    position: relative;
     top: 12.5%;
-    left: 50%;
+    left: 25%;
     transform: translate(-50%, -50%);
     text-transform:;
 }
@@ -41,11 +45,13 @@ body,html{
     top: 0;
     width: 100%;
     height: 100vh;
-    background: rgba(0,0,0,0.1)
+    background: rgba(0,0,0,0.25)
 }
 .content h1{
+    font-family: 'Open Sans';
+    text-shadow: 2px 4px #262626;
     text-align: right;
-    color: #fff;
+    color: #f2f2f2;
     font-size: 4vw;
     letter-spacing: 15px;
     user-select: none;
@@ -73,7 +79,7 @@ body,html{
     }
     15%
     {
-        background-image: url(images/Airport-Backgrounds-HD.jpg);
+        background-image: url(images/Airport-Backgrounds-HD.jpg), url(images/Airport-Backgrounds-HD2.jpg);
     }
     20%
     {
@@ -81,7 +87,7 @@ body,html{
     }
     35%
     {
-        background-image: url(images/Airport-Backgrounds-HD2.jpg);
+        background-image: url(images/Airport-Backgrounds-HD2.jpg), url(images/Airport-Backgrounds-HD3.jpg);
     }
     40%
     {
@@ -90,7 +96,7 @@ body,html{
 
     55%
     {
-        background-image: url(images/Airport-Backgrounds-HD3.jpg);
+        background-image: url(images/Airport-Backgrounds-HD3.jpg), url(images/Airport-Backgrounds-HD4.jpg);
     }
     60%
     {
@@ -98,7 +104,7 @@ body,html{
     }
     75%
     {
-        background-image: url(images/Airport-Backgrounds-HD4.jpg);
+        background-image: url(images/Airport-Backgrounds-HD4.jpg), url(images/Airport-Backgrounds-HD5.jpg);
     }
     80%
     {
@@ -106,7 +112,7 @@ body,html{
     }
     95%
     {
-        background-image: url(images/Airport-Backgrounds-HD5.jpg);
+        background-image: url(images/Airport-Backgrounds-HD5.jpg), url(images/Airport-Backgrounds-HD.jpg);
     }
     100%
     {
