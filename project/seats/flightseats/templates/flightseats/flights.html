@@ -1,7 +1,7 @@
 {% extends "flightseats/base.html" %}
 {% block content %}
 {% for flight in flights_bookable %}
-<a href="{% url  'booking' flight.flight_number %}"><h1> From {{ flight.origin_airport }} to
+<a href="{% url  'booking'  %}"><h1> From {{ flight.origin_airport }} to
     {{ flight.dest_airport }} </h1></a>
 <p>Operated by {{ flight.airline }} on {{ flight.day }}.{{ flight.month }}.{{ flight.year }}
     at {{ flight.departure }}</p>
