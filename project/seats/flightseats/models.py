@@ -19,7 +19,7 @@ class Flight(models.Model):
 
 
 class Book(models.Model):
-    seat_choice = models.CharField(max_length=30, default="none")
+    seat_choice = models.CharField(max_length=30, default="none", unique=True)
 
     def __str__(self):
         return self.seat_choice
@@ -50,5 +50,4 @@ class User(models.Model):
 
 
 class Seats2(models.Model):
-    rows= models.CharField(max_length=250, default="A")
-
+    rows = models.CharField(max_length=250, default="A")
