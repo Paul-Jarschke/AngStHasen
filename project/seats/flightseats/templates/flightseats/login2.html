@@ -38,7 +38,7 @@ setTimeout(function () {
  <br/>
     <br/>
 <p style = "font-weight:bold"> Please enter your desired seat: </p>
-<form action="/login/" method="POST" style = "font-weight:normal" id="submissionform">
+<form action="/login2/" method="POST" style = "font-weight:normal" id="submissionform">
         {% csrf_token %}
     <input type="number" id="seat_choice_row" name="seat_choice_row" required oninvalid="this.setCustomValidity('Please enter valid seat row.')" oninput="this.setCustomValidity('')" min = '1' max = '{{ rowcount }}' step = '1' placeholder="row"><br><br>
     <input list="choices" type = "text" name="seatletter" id="seatlet" maxlength = "1" pattern = "[A-F]" required oninvalid="this.setCustomValidity('Please enter valid seat letter.')" oninput="this.setCustomValidity('')" placeholder="seat letter">
