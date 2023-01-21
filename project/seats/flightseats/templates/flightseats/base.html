@@ -17,32 +17,33 @@
     {% endif %}
 </head>
 <body>
-      <header class="site-header">
-      <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+<header class="site-header">
+    <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
         <div class="container">
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarToggle">
-            <div class="navbar-nav mr-auto">
-              <a class="nav-item nav-link" href="{% url 'flightseats-home' %}">Home</a>
-              <a class="nav-item nav-link" href="{% url 'help' %}">Help</a>
-            </div>
-            <!-- Navbar Right Side -->
-            <div class="navbar-nav">
-                {% if user.is_authenticated %}
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle"
+                    aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarToggle">
+                <div class="navbar-nav mr-auto">
+                    <a class="nav-item nav-link" href="{% url 'flightseats-home' %}">Home</a>
+                    <a class="nav-item nav-link" href="{% url 'help' %}">Help</a>
+                </div>
+                <!-- Navbar Right Side -->
+                <div class="navbar-nav">
+                    {% if user.is_authenticated %}
                     <a class="nav-item nav-link" href="{% url 'booking' %}">Book a seat</a>
                     <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
-                {% else %}
+                    {% else %}
                     <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
                     <a class="nav-item nav-link" href="{% url 'register' %}">Register</a>
 
-                {% endif %}
+                    {% endif %}
+                </div>
             </div>
-          </div>
         </div>
-      </nav>
-    </header>
+    </nav>
+</header>
 </body>
 
 <style>
@@ -124,6 +125,7 @@ body {
 .color-black {
   color: black;
 }
+
 
 
 
@@ -273,6 +275,7 @@ body {
                 };
             }
     });
+
 
 
 
