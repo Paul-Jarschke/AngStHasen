@@ -1,13 +1,50 @@
 {% extends "flightseats/base.html" %}
 {% block content %}
-  <h2>You have been logged out</h2>
-    <div class="border-top pt-3">
-      <small class="text_muted">
-          <a href="{% url 'login' %}">Log In Again</a> </small>
-    </div>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-  </div>
+
+<script>
+function startTimer(duration, display) {
+    var timer = duration, seconds;
+    setInterval(function () {
+        seconds = parseInt(timer % 60, 10);
+
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        display.textContent = seconds;
+
+        if (--timer < 0) {
+            timer = duration;
+        }
+    }, 1000);
+}
+
+window.onload = function () {
+    var tenSecs = 10,
+        display = document.querySelector('#time');
+    startTimer(tenSecs, display);
+        setTimeout(function () {
+        window.location.href = '/'
+        },
+        10000);
+};
+
+bye = function () {
+Swal.fire({
+            title: "Logged out.",
+            html: "<div>Redirecting to home in <span id='time'>10</span> seconds!</div>",
+            icon: "success",
+            allowOutsideClick: false,
+            showConfirmButton:false
+        });
+};
+bye();
+
+
+
+
+</script>
+
 
 {% endblock content %}
-
 
