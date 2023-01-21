@@ -5,12 +5,19 @@ import numpy as np
 
 def home(request):
     context = {
-        'flights': Flight.objects.all()
     }
     return render(request, 'flightseats/home.html', context)
 
 
-def booking(request):
+def flights(request):
+    context = {
+        'flights_bookable': Flight.objects.all()[0:1],
+        'flights_rest': Flight.objects.all()[1:]
+    }
+    return render(request, 'flightseats/flights.html', context)
+
+
+def booking(request, flightnumber):
     global seat_data
     seat_data = np.loadtxt("flightseats/data/chartIn.txt", dtype='str')
     rowcount = len(seat_data)
@@ -46,7 +53,8 @@ def booking(request):
         'seats': Seats.objects.all(),
         'rowcount': rowcount,
         'rowlist': rowlist,
-        'bookedseats': bookedseats
+        'bookedseats': bookedseats,
+        'flightnumber': flightnumber
     }
     entries = Seats.objects.all()
     entries.delete()
