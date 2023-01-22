@@ -19,15 +19,41 @@ def flights(request):
 
 
 def booking(request):
-    # x = LogEntry.objects.all().order_by("-id")[:200]
-    # for y in x:
-    #    print("%s - %s" % (y.action_time, y.change_message))
-    #
+    bookedseats = list(map(str, Book.objects.all()))
+
+    brow = []
+    bletter = []
+    for element in bookedseats:
+        brow.append(element[:-1])
+        bletter.append(element[-1:])
+
+    input = open("flightseats/data/chartIn.txt", 'r')
+
+    ilines = input.readlines()
+
+    brow = [int(x) for x in brow]
+
+    newlines = ilines
+
+    for pos in range(len(ilines)):
+        rownumber = pos + 1
+
+        if rownumber in brow:
+            for nr, element in enumerate(brow):
+                if element == rownumber:
+                    newlines[pos] = newlines[pos].replace(bletter[nr], "X")
+        else:
+            newlines[pos] = ilines[pos]
+
+    output = open("flightseats/data/chartIn_reservations.txt", 'r+')
+
+    output.writelines(newlines)
+    output.close
+
     global seat_data
-    seat_data = np.loadtxt("flightseats/data/chartIn.txt", dtype='str')
+    seat_data = np.loadtxt("flightseats/data/chartIn_reservations.txt", dtype='str')
     rowcount = len(seat_data)
     rowlist = str(list(map(str, range(rowcount + 1)))[1:])
-    bookedseats = str(list(map(str, Book.objects.all()))).replace(" ", "")
 
     if request.user.is_authenticated:
         auth_ind = "True"
@@ -39,22 +65,7 @@ def booking(request):
                 book.seat_choice = request.POST.get('seat_choice_row') + request.POST.get('seatletter')
                 book.save()
 
-            try:
-                with open("flightseats/data/chartIn.txt",
-                          'r+') as file:
-                    lines = file.readlines()
-                    bookedline = lines[int(request.POST.get('seat_choice_row')) - 1]
-                    bookedline = bookedline.replace(request.POST.get('seatletter'), "X")
 
-                    lines[int(request.POST.get('seat_choice_row')) - 1] = bookedline
-
-                    file.seek(0)
-                    file.truncate()
-                    for line in lines:
-                        file.write(line)
-                    file.close
-            except:
-                pass
     else:
         auth_ind = "False"
 
