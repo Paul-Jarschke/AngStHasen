@@ -48,7 +48,7 @@ def booking(request):
     output = open("flightseats/data/chartIn_reservations.txt", 'r+')
 
     output.writelines(newlines)
-    output.close
+    output.close()
 
     global seat_data
     seat_data = np.loadtxt("flightseats/data/chartIn_reservations.txt", dtype='str')
@@ -58,14 +58,12 @@ def booking(request):
     if request.user.is_authenticated:
         auth_ind = "True"
         if request.method == 'POST':
-            if (request.POST.get('seat_choice_row') in list(map(str, list(range(rowcount + 1))[1:])) and \
-                (request.POST.get('seatletter') in ['A', 'B', 'C', 'D', 'F']) and \
-                (request.POST.get('seat_choice_row') + request.POST.get('seatletter'))) not in bookedseats:
+            if (request.POST.get('seat_choice_row') in list(map(str, list(range(rowcount + 1))[1:])) and
+                (request.POST.get('seatletter') in ['A', 'B', 'C', 'D', 'F']) and
+                    (request.POST.get('seat_choice_row') + request.POST.get('seatletter'))) not in bookedseats:
                 book = Book()
                 book.seat_choice = request.POST.get('seat_choice_row') + request.POST.get('seatletter')
                 book.save()
-
-
     else:
         auth_ind = "False"
 
