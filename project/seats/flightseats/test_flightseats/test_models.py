@@ -22,4 +22,3 @@ class TestModels(TestCase):
         """Method '__str__' should be equal to name"""
         user = User.objects.create(name='Paul')
         self.assertEqual(str(user), 'Paul')
-
