@@ -6,7 +6,7 @@ bookedseats = list(map(str, Book.objects.all()))
 # All seats list:
 input = open("flightseats/data/chartIn.txt", 'r')
 nrow = len(input.readlines())
-seatrows = list(map(str, range(nrow + 1)))[1:]
+seatrows = list(map(str, range(nrow + 1)))[1:]  # gibt string liste von 1 bis Anzahl der rows
 seatletters = ['A', 'B', 'C', 'D', 'F']
 
 allseats = []
