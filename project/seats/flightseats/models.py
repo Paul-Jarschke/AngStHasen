@@ -49,6 +49,3 @@ class User(models.Model):
     def __str__(self):
         return self.name
 
-
-class Seats2(models.Model):
-    rows = models.CharField(max_length=250, default="A")
