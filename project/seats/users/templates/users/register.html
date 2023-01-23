@@ -1,24 +1,29 @@
 {% extends "flightseats/base.html" %}
 {% load crispy_forms_tags %}
 {% block content %}
-  <div class="content-section">
+<div class="content-section">
     <form method="POST">
-      {% csrf_token %}
-      <fieldset class="form_group">
-        <legend class="border-bottom mb-4">Sign up</legend>
-        {{ form|crispy }}
-      </fieldset>
-      <div class="form-group">
-        <div class="center">
-          <button class="btn btn-outline-info" type="submit">Register</button>
+        {% csrf_token %}
+        <fieldset class="form_group">
+            <legend class="border-bottom mb-4">Sign up</legend>
+            {{ form|crispy }}
+        </fieldset>
+        <div class="form-group">
+            <div class="center">
+                <button type="submit" style="width: 85px">Register</button>
+            </div>
         </div>
-      </div>
 
     </form>
     <div class="border-top pt-3">
-      <small class="text_muted">Already have an account? Login here <a class="ml-2" href="{% url 'login' %}">Login</a> </small>
+        <br>
+        <fieldset style="font-weight:bold">Already have an account?<br>
+            <a href="{% url 'login' %}">
+                <button class="button2">Login here</button>
+            </a>
+        </fieldset>
     </div>
 
-  </div>
+</div>
 
 {% endblock content %}

@@ -1,16 +1,34 @@
 {% extends "flightseats/base.html" %}
 {% block content %}
+
+
+
 <script>
-setTimeout(function () {
-    window.onload = function() {
-        if (!window.location.hash) {
+
+window.onload = function() {
+
+if (!window.location.hash){
+blubb = function() {
             window.location = window.location + '#booking';
             window.location.reload();
-            }
-        }
-     }, 10)
+            };
+ blubb();
+} else {
+    if (window.location.hash == "#loading") {
+        Swal.fire({
+                                  title: "Loading!",
+                                  text: "Please wait.",
+                                  icon: "info",
+                                  timer: 1000,
+                                  allowOutsideClick: false,
+                                  showConfirmButton:false
+                            }).then(function(){window.location.href = ""});
 
+}
+ }
+ }
 </script>
+
 <div>
     <table class="table_on_the_left" style="font-size:35px; font-weight: bold" id="rap">
         {% for seat in seats %}
@@ -39,7 +57,7 @@ setTimeout(function () {
  <br/>
     <br/>
 <p style = "font-weight:bold"> Please enter your desired seat: </p>
-<form action="{{ flightnumber }}" method="POST" style = "font-weight:normal" id="submissionform">
+<form action= "/booking/#loading" method="POST" style = "font-weight:normal" id="submissionform">
         {% csrf_token %}
     <input type="number" id="seat_choice_row" name="seat_choice_row" required oninvalid="this.setCustomValidity('Please enter valid seat row.')" oninput="this.setCustomValidity('')" min = '1' max = '{{ rowcount }}' step = '1' placeholder="row"><br><br>
     <input list="choices" type = "text" name="seatletter" id="seatlet" maxlength = "1" pattern = "[A-F]" required oninvalid="this.setCustomValidity('Please enter valid seat letter.')" oninput="this.setCustomValidity('')" placeholder="seat letter">
