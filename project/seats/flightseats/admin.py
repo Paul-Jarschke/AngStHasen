@@ -3,6 +3,7 @@ from django.urls import path
 from .models import Flight, Book, Seats
 from django.shortcuts import render
 from django import forms
+from django.contrib.auth.models import Group
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.urls import reverse
@@ -44,3 +45,4 @@ class SeatAdmin(admin.ModelAdmin):
 
 admin.site.register(Book)
 admin.site.register(Flight, SeatAdmin)
+admin.site.unregister(Group)

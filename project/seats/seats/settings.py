@@ -29,11 +29,11 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'django.contrib.auth',
     'flightseats.apps.FlightseatsConfig',
     'users.apps.UsersConfig',
     'django.contrib.admin',
     'crispy_forms',
-    'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
