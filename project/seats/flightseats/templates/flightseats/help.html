@@ -1,13 +1,13 @@
 {% extends "flightseats/base.html" %}
 {% block content %}
-    <h1>Instruction:<br></h>
+    <h1>Instruction:<br></h1>
             <ol>
                 <li>First do this</li>
                 <li>Then do that</li>
                 <li>Finally do this</li>
             </ol>
 
-            <a href = "{% url 'flightseats-home' %}" style="font-size: 24px""> Back to main menu </a>
+            <a href = "{% url 'flightseats-home' %}" style="font-size: 24px"> Back to main menu </a>
         <p>
         <form>
  <input type="button" value="Go back!" onclick="history.back()">

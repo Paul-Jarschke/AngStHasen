@@ -42,12 +42,10 @@ class Seats(models.Model):
 
 class User(models.Model):
     name = models.CharField(max_length=250, default="empty", unique=True)
+    # shouldn't unique = False for name ? 2 different Pauls cant do booking otherwise!!!
     user_name = models.CharField(max_length=250, default="empty", unique=True)
     password = models.CharField(max_length=250, default="empty")
 
     def __str__(self):
         return self.name
 
-
-class Seats2(models.Model):
-    rows = models.CharField(max_length=250, default="A")
