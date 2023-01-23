@@ -29,8 +29,8 @@ blubb = function() {
  }
 </script>
 
-<div>
-    <table class="table_on_the_left" style="font-size:35px; font-weight: bold" id="rap">
+<div unselectable="on" onselectstart="return false;" style = "cursor: default";>
+    <table class="table_on_the_left" style="font-size:35px; font-weight: bold" id="rap" >
         {% for seat in seats %}
         <tr>
             <td>{{ seat.column_a }}</td>
