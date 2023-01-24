@@ -11,23 +11,61 @@
 
 <body>
 <div class="Section_top">
-    <div class="outer">
+    <div class="outer" style="background-color: rgba(0,0,0,0.6)">
 
         <div class="content">
             <div>
                 <br><br> <br><br> <br><br> <br><br>
 
                 <h1 style="text-align:center; font-size:2vw; ">Welcome to</h1>
-                <img src= "/../static/img/images/angsthase2.png" alt="angsthase" width="333" height ="110">
-                                <h1 style="text-align:center; text-shadow: 2px 4px #262626;">AngStHasenFlights</h1>
-                <a href="{% url 'login' %}" style="font-size: 1vw; color:black; " :>LOGIN</a>
+                <img src="/../static/img/images/angsthase2.png" alt="angsthase" width="333" height="110">
+                <h1 style="text-align:center; text-shadow: 2px 4px #262626;">AngStHasenFlights</h1>
+
+                <br><div id = "conditional"></div>
+
             </div>
 
         </div>
     </div>
-</div>
+
+
+<script>
+    var auth_ind = "{{auth_ind|safe}}";
+    var current_user = "{{current_user|safe}}";
+
+
+    var el = document.getElementById('conditional');
+    var content;
+    var content2;
+    var content3;
+
+    if(auth_ind == "True"){
+        content3 = '<p id="usr" style = "font-size: 36px; font-family: Open Sans"></p>';
+        content = '<p style="text-align:center; font-size:24px; font-family: Open Sans; ">You are already logged in.</p>';
+        content2 = '<br><a href="{% url 'flights' %}" style="font-size: 1vw; color:black;">BOOK A SEAT</a>';
+
+        el.insertAdjacentHTML('afterbegin', content2);
+        el.insertAdjacentHTML('afterbegin', content);
+        el.insertAdjacentHTML('afterbegin', content3);
+
+
+    }else{
+        content = '<a href="{% url 'login' %}" style="font-size: 1vw; color:black;" >LOGIN</a>';
+        el.insertAdjacentHTML('afterbegin', content);
+    };
+
+
+
+
+
+</script>
+<script>
+var current_user = "{{current_user|safe}}";
+document.getElementById('usr').innerHTML = "Hey, " + current_user + "!";
+</script>
 </body>
 
 </html>
+
 
 {% endblock content %}

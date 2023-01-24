@@ -5,7 +5,16 @@ from django.contrib.admin.models import LogEntry
 
 
 def home(request):
+    if request.user.is_authenticated:
+        auth_ind = "True"
+    else:
+        auth_ind = "False"
+
+    current_user = request.user
+
     context = {
+        'auth_ind': auth_ind,
+        'current_user': current_user
     }
     return render(request, 'flightseats/home.html', context)
 
@@ -60,7 +69,7 @@ def booking(request):
         if request.method == 'POST':
             if (request.POST.get('seat_choice_row') in list(map(str, list(range(rowcount + 1))[1:])) and
                 (request.POST.get('seatletter') in ['A', 'B', 'C', 'D', 'F']) and
-                    (request.POST.get('seat_choice_row') + request.POST.get('seatletter'))) not in bookedseats:
+                (request.POST.get('seat_choice_row') + request.POST.get('seatletter'))) not in bookedseats:
                 book = Book()
                 book.seat_choice = request.POST.get('seat_choice_row') + request.POST.get('seatletter')
                 book.save()
