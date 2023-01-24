@@ -7,7 +7,7 @@
     <h1>FAQ:<br></h1>
             Dear customer - Here you will find help on the following topics:<br><br>
 
-                <ol>
+                <ol style = "padding: 0px">
 
                 <button_acc class="accordion">+ How do I navigate the site? +</button_acc>
                     <div class="panel">
@@ -45,7 +45,9 @@
 
                     </ol>
 
-            <a href = "{% url 'flightseats-home' %}" style="font-size: 24px"> Back to main menu </a>
+            <a href = "{% url 'flightseats-home' %}">
+                <button class = "button2" style = "height: 60px; width: 140px; font-size: 16px;"> Back to<br>main menu </button>
+            </a>
         <p>
         <form>
  <input type="button" value="Go back!" onclick="history.back()">
