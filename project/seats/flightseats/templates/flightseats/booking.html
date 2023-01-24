@@ -1,18 +1,16 @@
 {% extends "flightseats/base.html" %}
 {% block content %}
 
-
-
 <script>
 
 window.onload = function() {
 
 if (!window.location.hash){
-blubb = function() {
+bkng = function() {
             window.location = window.location + '#booking';
             window.location.reload();
             };
- blubb();
+ bkng();
 } else {
     if (window.location.hash == "#loading") {
         Swal.fire({
