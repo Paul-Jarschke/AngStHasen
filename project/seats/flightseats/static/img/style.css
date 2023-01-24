@@ -65,7 +65,10 @@ body,html{
 }
 
 
-
+/* load the background image and display it
+ transition to itself so it stay static for a while
+ while displaying the current image already load the next image to avoid white flashes
+ */
 @keyframes change{
     0%
     {
