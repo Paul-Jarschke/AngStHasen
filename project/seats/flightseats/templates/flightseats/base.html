@@ -23,7 +23,7 @@
 
 <header>
     {% if user.is_authenticated %}
-    <header style="background-color:black; position:sticky; top: 0px; letter-spacing: 2px">
+    <header style="background-color:black; position:sticky; top: 0px; letter-spacing: 2px; font-family: Arial; font-weight:normal; font-size:14px">
         You are logged in as {{current_user|safe}}.
     </header>
     {% endif %}
@@ -32,7 +32,7 @@
     </h1>
     <header class="site-header">
         {% if user.is_authenticated %}
-        <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top" style="top:19px">
+        <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top" style="top:17px">
             {% else %}
         <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top" style="top:00px">
             {% endif %}
