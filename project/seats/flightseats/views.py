@@ -1,19 +1,21 @@
+# This file defines the general functionality of the website itself. Combines python objects with html files.
+
+
 from django.shortcuts import render
 from .models import Flight, Seats, Book, UserBooking
 import numpy as np
-from django.contrib.admin.models import LogEntry
 
 
 def home(request):
-    if request.user.is_authenticated:
+    if request.user.is_authenticated:  # indicator variable that is needed for showing different outputs.
         auth_ind = "True"
     else:
         auth_ind = "False"
 
-    current_user = request.user
+    current_user = request.user  # needed for showing username on startpage
 
     context = {
-        'auth_ind': auth_ind,
+        'auth_ind': auth_ind,  # pass these objects to html
         'current_user': current_user
     }
     return render(request, 'flightseats/home.html', context)
@@ -21,26 +23,25 @@ def home(request):
 
 def flights(request):
     context = {
-        'flights_bookable': Flight.objects.all()[0:1],
-        'flights_rest': Flight.objects.all()[1:],
-        'current_user': request.user
+        'flights_bookable': Flight.objects.all()[0:1],  # first object is clickable/bookable
+        'flights_rest': Flight.objects.all()[1:],  # bookable
+        'current_user': request.user  # needed for black header on every page
     }
     return render(request, 'flightseats/flights.html', context)
 
 
 def booking(request):
-    bookedseats = list(map(str, Book.objects.all()))
+    bookedseats = list(map(str, Book.objects.all()))  # returns list of booked from DB
 
+    # Create chartIn_reservation.txt which takes bookedseats from DB und shows them as X based on the template chartIn.txt:
     brow = []
     bletter = []
-    for element in bookedseats:
+    for element in bookedseats:  # separate letter and number to show X on webpage
         brow.append(element[:-1])
         bletter.append(element[-1:])
 
     input = open("flightseats/data/chartIn.txt", 'r')
-
     ilines = input.readlines()
-
     brow = [int(x) for x in brow]
 
     newlines = ilines
@@ -51,9 +52,9 @@ def booking(request):
         if rownumber in brow:
             for nr, element in enumerate(brow):
                 if element == rownumber:
-                    newlines[pos] = newlines[pos].replace(bletter[nr], "X")
+                    newlines[pos] = newlines[pos].replace(bletter[nr], "X")  # if reserved, then 'X'
         else:
-            newlines[pos] = ilines[pos]
+            newlines[pos] = ilines[pos]  # if not take value from chartIn.txt template
 
     output = open("flightseats/data/chartIn_reservations.txt", 'r+')
 
@@ -65,7 +66,7 @@ def booking(request):
     rowcount = len(seat_data)
     rowlist = str(list(map(str, range(rowcount + 1)))[1:])
 
-    if request.user.is_authenticated:
+    if request.user.is_authenticated:  # save new reservations from POST to book in DB (if user is logged in only!)
         auth_ind = "True"
         if request.method == 'POST':
             if (request.POST.get('seat_choice_row') in list(map(str, list(range(rowcount + 1))[1:])) and
