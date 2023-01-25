@@ -3,7 +3,6 @@ from django.urls import reverse, resolve
 from ..views import home, flights, booking, help
 
 
-
 class TestUrls(TestCase):
 
     def test_home_url_resolve(self):
