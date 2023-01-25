@@ -22,7 +22,8 @@ def home(request):
 def flights(request):
     context = {
         'flights_bookable': Flight.objects.all()[0:1],
-        'flights_rest': Flight.objects.all()[1:]
+        'flights_rest': Flight.objects.all()[1:],
+        'current_user': request.user
     }
     return render(request, 'flightseats/flights.html', context)
 
@@ -81,7 +82,8 @@ def booking(request):
         'rowcount': rowcount,
         'rowlist': rowlist,
         'bookedseats': bookedseats,
-        'auth_ind': auth_ind
+        'auth_ind': auth_ind,
+        'current_user': request.user
     }
     entries = Seats.objects.all()
     entries.delete()
@@ -100,4 +102,7 @@ def booking(request):
 
 
 def help(request):
-    return render(request, 'flightseats/help.html')
+    context = {
+        'current_user': request.user
+    }
+    return render(request, 'flightseats/help.html', context)

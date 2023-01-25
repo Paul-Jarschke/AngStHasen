@@ -20,13 +20,22 @@
 
 </body>
 
+
 <header>
+    {% if user.is_authenticated %}
+    <header style="background-color:black; position:sticky; top: 0px; letter-spacing: 2px">
+        You are logged in as {{current_user|safe}}.
+    </header>
+    {% endif %}
     <h1>
         AngStHasenFlights
     </h1>
-    <header class="site-header" , style="position: sticky; top: 0px">
-
-        <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+    <header class="site-header">
+        {% if user.is_authenticated %}
+        <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top" style="top:19px">
+            {% else %}
+        <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top" style="top:00px">
+            {% endif %}
             <div class="container">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle"
                         aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
@@ -214,6 +223,12 @@
 
 
 
+
+
+
+
+
+
 </style>
 
 <body>
@@ -329,6 +344,12 @@
 });
         }
     });
+
+
+
+
+
+
 
 
 
