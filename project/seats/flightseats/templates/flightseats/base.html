@@ -30,11 +30,11 @@
     <h1>
         AngStHasenFlights
     </h1>
-    <header class="site-header">
+    <header class="site-header" style = "height: 0px">
         {% if user.is_authenticated %}
-        <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top" style="top:17px">
+        <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top" style="position: relative; top: -55px">
             {% else %}
-        <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top" style="top:00px">
+        <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top" style="position: relative; top:-55px">
             {% endif %}
             <div class="container">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle"
