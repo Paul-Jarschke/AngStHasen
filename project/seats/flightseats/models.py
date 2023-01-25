@@ -52,8 +52,7 @@ class User(models.Model):
 
 class UserBooking(models.Model):
     seat_choice = models.CharField(max_length=30, default="none", unique=True)
-    reserved_by = models.CharField(max_length=30, default="none", unique=True)
+    reserved_by = models.CharField(max_length=30, default="none")
 
     def __str__(self):
         return self.reserved_by
-
