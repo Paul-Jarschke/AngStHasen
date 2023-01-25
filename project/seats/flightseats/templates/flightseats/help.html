@@ -5,41 +5,41 @@
 {% block content %}
 {{ form.as_p }}
     <h1>FAQ:<br></h1>
-            Dear customer - Here you will find help on the following topics:<br><br>
+            Dear customer - Here you will find help on the following topics:
 
                 <ol style = "padding: 0px">
 
                 <button_acc class="accordion">+ How do I navigate the site? +</button_acc>
                     <div class="panel">
-                      <p style="margin: 20px;">There are two ways to navigate our site. The first one is the blue navigation bar at the top. The second are the buttons embedded on the pages.<br>
+                      <p class="help">There are two ways to navigate our site. The first one is the blue navigation bar at the top. The second are the buttons embedded on the pages.
                           The navigation bar features on the left-hand side the buttons <b>"Home"</b>, which takes you back to the homepage and <b>"Help"</b>, which takes you here.
-                        On the right side it will feature <b>"Login"</b> and <b>"Register"</b> if you are not logged in yet. Use these buttons to log in and register respectively.
-                        If you are already logged in, the buttons <b>"Book seat"</b> and <b>"Logout"</b> are displayed instead. Use <b>"Book seat"</b> to be guided through the seat registration process. If you select <b>"Logout"</b>, you will be safely logged out and returned to the homepage after a short time.
+                        On the right side it will feature <b>"Login"</b> and <b>"Register"</b> if you are not logged in yet. Use these buttons to log in and register respectively.<br>
+                        <p class="help">If you are already logged in, the buttons <b>"Book seat"</b> and <b>"Logout"</b> are displayed instead. Use <b>"Book seat"</b> to be guided through the seat registration process. If you select <b>"Logout"</b>, you will be safely logged out and returned to the homepage after a short time.</p>
                       </p>
                     </div>
 
                  <button_acc class="accordion">+ How do I access my account? +</button_acc>
                     <div class="panel">
-                      <p style="margin: 20px;">To use the system, you need an account.</p>
-                         You can create an account by clicking on <b>"Register"</b>.
+                      <p class="help">To use the system, you <b><u>must have an account</u></b>.</p>
+                         <p class="help">You can create an account by clicking on <b>"Register"</b>.
                          The registration page will guide you through the registration process.
                          If you already have an account, you can log in to your account by clicking on <b>"Login"</b>.
-                         If you are not logged in yet, you will find both buttons at the top right of the navigation bar.<br><br>
+                         If you are not logged in yet, you will find both buttons at the top right of the navigation bar.
                       </p>
                     </div>
 
                  <button_acc class="accordion">+ How do I register? +</button_acc>
                     <div class="panel">
-                      <p style="margin: 20px;">To register click on <b>"Register"</b>. The page that opens will guide you through the registration process.</p>
+                      <p class="help">To register click on <b>"Register"</b>. The page that opens will guide you through the registration process.</p>
                     </div>
 
                  <button_acc class="accordion">+ How do I reserve a seat? +</button_acc>
                     <div class="panel">
-                      <p style="margin: 20px;">To reserve a seat, you first need an account and you must be logged in (<b>see:<k> How do I access my account?</k></b>).
-                        After you have logged in, you will automatically be taken to the booking page. Here you first select the flight for which you want a seat.
+                      <p class="help">To reserve a seat, you first need an account, and you must be logged in (<b>see:<k> How do I access my account?</k></b>).
+                        <p class="help">After you have logged in, you will automatically be taken to the booking page. Here you first select the flight for which you want a seat.
                         Then you can choose one of the seats that have not yet been allocated. The first row represents the headers for the columns that represent seats; the first column represents the seat rows in the airplane.
                         The seats on the outside are window seats, the vertical lines represent the aisle.
-                        Available seats are shown in GREEN. Seats already reserved are shown in RED.
+                        Available seats are shown in <span style= "color: green">GREEN </span>. A Seat already reserved is represented by a <span class='color-red'>RED <b>X</b></span>.
                       </p>
                     </div>
 
