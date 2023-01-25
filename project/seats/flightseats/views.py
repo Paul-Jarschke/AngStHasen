@@ -15,9 +15,9 @@ def home(request):
     current_user = request.user  # needed for showing username on startpage
 
     context = {
-        'auth_ind': auth_ind,  # pass these objects to html
+        'auth_ind': auth_ind,
         'current_user': current_user
-    }
+    }  # pass these objects to html // this is the same for every def XYZ()
     return render(request, 'flightseats/home.html', context)
 
 
