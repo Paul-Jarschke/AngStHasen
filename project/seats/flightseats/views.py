@@ -70,7 +70,7 @@ def booking(request):
         if request.method == 'POST':
             if (request.POST.get('seat_choice_row') in list(map(str, list(range(rowcount + 1))[1:])) and
                 (request.POST.get('seatletter') in ['A', 'B', 'C', 'D', 'F']) and
-                (request.POST.get('seat_choice_row') + request.POST.get('seatletter'))) not in bookedseats:
+                    (request.POST.get('seat_choice_row') + request.POST.get('seatletter'))) not in bookedseats:
                 book = Book()
                 book.seat_choice = request.POST.get('seat_choice_row') + request.POST.get('seatletter')
                 book.save()
