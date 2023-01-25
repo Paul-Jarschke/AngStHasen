@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path
-from .models import Flight, Book, Seats
+from .models import Flight, Book, Seats, UserBooking
 from django.shortcuts import render
 from django import forms
 from django.contrib.auth.models import Group
@@ -46,3 +46,4 @@ class SeatAdmin(admin.ModelAdmin):
 admin.site.register(Book)
 admin.site.register(Flight, SeatAdmin)
 admin.site.unregister(Group)
+admin.site.register(UserBooking)

@@ -49,3 +49,11 @@ class User(models.Model):
     def __str__(self):
         return self.name
 
+
+class UserBooking(models.Model):
+    seat_choice = models.CharField(max_length=30, default="none", unique=True)
+    reserved_by = models.CharField(max_length=30, default="none", unique=True)
+
+    def __str__(self):
+        return self.reserved_by
+

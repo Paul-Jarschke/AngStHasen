@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Flight, Seats, Book
+from .models import Flight, Seats, Book, UserBooking
 import numpy as np
 from django.contrib.admin.models import LogEntry
 
@@ -72,7 +72,11 @@ def booking(request):
                 (request.POST.get('seatletter') in ['A', 'B', 'C', 'D', 'F']) and
                     (request.POST.get('seat_choice_row') + request.POST.get('seatletter'))) not in bookedseats:
                 book = Book()
+                reservations = UserBooking()
                 book.seat_choice = request.POST.get('seat_choice_row') + request.POST.get('seatletter')
+                reservations.seat_choice = request.POST.get('seat_choice_row') + request.POST.get('seatletter')
+                reservations.reserved_by = request.user
+                reservations.save()
                 book.save()
     else:
         auth_ind = "False"
