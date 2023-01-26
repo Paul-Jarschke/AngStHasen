@@ -1,6 +1,6 @@
-1    X    B    C    D    E    F
+1    A    B    C    D    E    F
 2    A    B    C    D    E    F
-3    A    B    C    X    E    F
+3    A    B    C    D    E    F
 4    A    B    C    D    E    F
 5    A    B    C    D    E    F
 6    A    B    C    D    E    F
@@ -9,4 +9,4 @@
 9    A    B    C    D    E    F
 10    A    B    C    D    E    F
 11    A    B    C    D    E    F
-12    A    B    C    D    X    X
+12    A    B    C    D    E    F
