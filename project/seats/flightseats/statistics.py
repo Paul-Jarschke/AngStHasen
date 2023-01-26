@@ -15,7 +15,7 @@ for r in seatrows:
         allseats.append(r + l)
 
 # Reserved seats list:
-freeseats = [x for x in allseats if x not in bookedseats]
+free_seats = [x for x in allseats if x not in bookedseats]
 
 # Now we have three list bookedseats, allseats, freeseats that can be displayed in statistics interface
 

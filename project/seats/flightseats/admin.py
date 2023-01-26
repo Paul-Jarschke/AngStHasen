@@ -1,13 +1,11 @@
 from django.contrib import admin
 from django.urls import path
-from .models import Flight, Book, Seats, UserBooking
+from .models import Flight, Book, UserBooking
 from django.shortcuts import render
 from django import forms
 from django.contrib.auth.models import Group
-from django.contrib import messages
-from django.http import HttpResponseRedirect
-from django.urls import reverse
-from django.core.files.storage import default_storage
+
+admin.site.site_header = "AngstHasenFlights - Admin Terminal"
 
 
 class TxtImportForm(forms.Form):
@@ -43,7 +41,7 @@ class SeatAdmin(admin.ModelAdmin):
         return render(request, "admin/txt_upload.html", data)
 
 
-admin.site.register(Book)
-admin.site.register(Flight, SeatAdmin)
+admin.site.register(Book, SeatAdmin)
+admin.site.register(Flight)
 admin.site.unregister(Group)
 admin.site.register(UserBooking)
