@@ -10,4 +10,3 @@
 10	A	B	C	D	E	F
 11	X	B	C	D	E	F
 12	X	X	X	X	X	X
-
