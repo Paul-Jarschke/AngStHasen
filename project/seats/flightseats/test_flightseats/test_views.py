@@ -1,6 +1,8 @@
-from django.test import TestCase
+from django.test import TestCase, RequestFactory
 from django.urls import reverse
 from django.contrib.auth.models import User
+from ..models import Book, UserBooking
+from ..views import booking
 
 
 class TestViewsHome(TestCase):
@@ -68,12 +70,20 @@ class TestViewsHelp(TestCase):
 
 class BookingTest(TestCase):
     def setUp(self):
+        self.factory = RequestFactory()
         self.user = User.objects.create_user(username='testuser', password='12345')
-        self.client.login(username='testuser', password='12345')
+        self.booked_seats = ["1A", "2B", "3C"]
+        for seat in self.booked_seats:
+            Book.objects.create(seat_choice=seat)
 
-    def test_booking_view_POST(self):
-        response = self.client.post('/booking/', {'seat_choice_row': '1', 'seatletter': 'A'})
+    def test_invalid_seat_selection(self):
+        # WORKING #
+        # Test invalid seat selection
+        request = self.factory.post('/booking/', {'seat_choice_row': '4', 'seatletter': 'G'})
+        request.user = self.user
+        response = booking(request)
         self.assertEqual(response.status_code, 200)
+        self.assertTrue("4G" not in Book.objects.values_list("seat_choice", flat=True))
 
 
 class TestViewsBooking(TestCase):
