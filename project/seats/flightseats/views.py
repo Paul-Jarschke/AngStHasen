@@ -56,7 +56,7 @@ def booking(request):
         else:
             newlines[pos] = ilines[pos]  # if not take value from chartIn.txt template
 
-    output = open("flightseats/data/chartIn_reservations.txt", 'r')
+    output = open("flightseats/data/chartIn_reservations.txt", 'r+')
 
     output.writelines(newlines)
     output.close()
