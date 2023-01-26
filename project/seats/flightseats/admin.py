@@ -5,7 +5,7 @@ from django.shortcuts import render
 from django import forms
 from django.contrib.auth.models import Group
 
-admin.site.site_header = "AngstHasenFlights - Admin Terminal"
+admin.site.site_header = "AngStHasenFlights - Admin Terminal"
 
 
 class TxtImportForm(forms.Form):
