@@ -20,17 +20,3 @@ class TestUrls(TestCase):
     def test_help_url_resolve(self):
         url = reverse('help')
         self.assertEqual(resolve(url).func, help)
-
-    #def test_register_url_resolve(self):
-        #url = reverse('flightseats-home')
-        #self.assertEqual(resolve(url).func, register)
-
-    # register is missing but where is it written ?
-        #written in users.
-
-
-    #path('', views.home, name='flightseats-home'),
-    #path('flights/', views.flights, name='flights'),
-    #path('booking/', views.booking, name='booking'),
-    #path('help/', views.help, name='help'),
-    #path('register/', views2.register, name='register')
