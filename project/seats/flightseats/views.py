@@ -34,7 +34,7 @@ def booking(request):
     booked_seats = list(map(str, Book.objects.all()))
 
     # Create chartIn_reservation.txt
-    # which takes booked_seats from DB und shows them as X based on the template chartIn.txt
+    # take booked_seats from DB und show them as X based on the template chartIn.txt
     row_numbers = [seat[:-1] for seat in booked_seats]
     seat_letters = [seat[-1:] for seat in booked_seats]
 
