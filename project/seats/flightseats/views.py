@@ -1,6 +1,4 @@
 # This file defines the general functionality of the website itself. Combines python objects with html files.
-
-
 from django.shortcuts import render
 from .models import Flight, Seats, Book, UserBooking
 import numpy as np
@@ -31,72 +29,49 @@ def flights(request):
 
 
 def booking(request):
-    bookedseats = list(map(str, Book.objects.all()))  # returns list of booked from DB
 
-    # Create chartIn_reservation.txt which takes bookedseats from DB und shows them as X based on the template chartIn.txt:
-    brow = []
-    bletter = []
-    for element in bookedseats:  # separate letter and number to show X on webpage
-        brow.append(element[:-1])
-        bletter.append(element[-1:])
+    # Get list of booked seats from DB
+    booked_seats = list(map(str, Book.objects.all()))
 
-    input = open("flightseats/data/chartIn.txt", 'r')
-    ilines = input.readlines()
+    # Create chartIn_reservation.txt
+    # which takes booked_seats from DB und shows them as X based on the template chartIn.txt
+    row_numbers = [seat[:-1] for seat in booked_seats]
+    seat_letters = [seat[-1:] for seat in booked_seats]
 
-    # close input file
-    input.close()
+    # Read lines from input file
+    with open("flightseats/data/chartIn.txt", 'r') as input_file:
+        input_lines = input_file.readlines()
 
-    brow = [int(x) for x in brow]
+    # Replace booked seats with 'X'
+    for i, row_number in enumerate(row_numbers):
+        if int(row_number) < len(input_lines):
+            input_lines[int(row_number) - 1] = input_lines[int(row_number) - 1].replace(seat_letters[i], "X")
 
-    newlines = ilines
+    # Write updated input lines to output file
+    with open("flightseats/data/chartIn_reservations.txt", 'w') as output_file:
+        output_file.writelines(input_lines)
 
-    for pos in range(len(ilines)):
-        rownumber = pos + 1
-
-        if rownumber in brow:
-            for nr, element in enumerate(brow):
-                if element == rownumber:
-                    newlines[pos] = newlines[pos].replace(bletter[nr], "X")  # if reserved, then 'X'
-        else:
-            newlines[pos] = ilines[pos]  # if not take value from chartIn.txt template
-
-    output = open("flightseats/data/chartIn_reservations.txt", 'r+')
-
-    output.writelines(newlines)
-    output.close()
-
-    global seat_data
+    # Load seat data from output file
     seat_data = np.loadtxt("flightseats/data/chartIn_reservations.txt", dtype='str')
-    rowcount = len(seat_data)
-    rowlist = str(list(map(str, range(rowcount + 1)))[1:])
+    row_count = len(seat_data)
+    row_list = str(list(map(str, range(row_count + 1)))[1:])
 
-    if request.user.is_authenticated:  # save new reservations from POST to book in DB (if user is logged in only!)
+    # Save new reservations from POST to book in DB (if user is logged in only!)
+    if request.user.is_authenticated:
         auth_ind = "True"
         if request.method == 'POST':
-            if (request.POST.get('seat_choice_row') in list(map(str, list(range(rowcount + 1))[1:])) and
-                (request.POST.get('seatletter') in ['A', 'B', 'C', 'D', 'F']) and
-                    (request.POST.get('seat_choice_row') + request.POST.get('seatletter'))) not in bookedseats:
-                book = Book()
-                reservations = UserBooking()
-                book.seat_choice = request.POST.get('seat_choice_row') + request.POST.get('seatletter')
-                reservations.seat_choice = request.POST.get('seat_choice_row') + request.POST.get('seatletter')
-                reservations.reserved_by = request.user
-                reservations.save()
+            seat_choice_row = request.POST.get('seat_choice_row')
+            seat_letter = request.POST.get('seatletter')
+            if (seat_choice_row in row_list) and (seat_letter in ['A', 'B', 'C', 'D', 'E', 'F']) and (seat_choice_row + seat_letter) not in booked_seats:
+                book = Book(seat_choice=seat_choice_row + seat_letter)
                 book.save()
+                reservations = UserBooking(seat_choice=seat_choice_row + seat_letter, reserved_by=request.user)
+                reservations.save()
     else:
         auth_ind = "False"
 
-    context = {
-        'seats': Seats.objects.all(),
-        'rowcount': rowcount,
-        'rowlist': rowlist,
-        'bookedseats': bookedseats,
-        'auth_ind': auth_ind,
-        'current_user': request.user
-    }
-    entries = Seats.objects.all()
-    entries.delete()
-
+    # Delete previous seat entries and create new ones
+    Seats.objects.all().delete()
     for i in range(len(seat_data)):
         Seats.objects.create(
             column_a=seat_data[i][0],
@@ -104,9 +79,17 @@ def booking(request):
             column_c=seat_data[i][2],
             column_d=seat_data[i][3],
             column_e=seat_data[i][4],
-            column_f=seat_data[i][5],
-            column_g=seat_data[i][6]
+            column_f=seat_data[i][5]
         )
+
+    context = {
+        'seats': Seats.objects.all(),
+        'rowcount': row_count,
+        'rowlist': row_list,
+        'bookedseats': booked_seats,
+        'auth_ind': auth_ind,
+        'current_user': request.user
+    }
     return render(request, 'flightseats/booking.html', context)
 
 
