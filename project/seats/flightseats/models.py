@@ -1,7 +1,4 @@
 from django.db import models
-import numpy as np
-
-seat_data = np.loadtxt("flightseats/data/chartIn.txt", dtype='str')
 
 
 class Flight(models.Model):
