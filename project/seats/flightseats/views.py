@@ -42,6 +42,10 @@ def booking(request):
 
     input = open("flightseats/data/chartIn.txt", 'r')
     ilines = input.readlines()
+
+    # close input file
+    input.close()
+
     brow = [int(x) for x in brow]
 
     newlines = ilines
