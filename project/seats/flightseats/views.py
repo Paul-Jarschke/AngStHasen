@@ -1,5 +1,6 @@
 # This file defines the general functionality of the website itself. Combines python objects with html files.
 from django.shortcuts import render
+from django.template.response import TemplateResponse
 from .models import Flight, Seats, Book, UserBooking
 import numpy as np
 
@@ -98,4 +99,4 @@ def help(request):
     context = {
         'current_user': request.user
     }
-    return render(request, 'flightseats/help.html', context)
+    return TemplateResponse(request, 'flightseats/help.html', context)
