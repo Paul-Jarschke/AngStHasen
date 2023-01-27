@@ -25,16 +25,16 @@ class Book(models.Model):
 class Seats(models.Model):
     # booked = models.BooleanField()
     # update datasets
+    column_row_number = models.CharField(max_length=250, default="1")
     column_a = models.CharField(max_length=250, default="A")
-    column_b = models.CharField(max_length=250, default="A")
-    column_c = models.CharField(max_length=250, default="A")
-    column_d = models.CharField(max_length=250, default="A")
-    column_e = models.CharField(max_length=250, default="A")
-    column_f = models.CharField(max_length=250, default="A")
-    column_g = models.CharField(max_length=250, default="A")
+    column_b = models.CharField(max_length=250, default="B")
+    column_c = models.CharField(max_length=250, default="C")
+    column_d = models.CharField(max_length=250, default="D")
+    column_e = models.CharField(max_length=250, default="E")
+    column_f = models.CharField(max_length=250, default="F")
 
     def __str__(self):
-        return self.column_a
+        return self.column_row_number
 
 
 class User(models.Model):

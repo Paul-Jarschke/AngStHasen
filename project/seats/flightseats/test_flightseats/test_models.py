@@ -13,10 +13,10 @@ class TestModels(TestCase):
         book = Book.objects.create(seat_choice='A1')
         self.assertEqual(str(book), 'A1')
 
-    def test_Seat_str(self):
-        """Method '__str__' should be equal to column_a"""
-        seats = Seats.objects.create(column_a='A')
-        self.assertEqual(str(seats), 'A')
+    def test_Seat_str(self):  # please check this paul
+        """Method '__str__' should be equal to column_rownumber"""
+        seats = Seats.objects.create(column_rownumber='1')
+        self.assertEqual(str(seats), '1')
 
     def test_User_str(self):
         """Method '__str__' should be equal to name"""

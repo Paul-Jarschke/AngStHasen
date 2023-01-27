@@ -29,7 +29,6 @@ def flights(request):
 
 
 def booking(request):
-
     # Get list of booked seats from DB
     booked_seats = list(map(str, Book.objects.all()))
 
@@ -62,7 +61,8 @@ def booking(request):
         if request.method == 'POST':
             seat_choice_row = request.POST.get('seat_choice_row')
             seat_letter = request.POST.get('seatletter')
-            if (seat_choice_row in row_list) and (seat_letter in ['A', 'B', 'C', 'D', 'E', 'F']) and (seat_choice_row + seat_letter) not in booked_seats:
+            if (seat_choice_row in row_list) and (seat_letter in ['A', 'B', 'C', 'D', 'E', 'F']) and (
+                    seat_choice_row + seat_letter) not in booked_seats:
                 book = Book(seat_choice=seat_choice_row + seat_letter)
                 book.save()
                 reservations = UserBooking(seat_choice=seat_choice_row + seat_letter, reserved_by=request.user)
@@ -74,13 +74,13 @@ def booking(request):
     Seats.objects.all().delete()
     for i in range(len(seat_data)):
         Seats.objects.create(
-            column_a=seat_data[i][0],
-            column_b=seat_data[i][1],
-            column_c=seat_data[i][2],
-            column_d=seat_data[i][3],
-            column_e=seat_data[i][4],
-            column_f=seat_data[i][5],
-            column_g=seat_data[i][6]
+            column_row_number=seat_data[i][0],
+            column_a=seat_data[i][1],
+            column_b=seat_data[i][2],
+            column_c=seat_data[i][3],
+            column_d=seat_data[i][4],
+            column_e=seat_data[i][5],
+            column_f=seat_data[i][6]
         )
 
     context = {

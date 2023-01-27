@@ -4,7 +4,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
@@ -36,13 +35,13 @@ class Migration(migrations.Migration):
             name='Seats',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('column_rownumber', models.CharField(default='1', max_length=250)),
                 ('column_a', models.CharField(default='A', max_length=250)),
-                ('column_b', models.CharField(default='A', max_length=250)),
-                ('column_c', models.CharField(default='A', max_length=250)),
-                ('column_d', models.CharField(default='A', max_length=250)),
-                ('column_e', models.CharField(default='A', max_length=250)),
-                ('column_f', models.CharField(default='A', max_length=250)),
-                ('column_g', models.CharField(default='A', max_length=250)),
+                ('column_b', models.CharField(default='B', max_length=250)),
+                ('column_c', models.CharField(default='C', max_length=250)),
+                ('column_d', models.CharField(default='D', max_length=250)),
+                ('column_e', models.CharField(default='E', max_length=250)),
+                ('column_f', models.CharField(default='F', max_length=250)),
             ],
         ),
         migrations.CreateModel(
