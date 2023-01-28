@@ -31,14 +31,13 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'django.contrib.auth',
     'flightseats.apps.FlightseatsConfig',
-    'users.apps.UsersConfig',
+    'flightseats.apps.UsersConfig',
     'django.contrib.admin',
     'crispy_forms',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
-
+    'django.contrib.staticfiles'
 ]
 
 MIDDLEWARE = [
