@@ -63,9 +63,11 @@
     {% endfor %}
 </table>
 <p>&emsp;=> Count: {{ count_users }}</p>
-
 <div style="text-align:center; ">
-    <button type="button;" style="cursor: pointer; height: 35px; width:160px; font-size: 16px">Download statistics
-    </button>
+    <form action="{% url  'stats_txt'  %}">
+        <button type="button;"
+                style="cursor: pointer; height: 35px; width:160px; font-size: 16px">Download statistics
+        </button>
+    </form>
 </div>
 {% endblock %}
