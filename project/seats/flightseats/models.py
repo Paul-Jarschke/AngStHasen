@@ -4,6 +4,8 @@ from django.contrib.admin.actions import delete_selected
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import User
 from django.db import models
+from django.http import HttpResponse
+from django.contrib.auth import get_user_model
 
 
 class Flight(models.Model):
@@ -114,6 +116,24 @@ class EmptyModelAdmin(admin.ModelAdmin):
         # Number of users
         count_users = len(user_data)
 
+        global response
+        response = HttpResponse(content_type='text/plain')
+        response['Content-Disposition'] = 'attachment; filename= flight_statistic.txt'
+
+        lines = []
+
+        for x in user_data:
+            for y in x:
+                lines.append(f'{y}\n')
+            lines.append(f'\n')
+
+        lines.append(f'{ratio_free}\n')
+        lines.append(f'{ratio_book}\n')
+        lines.append(f'{free_seats}\n')
+        lines.append(f'{booked_seats}\n')
+
+        response.writelines(lines)
+
         content = {
             'all_seats': all_seats,
             'free_seats': free_seats2,
@@ -127,3 +147,7 @@ class EmptyModelAdmin(admin.ModelAdmin):
             'count_users': count_users
         }
         return super().changelist_view(request, extra_context=content)
+
+
+def stat_downoad(request):
+    return response
