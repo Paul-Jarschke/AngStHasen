@@ -5,9 +5,6 @@ from .models import Flight, Book, UserBooking, User, Statistics, EmptyModelAdmin
 from django.shortcuts import render
 from django import forms
 from django.contrib.auth.models import Group
-from django.contrib.auth import get_user_model
-from django.contrib.auth.models import User
-from django.db import models
 
 admin.site.site_header = "AngStHasenFlights - Admin Terminal"
 
