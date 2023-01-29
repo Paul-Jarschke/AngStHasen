@@ -106,13 +106,13 @@ class EmptyModelAdmin(admin.ModelAdmin):
         ratio_book = str(round(((count_book / count_all) * 100), 2)) + "%"
         ratio_free = str(round(((count_free / count_all) * 100), 2)) + "%"
 
-        # Number of users
-        # ENTER CODE HERE
-
         # Data of users
         User = get_user_model()
-        email = User.objects.values_list('username', 'first_name', 'last_name', 'email')
-        users = list(email)
+        user_data = User.objects.values_list('username', 'first_name', 'last_name', 'email')
+        user_data = list(user_data)
+
+        # Number of users
+        count_users = len(user_data)
 
         content = {
             'all_seats': all_seats,
@@ -123,6 +123,7 @@ class EmptyModelAdmin(admin.ModelAdmin):
             'count_free': count_free,
             'ratio_book': ratio_book,
             'ratio_free': ratio_free,
-            'users': users
+            'user_data': user_data,
+            'count_users': count_users
         }
         return super().changelist_view(request, extra_context=content)
