@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.urls import path
-from .models import Flight, Book, UserBooking
+from .models import Flight, Book, UserBooking, User, Statistics, EmptyModelAdmin
+
 from django.shortcuts import render
 from django import forms
 from django.contrib.auth.models import Group
@@ -94,10 +95,16 @@ class SeatAdmin(admin.ModelAdmin):
 
         }
 
-        return render(request, "admin/statistics.html", context)
+        return render(request, "admin/flightseats/statistics/change_list.html", context)
 
 
 admin.site.register(Book, SeatAdmin)
 admin.site.register(Flight)
 admin.site.unregister(Group)
 admin.site.register(UserBooking)
+admin.site.register(Statistics, EmptyModelAdmin)
+
+# To Do:
+# - Register model "statistics" on admin page and move statistics button or just whole html there
+# - Add user Statistics
+# - Add count of free seats etc statistics

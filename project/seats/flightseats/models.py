@@ -1,4 +1,6 @@
 from django.db import models
+from django.contrib import admin
+from django.contrib.admin.actions import delete_selected
 
 
 class Flight(models.Model):
@@ -52,3 +54,73 @@ class UserBooking(models.Model):
 
     def __str__(self):
         return self.reserved_by
+
+
+class Statistics(models.Model):
+    class Meta:
+        verbose_name_plural = "Statistics page"
+
+
+class EmptyModelAdmin(admin.ModelAdmin):
+    def has_add_permission(self, request):
+        return False
+
+    def has_change_permission(self, request, obj=None):
+        return False
+
+    def changelist_view(self, request, extra_context=None):
+        # All seats list:
+        input = open("flightseats/data/chartIn.txt", 'r')
+        nrow = len(input.readlines())
+        seat_rows = list(map(str, range(nrow + 1)))[1:]  # gives string list of 1 up to number of rows
+        seat_letters = ['A', 'B', 'C', 'D', 'F']
+
+        all_seats_dummy = []
+        for r in seat_rows:
+            for l in seat_letters:
+                all_seats_dummy.append(r + l)
+
+        all_seats = str(all_seats_dummy).replace("[", "").replace("]", "").replace("'", "")
+
+        # Booked seats list:
+        booked_seats = str(list(map(str, Book.objects.all()))).replace("[", "").replace("]", "").replace("'", "")
+
+        # Reserved seats list:
+        booked_seats2 = list(map(str, Book.objects.all()))
+        free_seats = [x for x in all_seats_dummy if x not in booked_seats2]
+        free_seats = str(free_seats).replace("[", "").replace("]", "").replace("'", "")
+
+        # Number of bookedseats:
+        count_book = len(booked_seats)
+
+        # Number of free seats:
+        count_free = len(free_seats)
+
+        # Number of all seats:
+        count_all = len(all_seats)
+
+        # Ratios of booked/free seats:
+        ratio_book = str(round(((count_book / count_all) * 100), 2)) + "%"
+        ratio_free = str(round(((count_free / count_all) * 100), 2)) + "%"
+
+        # Number of users
+        # user_count = len(User.objects.all())
+
+        # Data of users
+        # user_list = User.objects.all()
+
+        #
+        # User = get_user_model()
+        user_list = User.objects.all()
+
+        content = {
+            'all_seats': all_seats,
+            'free_seats': free_seats,
+            'booked_seats': booked_seats,
+            'ratio_book': ratio_book,
+            'ratio_free': ratio_free,
+            # 'user_count': user_count,
+            'user_list': user_list
+
+        }
+        return super().changelist_view(request, extra_context=content)
