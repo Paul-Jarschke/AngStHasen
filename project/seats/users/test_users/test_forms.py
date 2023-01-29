@@ -3,7 +3,9 @@ from ..forms import UserRegisterForm
 
 
 class UserRegisterFormTest(TestCase):
-    """This class checks the validity of the register form, given valid and invalid data."""
+    """
+        This class checks the validity of the register form, given valid and invalid data.
+    """
     def test_form_validation_valid_data(self):
         # Test form with valid data
         form_data = {

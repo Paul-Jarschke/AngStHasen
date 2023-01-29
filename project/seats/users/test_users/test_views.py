@@ -6,7 +6,9 @@ from ..views import register
 
 
 class RegisterViewTest(TestCase):
-    """ This class is used to test the registration procedure"""
+    """
+        This class is used to test the registration procedure.
+    """
 
     def setUp(self):
         # Create request factory object to create test requests
@@ -19,7 +21,9 @@ class RegisterViewTest(TestCase):
         )
 
     def test_register_view_valid_post(self):
-        """This method tests the view's behavior when a valid POST request is made to the view."""
+        """
+        This method tests the view's behavior when a valid POST request is made to the view.
+        """
 
         # Create POST request with valid data
         request = self.factory.post(reverse('register'), {
@@ -48,7 +52,9 @@ class RegisterViewTest(TestCase):
         self.assertEqual(str(messages._queued_messages[0]), 'Account created for newuser')
 
     def test_register_view_invalid_post(self):
-        """This method tests the view's behavior when an invalid POST request is made to the view"""
+        """
+        This method tests the view's behavior when an invalid POST request is made to the view.
+        """
 
         # Create POST request with invalid data (username is missing)
         request = self.factory.post(reverse('register'), {
@@ -75,7 +81,9 @@ class RegisterViewTest(TestCase):
         self.assertEqual(len(messages), 0)
 
     def test_register_view_get_request(self):
-        """This method tests the view's behavior when a GET request is made to the view"""
+        """
+        This method tests the view's behavior when a GET request is made to the view.
+        """
 
         # Create GET request using factory
         request = self.factory.get(reverse('register'))
