@@ -8,7 +8,6 @@ from django.http import HttpResponse
 from django.contrib.auth import get_user_model
 
 
-
 def home(request):
     if request.user.is_authenticated:  # indicator variable that is needed for showing different outputs.
         auth_ind = "True"
@@ -34,7 +33,6 @@ def flights(request):
 
 
 def booking(request):
-
     # Get list of booked seats from DB
     booked_seats = list(map(str, Book.objects.all()))
 
@@ -67,7 +65,8 @@ def booking(request):
         if request.method == 'POST':
             seat_choice_row = request.POST.get('seat_choice_row')
             seat_letter = request.POST.get('seatletter')
-            if (seat_choice_row in row_list) and (seat_letter in ['A', 'B', 'C', 'D', 'E', 'F']) and (seat_choice_row + seat_letter) not in booked_seats:
+            if (seat_choice_row in row_list) and (seat_letter in ['A', 'B', 'C', 'D', 'E', 'F']) and (
+                    seat_choice_row + seat_letter) not in booked_seats:
                 book = Book(seat_choice=seat_choice_row + seat_letter)
                 book.save()
                 reservations = UserBooking(seat_choice=seat_choice_row + seat_letter, reserved_by=request.user)
@@ -127,7 +126,7 @@ def statistics_text(request):
     free_seats = [x for x in all_seats_dummy if x not in booked_seats2]
     free_seats = str(free_seats).replace("[", "").replace("]", "").replace("'", "")
 
-    # Number of bookedseats:
+    # Number of booked_seats:
     count_book = len(booked_seats)
 
     # Number of free seats:
