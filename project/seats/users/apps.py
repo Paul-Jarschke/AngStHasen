@@ -1,4 +1,5 @@
 from django.apps import AppConfig
+from django.contrib.auth.models import User
 
 
 class UsersConfig(AppConfig):
@@ -6,7 +7,6 @@ class UsersConfig(AppConfig):
     name = 'users'
 
     def ready(self):
-        from django.contrib.auth.models import User
 
         # Admin user:
         try:  # such that 'unique'-condition for username will not be violated
