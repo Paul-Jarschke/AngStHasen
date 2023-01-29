@@ -1,8 +1,12 @@
 # This file defines the general functionality of the website itself. Combines python objects with html files.
 from django.shortcuts import render
-from django.template.response import TemplateResponse
 from .models import Flight, Seats, Book, UserBooking
 import numpy as np
+from django.contrib.admin.views.decorators import staff_member_required
+from django.contrib.auth import get_user_model
+from django.http import HttpResponse
+from django.contrib.auth import get_user_model
+
 
 
 def home(request):
@@ -30,6 +34,7 @@ def flights(request):
 
 
 def booking(request):
+
     # Get list of booked seats from DB
     booked_seats = list(map(str, Book.objects.all()))
 
@@ -62,8 +67,7 @@ def booking(request):
         if request.method == 'POST':
             seat_choice_row = request.POST.get('seat_choice_row')
             seat_letter = request.POST.get('seatletter')
-            if (seat_choice_row in row_list) and (seat_letter in ['A', 'B', 'C', 'D', 'E', 'F']) and (
-                    seat_choice_row + seat_letter) not in booked_seats:
+            if (seat_choice_row in row_list) and (seat_letter in ['A', 'B', 'C', 'D', 'E', 'F']) and (seat_choice_row + seat_letter) not in booked_seats:
                 book = Book(seat_choice=seat_choice_row + seat_letter)
                 book.save()
                 reservations = UserBooking(seat_choice=seat_choice_row + seat_letter, reserved_by=request.user)
@@ -99,4 +103,61 @@ def help(request):
     context = {
         'current_user': request.user
     }
-    return TemplateResponse(request, 'flightseats/help.html', context)
+    return render(request, 'flightseats/help.html', context)
+
+
+def statistics_text(request):
+    input = open("flightseats/data/chartIn.txt", 'r')
+    nrow = len(input.readlines())
+    seat_rows = list(map(str, range(nrow + 1)))[1:]  # gives string list of 1 up to number of rows
+    seat_letters = ['A', 'B', 'C', 'D', 'F']
+
+    all_seats_dummy = []
+    for r in seat_rows:
+        for l in seat_letters:
+            all_seats_dummy.append(r + l)
+
+    all_seats = str(all_seats_dummy).replace("[", "").replace("]", "").replace("'", "")
+
+    # Booked seats list:
+    booked_seats = str(list(map(str, Book.objects.all()))).replace("[", "").replace("]", "").replace("'", "")
+
+    # Reserved seats list:
+    booked_seats2 = list(map(str, Book.objects.all()))
+    free_seats = [x for x in all_seats_dummy if x not in booked_seats2]
+    free_seats = str(free_seats).replace("[", "").replace("]", "").replace("'", "")
+
+    # Number of bookedseats:
+    count_book = len(booked_seats)
+
+    # Number of free seats:
+    count_free = len(free_seats)
+
+    # Number of all seats:
+    count_all = len(all_seats)
+
+    # Ratios of booked/free seats:
+    ratio_book = str(round(((count_book / count_all) * 100), 2)) + "%"
+    ratio_free = str(round(((count_free / count_all) * 100), 2)) + "%"
+
+    User = get_user_model()
+    objects = User.objects.values_list('username', 'first_name', 'last_name', 'email')
+    users = list(objects)
+
+    response = HttpResponse(content_type='text/plain')
+    response['Content-Disposition'] = 'attachment; filename= flight_statistic.txt'
+
+    lines = []
+
+    for x in users:
+        for y in x:
+            lines.append(f'{y}\n')
+        lines.append(f'\n')
+
+    lines.append(f'{ratio_free}\n')
+    lines.append(f'{ratio_book}\n')
+    lines.append(f'{free_seats}\n')
+    lines.append(f'{booked_seats}\n')
+
+    response.writelines(lines)
+    return response
