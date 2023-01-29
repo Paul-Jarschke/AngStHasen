@@ -1,6 +1,9 @@
 from django.db import models
 from django.contrib import admin
 from django.contrib.admin.actions import delete_selected
+from django.contrib.auth import get_user_model
+from django.contrib.auth.models import User
+from django.db import models
 
 
 class Flight(models.Model):
@@ -107,11 +110,9 @@ class EmptyModelAdmin(admin.ModelAdmin):
         # user_count = len(User.objects.all())
 
         # Data of users
-        # user_list = User.objects.all()
-
-        #
-        # User = get_user_model()
-        user_list = User.objects.all()
+        User = get_user_model()
+        email = User.objects.values_list('username', 'first_name', 'last_name', 'email')
+        users = list(email)
 
         content = {
             'all_seats': all_seats,
@@ -119,8 +120,7 @@ class EmptyModelAdmin(admin.ModelAdmin):
             'booked_seats': booked_seats,
             'ratio_book': ratio_book,
             'ratio_free': ratio_free,
-            # 'user_count': user_count,
-            'user_list': user_list
+            'users': users
 
         }
         return super().changelist_view(request, extra_context=content)
