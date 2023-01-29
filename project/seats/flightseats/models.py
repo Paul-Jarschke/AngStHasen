@@ -149,5 +149,5 @@ class EmptyModelAdmin(admin.ModelAdmin):
         return super().changelist_view(request, extra_context=content)
 
 
-def stat_downoad(request):
+def stat_download(request):
     return response

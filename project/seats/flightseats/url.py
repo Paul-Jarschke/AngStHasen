@@ -9,5 +9,5 @@ urlpatterns = [
     path('booking/', views.booking, name='booking'),
     path('help/', views.help, name='help'),
     path('register/', views2.register, name='register'),
-    path('stats_text/', models.stat_downoad, name='stats_txt')
+    path('stats_text/', models.stat_download, name='stats_txt')
 ]
