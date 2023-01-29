@@ -93,8 +93,8 @@ class EmptyModelAdmin(admin.ModelAdmin):
         free_seats = [x for x in all_seats_dummy if x not in booked_seats2]
         free_seats2 = str(free_seats).replace("[", "").replace("]", "").replace("'", "")
 
-        # Number of bookedseats:
-        count_book = len(booked_seats2)
+        # Number of booked seats:
+        count_book = len(booked_seats)
 
         # Number of free seats:
         count_free = len(free_seats)
