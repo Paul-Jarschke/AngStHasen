@@ -75,8 +75,8 @@ class EmptyModelAdmin(admin.ModelAdmin):
         # All seats list:
         input = open("flightseats/data/chartIn.txt", 'r')
         nrow = len(input.readlines())
-        seat_rows = list(map(str, range(nrow + 1)))[1:]  # gives string list of 1 up to number of rows
-        seat_letters = ['A', 'B', 'C', 'D', 'F']
+        seat_rows = list(map(str, range(nrow + 1)))[1:-1]  # gives string list of 1 up to number of rows
+        seat_letters = ['A', 'B', 'C', 'D', 'E', 'F']
 
         all_seats_dummy = []
         for r in seat_rows:
@@ -91,23 +91,23 @@ class EmptyModelAdmin(admin.ModelAdmin):
         # Reserved seats list:
         booked_seats2 = list(map(str, Book.objects.all()))
         free_seats = [x for x in all_seats_dummy if x not in booked_seats2]
-        free_seats = str(free_seats).replace("[", "").replace("]", "").replace("'", "")
+        free_seats2 = str(free_seats).replace("[", "").replace("]", "").replace("'", "")
 
         # Number of bookedseats:
-        count_book = len(booked_seats)
+        count_book = len(booked_seats2)
 
         # Number of free seats:
         count_free = len(free_seats)
 
         # Number of all seats:
-        count_all = len(all_seats)
+        count_all = len(all_seats_dummy)
 
         # Ratios of booked/free seats:
         ratio_book = str(round(((count_book / count_all) * 100), 2)) + "%"
         ratio_free = str(round(((count_free / count_all) * 100), 2)) + "%"
 
         # Number of users
-        # user_count = len(User.objects.all())
+        # ENTER CODE HERE
 
         # Data of users
         User = get_user_model()
@@ -116,11 +116,13 @@ class EmptyModelAdmin(admin.ModelAdmin):
 
         content = {
             'all_seats': all_seats,
-            'free_seats': free_seats,
+            'free_seats': free_seats2,
             'booked_seats': booked_seats,
+            'count_all': count_all,
+            'count_book': count_book,
+            'count_free': count_free,
             'ratio_book': ratio_book,
             'ratio_free': ratio_free,
             'users': users
-
         }
         return super().changelist_view(request, extra_context=content)

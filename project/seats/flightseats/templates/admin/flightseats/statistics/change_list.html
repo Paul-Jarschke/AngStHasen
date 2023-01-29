@@ -5,14 +5,18 @@
 </h1>
 
 <p style="font-weight: bold">All possible seats:</p>
-<p>{{ all_seats }}</p>
+<p>{{ all_seats }}
+    <br>
+    Count: {{ count_all }}</p>
 <br><br>
 
 {% if free_seats == "" %}
 <p>There are no free seats!</p>
 {% else %}
 <p style="font-weight: bold">Free seats:</p>
-<p>{{ free_seats }}</p>
+<p>{{ free_seats }}
+    <br>
+    Count: {{ count_free }}</p>
 {% endif %}
 <br><br>
 
@@ -20,7 +24,10 @@
 {% if booked_seats == "" %}
 <p>There are no booked seats!</p>
 {% else %}
-<p>{{ booked_seats }}</p>
+<p>{{ booked_seats }}
+    <br>
+    Count: {{ count_book }}
+</p>
 {% endif %}
 <br><br>
 
@@ -40,16 +47,16 @@
 {% endif %}
 
 
-<br> <br> <br> <br> <br> <br> <br>
+<br> <br> <br> <br> <br>
 <p style="font-weight: bold">Users list:</p>
 <table>
-{% for user in users %}
+    {% for user in users %}
     <tr>
- {% for x in user %}
-    <td>{{ x }}  </td>
- {% endfor %}
-</tr>
-{% endfor %}
+        {% for x in user %}
+        <td>{{ x }}</td>
+        {% endfor %}
+    </tr>
+    {% endfor %}
 </table>
 
 {% endblock %}
