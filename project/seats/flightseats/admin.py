@@ -3,7 +3,7 @@ from django.urls import path
 from .models import Flight, Book, UserBooking, User
 from django.shortcuts import render
 from django import forms
-from django.contrib.auth.models import Group
+from django.contrib.auth.models import Group, User
 
 admin.site.site_header = "AngStHasenFlights - Admin Terminal"
 
@@ -78,9 +78,13 @@ class SeatAdmin(admin.ModelAdmin):
         ratio_free = str(round(((count_free / count_all) * 100), 2)) + "%"
 
         # Number of users
-        user_count = len(User.objects.all())
+        # user_count = len(User.objects.all())
 
         # Data of users
+        # user_list = User.objects.all()
+
+        #
+        # User = get_user_model()
         user_list = User.objects.all()
 
         context = {
@@ -89,7 +93,7 @@ class SeatAdmin(admin.ModelAdmin):
             'booked_seats': booked_seats,
             'ratio_book': ratio_book,
             'ratio_free': ratio_free,
-            'user_count': user_count,
+            # 'user_count': user_count,
             'user_list': user_list
 
         }

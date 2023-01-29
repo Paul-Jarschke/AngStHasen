@@ -22,9 +22,13 @@
 
 
 <header>
-    {% if user.is_authenticated %}
+    {% if user.is_superuser %}
     <header style="background-color:black; position:sticky; top: 0px; letter-spacing: 2px; font-family: Arial; font-weight:normal; font-size:14px">
-        You are logged in as {{current_user|safe}}.
+        You are logged in as admin '{{current_user|safe}}'.
+    </header>
+    {% elif user.is_superuser %}
+     <header style="background-color:black; position:sticky; top: 0px; letter-spacing: 2px; font-family: Arial; font-weight:normal; font-size:14px">
+        You are logged in as user '{{current_user|safe}}'.
     </header>
     {% endif %}
     <h1>
@@ -48,7 +52,11 @@
                     </div>
                     <!-- Navbar Right Side -->
                     <div class="navbar-nav">
-                        {% if user.is_authenticated %}
+                        {% if user.is_superuser %}
+                        <a class="nav-item nav-link" href="{% url 'flights' %}">Book seat</a>
+                        <a class="nav-item nav-link" href="/admin/">Admin terminal</a>
+                        <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
+                        {% elif user.is_authenticated %}
                         <a class="nav-item nav-link" href="{% url 'flights' %}">Book seat</a>
                         <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
                         {% else %}
