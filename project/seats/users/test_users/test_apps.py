@@ -4,6 +4,12 @@ from django.test import TestCase
 
 
 class TestUsersConfig(TestCase):
+    """
+        This class is used to test the configuration of the `users` app.
+
+        It tests the default auto field setting, checks that the correct number
+        of users have been created, and tests the attributes of several users.
+    """
     def setUp(self):
         # Set up User model
         self.UserModel = get_user_model()
