@@ -1,0 +1,55 @@
+{% extends 'admin/base.html' %}
+
+{% block content %}
+<h1> Welcome to the statistics page!
+</h1>
+
+<p style="font-weight: bold">All possible seats:</p>
+<p>{{all_seats }}</p>
+<br><br>
+
+{% if free_seats == "" %}
+<p>There are no free seats!</p>
+{% else %}
+<p style="font-weight: bold">Free seats:</p>
+<p>{{ free_seats }}</p>
+{% endif %}
+<br><br>
+
+<p style="font-weight: bold">Booked seats:</p>
+{% if booked_seats == "" %}
+<p>There are no booked seats!</p>
+{% else %}
+<p>{{ booked_seats }}</p>
+{% endif %}
+<br><br>
+
+<p style="font-weight: bold">Proportion of free seats:</p>
+{% if ratio_free == "" %}
+<p>0.0%</p>
+{% else %}
+<p>{{ ratio_free }}</p>
+{% endif %}
+<br><br>
+
+<p style="font-weight: bold">Proportion of booked seats:</p>
+{% if ratio_book == "" %}
+<p>0.0%</p>
+{% else %}
+<p>{{ ratio_book }}</p>
+{% endif %}
+
+
+<br> <br> <br> <br> <br> <br> <br>
+<p style="font-weight: bold">Users list:</p>
+
+
+musst du noch richtig machen; musste so machen, sonst gabs error
+
+if user_list
+<p>{{ user_list }}</p>
+else
+<p>There are no users registered!</p>
+endif
+
+{% endblock %}
