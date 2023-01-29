@@ -65,7 +65,6 @@
 <p>&emsp;=> Count: {{ count_users }}</p>
 
 <div style="text-align:center; ">
-    <button type="button;" style="cursor: pointer; height: 35px; width:160px; font-size: 16px">Download statistics
-    </button>
+    <a href="{% url  'stats_txt'  %}">Download txt</a>
 </div>
 {% endblock %}
