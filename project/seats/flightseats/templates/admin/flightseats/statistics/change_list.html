@@ -5,7 +5,7 @@
 </h1>
 
 <p style="font-weight: bold">All possible seats:</p>
-<p>{{all_seats }}</p>
+<p>{{ all_seats }}</p>
 <br><br>
 
 {% if free_seats == "" %}
@@ -42,14 +42,14 @@
 
 <br> <br> <br> <br> <br> <br> <br>
 <p style="font-weight: bold">Users list:</p>
-
-
-musst du noch richtig machen; musste so machen, sonst gabs error
-
-if user_list
-<p>{{ user_list }}</p>
-else
-<p>There are no users registered!</p>
-endif
+<table>
+{% for user in users %}
+    <tr>
+ {% for x in user %}
+    <td>{{ x }}  </td>
+ {% endfor %}
+</tr>
+{% endfor %}
+</table>
 
 {% endblock %}
