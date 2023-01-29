@@ -1,9 +1,12 @@
 from django.contrib import admin
 from django.urls import path
-from .models import Flight, Book, UserBooking, User
+from .models import Flight, Book, UserBooking
 from django.shortcuts import render
 from django import forms
-from django.contrib.auth.models import Group, User
+from django.contrib.auth.models import Group
+from django.contrib.auth import get_user_model
+from django.contrib.auth.models import User
+from django.db import models
 
 admin.site.site_header = "AngStHasenFlights - Admin Terminal"
 
@@ -77,24 +80,17 @@ class SeatAdmin(admin.ModelAdmin):
         ratio_book = str(round(((count_book / count_all) * 100), 2)) + "%"
         ratio_free = str(round(((count_free / count_all) * 100), 2)) + "%"
 
-        # Number of users
-        # user_count = len(User.objects.all())
-
-        # Data of users
-        # user_list = User.objects.all()
-
-        #
-        # User = get_user_model()
-        user_list = User.objects.all()
-
+      # Data of users
+        User = get_user_model()
+        email = User.objects.values_list('username', 'first_name', 'last_name', 'email')
+        users = list(email)
         context = {
             'all_seats': all_seats,
             'free_seats': free_seats,
             'booked_seats': booked_seats,
             'ratio_book': ratio_book,
             'ratio_free': ratio_free,
-            # 'user_count': user_count,
-            'user_list': user_list
+            'users': users
 
         }
 
