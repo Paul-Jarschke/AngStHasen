@@ -80,6 +80,19 @@ class EmptyModelAdmin(admin.ModelAdmin):
         seat_rows = list(map(str, range(nrow + 1)))[1:-1]  # gives string list of 1 up to number of rows
         seat_letters = ['A', 'B', 'C', 'D', 'E', 'F']
 
+        global all_seats_dummy
+        global all_seats
+        global free_seats
+        global free_seats2
+        global booked_seats
+        global count_all
+        global count_book
+        global count_free
+        global ratio_book
+        global ratio_free
+        global user_data
+        global count_users
+
         all_seats_dummy = []
         for r in seat_rows:
             for l in seat_letters:
@@ -116,24 +129,6 @@ class EmptyModelAdmin(admin.ModelAdmin):
         # Number of users
         count_users = len(user_data)
 
-        global response
-        response = HttpResponse(content_type='text/plain')
-        response['Content-Disposition'] = 'attachment; filename= flight_statistic.txt'
-
-        lines = []
-
-        for x in user_data:
-            for y in x:
-                lines.append(f'{y}\n')
-            lines.append(f'\n')
-
-        lines.append(f'{ratio_free}\n')
-        lines.append(f'{ratio_book}\n')
-        lines.append(f'{free_seats}\n')
-        lines.append(f'{booked_seats}\n')
-
-        response.writelines(lines)
-
         content = {
             'all_seats': all_seats,
             'free_seats': free_seats2,
@@ -150,4 +145,25 @@ class EmptyModelAdmin(admin.ModelAdmin):
 
 
 def stat_download(request):
+    global response
+    response = HttpResponse(content_type='text/plain')
+    response['Content-Disposition'] = 'attachment; filename= flight_statistic.txt'
+
+    lines = []
+    lines.append(f"All possible seats:\n")
+    # lines.append(all_seats)
+    lines.append(f"\n => Count:")
+    lines.append(count_all)
+
+    for x in user_data:
+        for y in x:
+            lines.append(f'{y}\n')
+        lines.append(f'\n')
+
+    lines.append(f'{ratio_free}\n')
+    lines.append(f'{ratio_book}\n')
+    lines.append(f'{free_seats}\n')
+    lines.append(f'{booked_seats}\n')
+
+    response.writelines(lines)
     return response
