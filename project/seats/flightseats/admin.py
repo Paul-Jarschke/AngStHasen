@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path
-from .models import Flight, Book, UserBooking, User, Statistics, EmptyModelAdmin
+from .models import Flight, Book, UserBooking, Statistics, EmptyModelAdmin
 
 from django.shortcuts import render
 from django import forms
