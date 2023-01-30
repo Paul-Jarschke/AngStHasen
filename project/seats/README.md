@@ -72,6 +72,6 @@ I hereby confirm that I have read and understood the Apache Licence 2.0 at: http
 
 Göttingen, 30.01.23
 
-XXX, XXX, XXX, Sönke Hänel
+Leon Löppert, Jan Parlesak, Sönke Hänel, Paul Jarschke
 
 Signature
