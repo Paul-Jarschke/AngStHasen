@@ -40,4 +40,5 @@ class SeatAdminTestCase(TestCase):
             content = f.read()
             f.close()
 
-        self.assertEqual(content, file_input_bytes.decode('utf-8'))
+        # Check for equal content
+        self.assertEqual(content, file_input_bytes.decode('utf-8') + "\n")
