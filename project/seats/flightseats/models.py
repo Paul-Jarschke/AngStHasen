@@ -40,15 +40,6 @@ class Seats(models.Model):
         return self.column_row_number
 
 
-class User(models.Model):
-    name = models.CharField(max_length=250, default="empty")
-    user_name = models.CharField(max_length=250, default="empty", unique=True)
-    password = models.CharField(max_length=250, default="empty")
-
-    def __str__(self):
-        return self.name
-
-
 class UserBooking(models.Model):
     seat_choice = models.CharField(max_length=30, default="none", unique=True)
     reserved_by = models.CharField(max_length=30, default="none")
