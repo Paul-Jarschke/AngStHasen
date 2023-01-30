@@ -1,5 +1,6 @@
-## Airline Seat Reservation - ASR
-ASR is an easy-to-use web-based application to book seats on flights and to process and store bookings automatically. 
+## Title: AngStHasenFlights
+
+AngStHasenFlights is an easy-to-use web-based application to book seats on flights and to process and store bookings automatically. 
 This application gives customers the possibility to register, log in, get an overview of reserved and free seats on flights and the possibility to reserve seats.
 Administrators can add flights and manage existing user accounts, flights and bookings via the admin page. Admins can also view and download statistics about the flights.
 
@@ -27,7 +28,7 @@ However, it is important that the format defaults are maintained: The first repr
 ![](./flightseats/static/img/images/show_stats.png)
 
 ## Installation
-Please follow the following steps to install ASR:
+Please follow the following steps to install AngStHasenFlights:
 1. clone the repository using the command line command: "git clone https://github.com/prichi99/AngStHasen.git".
 2. open the project-folder "angsthasen/project/seats" of the project in your terminal
 3. install the required dependencies. To do this, just enter the command "pip install -r requirements.txt" in the terminal.
