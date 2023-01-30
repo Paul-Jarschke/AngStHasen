@@ -1,4 +1,4 @@
-## Title: AngStHasenFlights
+## AngStHasenFlights
 
 AngStHasenFlights is an easy-to-use web-based application to book seats on flights and to process and store bookings automatically. 
 This application gives customers the possibility to register, log in, get an overview of reserved and free seats on flights and the possibility to reserve seats.
@@ -28,24 +28,13 @@ However, it is important that the format defaults are maintained: The first repr
 ![](./flightseats/static/img/images/show_stats.png)
 
 ## Installation
+Please make sure you are using a version of Python that is not older than Python 3.8!
+
 Please follow the following steps to install AngStHasenFlights:
 1. clone the repository using the command line command: "git clone https://github.com/prichi99/AngStHasen.git".
 2. open the project-folder "angsthasen/project/seats" of the project in your terminal
 3. install the required dependencies. To do this, just enter the command "pip install -r requirements.txt" in the terminal.
 4. start the project with the command: "python manage.py runserver"
 
-## API reference
-For small projects with a simple enough API, include the reference docs in this README. For medium-sized and larger projects, provide a link to the API reference docs.
-
 ## Tests (optional: only if you have tests)
 Describe and show how to run the tests with code examples.
-
-## License
-Include the project's license. Usually, we suggest MIT or Apache. Ask your supervisor. For example:
-
-Licensed under the Apache License, Version 2.0 (the "License"); you may not use news-please except in compliance with the License. A copy of the License is included in the project, see the file [LICENSE](LICENSE).
-
-Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License
-
-## License of this readme-template (remove this once you replaced this readme-template with your own content)
-This file itself is partially based on [this file](https://gist.github.com/sujinleeme/ec1f50bb0b6081a0adcf9dd84f4e6271).
