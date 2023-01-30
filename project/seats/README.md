@@ -13,16 +13,18 @@ A more academic motivation was to put our python skills into practice in the con
 
 ### User functions
 - Typical user functions register, login, logout and get help from the website are implemented.
-- Users can choose an airline and select and reserve free seats in the overview there
-!(flightseats/static/img/images/book_seat.png)
+- Users can choose an airline and select and reserve free seats in the overview there, see depiction below:
+
+![](./flightseats/static/img/images/book_seat.png)
 
 ### Admin functions:
 - Users with admin rights are shown and granted access to the admin page.
 - Admins (and only admins) can edit and delete users, bookings and flights.
 - Admins can change the seat layout by editing the file "chartIn.txt". 
 However, it is important that the format defaults are maintained: The first representing the headings for the columns representing the seats; the first column representing the rows of seats in the aircraft. Each aircraft has an even number of seats evenly distributed on two sides.
-- Administrators can access and download a statistics page that displays the number and percentage of free and reserved seats, as well as lists of all available and unavailable seats and their number, and all user information (except passwords).
-!(flightseats/static/img/images/show_stats.png)
+- Administrators can access and download a statistics page that displays the number and percentage of free and reserved seats, as well as lists of all available and unavailable seats and their number, and all user information (except passwords), see depiction below:
+
+![](./flightseats/static/img/images/show_stats.png)
 
 ## Installation
 Please follow the following steps to install ASR:
