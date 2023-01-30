@@ -1,12 +1,13 @@
-1	X	B	C	D	E	F
-2	A	B	C	D	X	X
-3	A	B	X	D	E	F
-4	A	X	C	D	E	F
-5	A	B	C	X	E	F
-6	A	B	C	D	E	X
-7	X	B	C	D	E	F
-8	A	X	C	D	E	F
-9	A	B	X	D	E	F
+1	A	B	C	D	E	F
+2	A	B	C	D	E	F
+3	A	B	C	D	E	F
+4	A	B	C	D	E	F
+5	A	B	C	D	E	F
+6	A	B	C	D	E	F
+7	A	B	C	D	E	F
+8	A	B	C	D	E	F
+9	A	B	C	D	E	F
 10	A	B	C	D	E	F
-11	X	B	C	D	E	F
-12	X	X	X	X	X	X
+11	A	B	C	D	E	F
+12	A	B	C	D	E	F
+

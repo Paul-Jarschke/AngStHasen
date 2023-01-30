@@ -1,4 +1,5 @@
 from django import forms
+from django.core.files.uploadedfile import SimpleUploadedFile
 from django.test import RequestFactory, TestCase
 from django.urls import reverse
 from ..admin import SeatAdmin
