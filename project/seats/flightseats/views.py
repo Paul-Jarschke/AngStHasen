@@ -2,10 +2,6 @@
 from django.shortcuts import render
 from .models import Flight, Seats, Book, UserBooking
 import numpy as np
-from django.contrib.admin.views.decorators import staff_member_required
-from django.contrib.auth import get_user_model
-from django.http import HttpResponse
-from django.contrib.auth import get_user_model
 
 
 def home(request):
