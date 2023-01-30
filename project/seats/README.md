@@ -29,7 +29,7 @@ However, it is important that the format defaults are maintained: The first repr
 ## Installation
 Please follow the following steps to install ASR:
 1. clone the repository using the command line command: "git clone https://github.com/prichi99/AngStHasen.git".
-2. open the sub directory of the project inside  "../tree/main/project/seats" of the project in your terminal
+2. open the project-folder "angsthasen/project/seats" of the project in your terminal
 3. install the required dependencies. To do this, just enter the command "pip install -r requirements.txt" in the terminal.
 4. start the project with the command: "python manage.py runserver"
 
@@ -38,14 +38,6 @@ For small projects with a simple enough API, include the reference docs in this 
 
 ## Tests (optional: only if you have tests)
 Describe and show how to run the tests with code examples.
-
-## How to use and extend the project? (maybe)
-Include a step-by-step guide that enables others to use and extend your code for their projects. Whether this section is required and whether it should be part of the `README.md` or a separate file depends on your project. If the **very short** `Code Examples` from above comprehensively cover (despite being concise!) all the major functionality of your project already, this section can be omitted. **If you think that users/developers will need more information than the brief code examples above to fully understand your code, this section is mandatory.** If your project requires significant information on code reuse, place the information into a new `.md` file.
-
-## Results
-If you performed evaluations as part of your project, include your preliminary results that you also show in your final project presentation, e.g., precision, recall, F1 measure and/or figures highlighting what your project does. If applicable, briefly describe the dataset your created or used first before presenting the evaluated use cases and the results.
-
-If you are about to complete your thesis, include the most important findings (precision/recall/F1 measure) and refer to the corresponding pages in your thesis document.
 
 ## License
 Include the project's license. Usually, we suggest MIT or Apache. Ask your supervisor. For example:
