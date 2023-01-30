@@ -41,6 +41,9 @@ Describe and show how to run the tests with code examples.
 
 ## Contributions:
 Leon: statistics area, login/logout integration, base conception, seat reservation/cancellation, depiction of the seats, default accounts, fileread implementation, help page
-Jan: statistics area, login implementation, login/logout integration, navigation bar implementation,
+
+Jan: statistics area, login implementation, login/logout integration, navigation bar implementation
+
 Sönke: starting page, help page, graphics, readme
+
 Paul: refactoring of functions, communications management, quality management and adherence to the PEP 8 Style Guide and best practice guidelines, exhaustive commenting, exhaustive programming of tests
