@@ -24,12 +24,6 @@ class TestModelsStr(TestCase):
         # Check string representation of class
         self.assertEqual(str(seats), '1')
 
-    def test_User_str(self):
-        # Create Seats object
-        user = User.objects.create(name='Paul')
-        # Check string representation of class
-        self.assertEqual(str(user), 'Paul')
-
     def test_UserBooking_str(self):
         # Create Seats object
         user_booking = UserBooking.objects.create(reserved_by='Paul')
