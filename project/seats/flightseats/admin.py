@@ -39,8 +39,8 @@ class SeatAdmin(admin.ModelAdmin):
             f.close()
 
         form = TxtImportForm()
-        data = {"form": form}
-        return render(request, "admin/txt_upload.html", data)
+        context = {"form": form}
+        return render(request, "admin/txt_upload.html", context)
 
 
 admin.site.register(Book, SeatAdmin)
