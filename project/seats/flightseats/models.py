@@ -87,7 +87,7 @@ free_seats = [x for x in all_seats_dummy if x not in booked_seats2]
 free_seats2 = str(free_seats).replace("[", "").replace("]", "").replace("'", "")
 
 # Number of booked seats:
-count_book = len(booked_seats)
+count_book = len(booked_seats2)
 
 # Number of free seats:
 count_free = len(free_seats)
@@ -137,13 +137,13 @@ class EmptyModelAdmin(admin.ModelAdmin):
 
         lines = []
         lines.append(f"All possible seats:\n{all_seats}\n")
-        lines.append(f"Count:{count_all}\n\n\n")
+        lines.append(f"Count: {count_all}\n\n\n")
 
         lines.append(f"Free seats:\n{free_seats2}\n")
-        lines.append(f"Count:{count_free}\n\n\n")
+        lines.append(f"Count: {count_free}\n\n\n")
 
         lines.append(f"Booked seats:\n{booked_seats}\n\n")
-        lines.append(f"Count:{count_free}\n\n\n")
+        lines.append(f"Count: {count_book}\n\n\n")
 
         lines.append(f"Proportion of free seats:\n{ratio_free}\n\n\n")
 
