@@ -13,6 +13,8 @@ class TxtImportForm(forms.Form):
     txt_upload = forms.FileField()
 
 
+# The SeatAdmin class is a custom admin model for the Book model, which adds a URL for a custom view for uploading a .txt file.
+
 class SeatAdmin(admin.ModelAdmin):
 
     def get_urls(self):
@@ -21,6 +23,7 @@ class SeatAdmin(admin.ModelAdmin):
 
         return new_urls + urls
 
+    # The method upload_txt handles the uploaded file and writes its contents to a file named chartIn.txt in the flightseats/data directory.
     def upload_txt(self, request):
         if request.method == "POST":
             txt_file = request.FILES["txt_upload"]
