@@ -1,8 +1,4 @@
-from django.db import models
 from django.contrib import admin
-from django.contrib.admin.actions import delete_selected
-from django.contrib.auth import get_user_model
-from django.contrib.auth.models import User
 from django.db import models
 from django.http import HttpResponse
 from django.contrib.auth import get_user_model
@@ -66,7 +62,50 @@ class Statistics(models.Model):
         verbose_name_plural = "Statistics page"
 
 
+input = open("flightseats/data/chartIn.txt", 'r')
+nrow = len(input.readlines())
+seat_rows = list(map(str, range(nrow + 1)))[1:-1]  # gives string list of 1 up to number of rows
+seat_letters = ['A', 'B', 'C', 'D', 'E', 'F']
+
+all_seats_dummy = []
+for r in seat_rows:
+    for l in seat_letters:
+        all_seats_dummy.append(r + l)
+
+all_seats = str(all_seats_dummy).replace("[", "").replace("]", "").replace("'", "")
+
+# Booked seats list:
+booked_seats = str(list(map(str, Book.objects.all()))).replace("[", "").replace("]", "").replace("'", "")
+
+# Reserved seats list:
+booked_seats2 = list(map(str, Book.objects.all()))
+free_seats = [x for x in all_seats_dummy if x not in booked_seats2]
+free_seats2 = str(free_seats).replace("[", "").replace("]", "").replace("'", "")
+
+# Number of booked seats:
+count_book = len(booked_seats2)
+
+# Number of free seats:
+count_free = len(free_seats)
+
+# Number of all seats:
+count_all = len(all_seats_dummy)
+
+# Ratios of booked/free seats:
+ratio_book = str(round(((count_book / count_all) * 100), 2)) + "%"
+ratio_free = str(round(((count_free / count_all) * 100), 2)) + "%"
+
+# Data of users
+User = get_user_model()
+user_data = User.objects.values_list('username', 'first_name', 'last_name', 'email')
+user_data = list(user_data)
+
+# Number of users
+count_users = len(user_data)
+
+
 class EmptyModelAdmin(admin.ModelAdmin):
+
     def has_add_permission(self, request):
         return False
 
@@ -74,61 +113,6 @@ class EmptyModelAdmin(admin.ModelAdmin):
         return False
 
     def changelist_view(self, request, extra_context=None):
-        # All seats list:
-        input = open("flightseats/data/chartIn.txt", 'r')
-        nrow = len(input.readlines())
-        seat_rows = list(map(str, range(nrow + 1)))[1:-1]  # gives string list of 1 up to number of rows
-        seat_letters = ['A', 'B', 'C', 'D', 'E', 'F']
-
-        global all_seats_dummy
-        global all_seats
-        global free_seats
-        global free_seats2
-        global booked_seats
-        global count_all
-        global count_book
-        global count_free
-        global ratio_book
-        global ratio_free
-        global user_data
-        global count_users
-
-        all_seats_dummy = []
-        for r in seat_rows:
-            for l in seat_letters:
-                all_seats_dummy.append(r + l)
-
-        all_seats = str(all_seats_dummy).replace("[", "").replace("]", "").replace("'", "")
-
-        # Booked seats list:
-        booked_seats = str(list(map(str, Book.objects.all()))).replace("[", "").replace("]", "").replace("'", "")
-
-        # Reserved seats list:
-        booked_seats2 = list(map(str, Book.objects.all()))
-        free_seats = [x for x in all_seats_dummy if x not in booked_seats2]
-        free_seats2 = str(free_seats).replace("[", "").replace("]", "").replace("'", "")
-
-        # Number of booked seats:
-        count_book = len(booked_seats)
-
-        # Number of free seats:
-        count_free = len(free_seats)
-
-        # Number of all seats:
-        count_all = len(all_seats_dummy)
-
-        # Ratios of booked/free seats:
-        ratio_book = str(round(((count_book / count_all) * 100), 2)) + "%"
-        ratio_free = str(round(((count_free / count_all) * 100), 2)) + "%"
-
-        # Data of users
-        User = get_user_model()
-        user_data = User.objects.values_list('username', 'first_name', 'last_name', 'email')
-        user_data = list(user_data)
-
-        # Number of users
-        count_users = len(user_data)
-
         content = {
             'all_seats': all_seats,
             'free_seats': free_seats2,
@@ -143,27 +127,30 @@ class EmptyModelAdmin(admin.ModelAdmin):
         }
         return super().changelist_view(request, extra_context=content)
 
+    def stat_download(self):
+        response = HttpResponse(content_type='text/plain')
+        response['Content-Disposition'] = 'attachment; filename= flight_statistic.txt'
 
-def stat_download(request):
-    global response
-    response = HttpResponse(content_type='text/plain')
-    response['Content-Disposition'] = 'attachment; filename= flight_statistic.txt'
+        lines = []
+        lines.append(f"All possible seats:\n{all_seats}\n")
+        lines.append(f"Count: {count_all}\n\n\n")
 
-    lines = []
-    lines.append(f"All possible seats:\n")
-    # lines.append(all_seats)
-    lines.append(f"\n => Count:")
-    lines.append(count_all)
+        lines.append(f"Free seats:\n{free_seats2}\n")
+        lines.append(f"Count: {count_free}\n\n\n")
 
-    for x in user_data:
-        for y in x:
-            lines.append(f'{y}\n')
-        lines.append(f'\n')
+        lines.append(f"Booked seats:\n{booked_seats}\n")
+        lines.append(f"Count: {count_book}\n\n\n")
 
-    lines.append(f'{ratio_free}\n')
-    lines.append(f'{ratio_book}\n')
-    lines.append(f'{free_seats}\n')
-    lines.append(f'{booked_seats}\n')
+        lines.append(f"Proportion of free seats:\n{ratio_free}\n\n\n")
 
-    response.writelines(lines)
-    return response
+        lines.append(f"Proportion of booked seats:\n{ratio_book}\n\n\n")
+
+        lines.append(f"User list:\n")
+        for user in user_data:
+            lines.append(f'Username: {user[0]}\n')
+            lines.append(f'Full name: {user[1]} {user[2]}\n')
+            lines.append(f'E-Mail: {user[3]}\n')
+            lines.append(f'\n')
+
+        response.writelines(lines)
+        return response
