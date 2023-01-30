@@ -142,7 +142,7 @@ class EmptyModelAdmin(admin.ModelAdmin):
         lines.append(f"Free seats:\n{free_seats2}\n")
         lines.append(f"Count: {count_free}\n\n\n")
 
-        lines.append(f"Booked seats:\n{booked_seats}\n\n")
+        lines.append(f"Booked seats:\n{booked_seats}\n")
         lines.append(f"Count: {count_book}\n\n\n")
 
         lines.append(f"Proportion of free seats:\n{ratio_free}\n\n\n")
