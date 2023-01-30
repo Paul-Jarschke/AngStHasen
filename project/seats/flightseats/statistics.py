@@ -3,6 +3,8 @@ from django.contrib.auth import get_user_model
 
 input = open("flightseats/data/chartIn.txt", 'r')
 nrow = len(input.readlines())
+
+# Creating all seats list:
 seat_rows = list(map(str, range(nrow + 1)))[1:-1]  # gives string list of 1 up to number of rows
 seat_letters = ['A', 'B', 'C', 'D', 'E', 'F']
 
