@@ -1,18 +1,3 @@
-#  How to use this file
-We ask all students working on projects and theses with us to 
-* hand in their source code and
-* provide a documentation for their project. 
-
-Source code (including the code architecture and comments) has to adhere to our [developer guidelines](https://isgroup.atlassian.net/wiki/spaces/STUD/pages/1409184/Developer+Guidelines). The project documentation consists of one or more a `README.md` files that cover the topics listed hereafter. Thus, copy this file's content to your project and use it as a template to write the documentation for your project.
-
-Aside from using this template, also check out the following sources for examples and guidelines on how to write a good `README.md` for your project. Note that the exemplary projects do not follow this template completely (either because they were created by third-parties or before we consolidated all the information into this template). They are still good examples of high-quality `README.md` files.
-* [Example: news-please](https://github.com/fhamborg/news-please/blob/master/README.md)
-* [Article: How to write a good readme](https://bulldogjob.com/news/449-how-to-write-a-good-readme-for-your-github-project)
-* [Article: A beginners guide to writing a good readme](https://medium.com/@meakaakka/a-beginners-guide-to-writing-a-kickass-readme-7ac01da88ab3)
-
-Useful tools:
-* [Recordit: record your screen and save it to a GIF](http://recordit.co/)
----
 ## Airline Seat Reservation - ASR
 ASR is an easy-to-use web-based application to book seats on flights and to process and store bookings automatically. 
 This application gives customers the possibility to register, log in, get an overview of reserved and free seats on flights and the possibility to reserve seats.
@@ -38,9 +23,6 @@ A more academic motivation was to put our python skills into practice in the con
 However, it is important that the format defaults are maintained: The first representing the headings for the columns representing the seats; the first column representing the rows of seats in the aircraft. Each aircraft has an even number of seats evenly distributed on two sides.
 - Administrators can access and download a statistics page that displays the number and percentage of free and reserved seats, as well as lists of all available and unavailable seats and their number, and all user information (except passwords).
 (see picture)
-
-## Code examples
-Include **very short code examples** that show what the project does as **concisely** as possible. Developers should be able to figure out **how** your project solves their problem by looking at the code examples. Make sure the API you are showing off is intuitive, and that your code is short and concise. See the [news-please project](https://github.com/fhamborg/news-please/blob/master/README.md#use-within-your-own-code-as-a-library) for example.
 
 ## Installation
 Please follow the following steps to install ASR:
