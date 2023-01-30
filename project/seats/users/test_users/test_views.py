@@ -27,7 +27,7 @@ class RegisterViewTest(TestCase):
 
         # Create POST request with valid data
         request = self.factory.post(reverse('register'), {
-            'username': 'testuser',
+            'username': 'newuser',
             'first_name': 'Test',
             'last_name': 'User',
             'email': 'testuser@example.com',
@@ -51,7 +51,7 @@ class RegisterViewTest(TestCase):
         # Check if message object has a message
         self.assertEqual(len(messages), 1)
         # Check if correct message with username is prompted
-        self.assertEqual(str(messages._queued_messages[0]), 'Account created for testuser')
+        self.assertEqual(str(messages._queued_messages[0]), 'Account created for newuser')
 
     def test_register_view_invalid_post(self):
         """
