@@ -13,6 +13,7 @@ class SeatAdminTestCase(TestCase):
         # Create a RequestFactory instance
         factory = RequestFactory()
 
+        # Define file content
         file_input_bytes = b'1\tA\tB\tC\tD\tE\tF\n'\
                            b'2\tA\tB\tC\tD\tE\tF\n'\
                            b'3\tA\tB\tC\tD\tE\tF\n'\
