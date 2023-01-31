@@ -26,7 +26,7 @@ Please make sure you are using a version of Python that is not older than Python
 Please follow the following steps to install the AngStHasenFlights Django environment:
 
 1. Clone the repository using the command line command: "git clone https://github.com/prichi99/AngStHasen.git".
-2. Open the project-folder "angsthasen/project/seats" of the project in your terminal with the cd command
+2. Open the project-folder "AngStHasen/project/seats" of the project in your terminal with the cd command
 3. Install the required dependencies. To do this, just enter the command "pip install -r requirements.txt" in the
    terminal.
 4. Start the project with the command: "python manage.py runserver"
@@ -95,9 +95,18 @@ If you did everything correctly, your terminal should return this:
 
 ![](project/seats/flightseats/static/img/images/successful_test_run.png)
 
+You can also run the different test independently, by selecting the desired class/method and running it manually.
+There are two different folders that contain all test files and can be found under the following directories:
+
+1) "AngStHasen/project/seats/flightseats/test_flightseats"
+   - 
+
+
+2)
+
 ## Contributions:
 
-Leon:
+Leon Löppert:
 
 - Statistics (Setup/Formatting/Download button)
 - Login/Logout integration
@@ -111,7 +120,7 @@ Leon:
 - Refactoring html files
 - Header/Navigation bar improvements 
 
-Jan:
+Jan Parlesak:
 
 - Django framework setup
 - Statistics download http request
@@ -120,7 +129,7 @@ Jan:
 - Navigation bar implementation
 - ChartIn upload
 
-Sönke:
+Sönke Hänel:
 
 - Home page
 - Help page
@@ -128,7 +137,7 @@ Sönke:
 - Logo design
 - Readme 
 
-Paul:
+Paul Jarschke:
 
 - Booking function (reservation/cancellation)
 - Testing
