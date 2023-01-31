@@ -1,4 +1,4 @@
-# Applicaton configuration for users
+# Applicaton configuration for custom users
 from django.apps import AppConfig
 
 
