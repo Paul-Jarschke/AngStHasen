@@ -19,7 +19,7 @@ A more academic motivation was to put our python skills into practice in the con
 - Easy setup and use after installation
 - Maintainability and extensibility due to modular MVT scheme of django framework
 
-### Template Users
+### Predefined custom users
 
 - This application features sample users out of the box **which should be deleted before the software is taken into
   daily business!!**
@@ -42,10 +42,15 @@ A more academic motivation was to put our python skills into practice in the con
 
 - Users with admin rights are shown and granted access to the admin page.
 - Admins (and only admins) can edit and delete users, bookings and flights.
-- Admins can change the seat layout by editing the file "chartIn.txt".
-  However, it is important that the format defaults are maintained: The first representing the headings for the columns
-  representing the seats; the first column representing the rows of seats in the aircraft. Each aircraft has an even
-  number of seats evenly distributed on two sides.
+- Admins can change the seat layout by uploading a new "chartIn.txt" file.
+  However, it is important that the format defaults are maintained: The first representing the headings for the
+  columns
+  representing the seats; the first column representing the rows of seats in the aircraft. Please make sure that you
+  include the six seat letters from A to F only.\
+  Example:\
+  1 A B C D E F \
+  2 A B C D E F \
+  3 A B C D E F
 - Administrators can access and download a statistics page that displays the number and percentage of free and reserved
   seats, as well as lists of all available and unavailable seats and their number, and all user information (except
   passwords), see depiction below:
@@ -68,9 +73,9 @@ Please follow the following steps to install the AngStHasenFlights Django enviro
 
 1. If you do not use our database on the first runup, you need to perform the following commands in the respective order
    to get the server running:
-   => "python manage.py makemigrations"
-   => "python manage.py migrate"
-   => "python manage.py runserver"
+    - python manage.py makemigrations
+    - python manage.py migrate
+    - python manage.py runserver
 2. When there are further database errors, delete the database and all migration files (except the __init__.py) and
    retry step 1.
 
