@@ -219,7 +219,7 @@ Sönke Hänel:
 
 Paul Jarschke:
 
-- Booking function (reservation/cancellation)
+- Booking function (refactoring, commenting, and improving reservation/cancellation system)
 - Implementing tests
 - Refactoring/commenting
 - Code style
@@ -242,4 +242,7 @@ at: https://tldrlegal.com/license/apache-license-2.0-(apache-2.0)#fulltext
 
 Göttingen, 31.01.23
 
-Leon Löppert, Jan Parlesak, Sönke Hänel, Paul Jarschke
+Leon Löppert\
+Jan Parlesak\
+Sönke Hänel\
+Paul Jarschke
