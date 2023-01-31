@@ -43,4 +43,5 @@ class SeatAdminTestCase(TestCase):
             f.close()
 
         # Check for equal content
+        # We have to add a new line to content, otherwise the content will always have one more empty line
         self.assertEqual(content, file_input_bytes.decode('utf-8') + "\n")
