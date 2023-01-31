@@ -9,10 +9,11 @@ from django.shortcuts import render
 from django import forms
 from django.contrib.auth.models import Group
 
+# Admin Site Header
 admin.site.site_header = "AngStHasenFlights - Admin Terminal"
 
 
-# using django-forms for a File-upload-field
+# using django-forms for a ChartIn-file-upload-field
 class TxtImportForm(forms.Form):
     txt_upload = forms.FileField()
 
