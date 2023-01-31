@@ -19,44 +19,6 @@ A more academic motivation was to put our python skills into practice in the con
 - Easy setup and use after installation
 - Maintainability and extensibility due to modular MVT scheme of django framework
 
-### Predefined custom users
-
-- This application features sample users out of the box **which should be deleted before the software is taken into
-  daily business!!**
-
-| Username     | password              | admin |
-|--------------|-----------------------|-------|
-| LeonHase     | notafraidofflying1999 | yes   |
-| Janniboy_xD  | ichmagflugzeuge_x3    | no    |
-| SönkFlug     | appliedstatisticsftw  | no    |
-| PaulDerGroße | lecker!paulanerspezi  | no    |
-
-### User functions
-
-- Typical user functions register, login, logout and get help from the website are implemented.
-- Users can choose an airline and select and reserve free seats in the overview there, see depiction below:
-
-![](project/seats/flightseats/static/img/images/book_seat.png)
-
-### Admin functions:
-
-- Users with admin rights are shown and granted access to the admin page.
-- Admins (and only admins) can edit and delete users, bookings and flights.
-- Admins can change the seat layout by uploading a new "chartIn.txt" file.
-  However, it is important that the format defaults are maintained: The first representing the headings for the
-  columns
-  representing the seats; the first column representing the rows of seats in the aircraft. Please make sure that you
-  include the six seat letters from A to F only.\
-  Example:\
-  1 A B C D E F \
-  2 A B C D E F \
-  3 A B C D E F
-- Administrators can access and download a statistics page that displays the number and percentage of free and reserved
-  seats, as well as lists of all available and unavailable seats and their number, and all user information (except
-  passwords), see depiction below:
-
-![](project/seats/flightseats/static/img/images/show_stats.png)
-
 ## Installation
 
 Please make sure you are using a version of Python that is not older than Python 3.8!
@@ -79,37 +41,101 @@ Please follow the following steps to install the AngStHasenFlights Django enviro
 2. When there are further database errors, delete the database and all migration files (except the __init__.py) and
    retry step 1.
 
+### Predefined custom users
+
+- This application features sample users out of the box **which should be deleted before the software is taken into
+  daily business!!**
+
+| Username     | password              | admin |
+|--------------|-----------------------|-------|
+| LeonHase     | notafraidofflying1999 | yes   |
+| Janniboy_xD  | ichmagflugzeuge_x3    | no    |
+| SönkFlug     | appliedstatisticsftw  | no    |
+| PaulDerGroße | lecker!paulanerspezi  | no    |
+
+### User functions
+
+- Typical user functions like register, login, logout and a help page are implemented on the website.
+- In our demo version users can only select one flight (HAM to ARN). For this flight they can reserve free seats in the
+  respective page, see depiction below:
+
+![](project/seats/flightseats/static/img/images/book_seat.png)
+
+### Admin functions:
+
+- Users with admin rights are shown and granted access to the admin page.
+- Admins (and only admins) can edit and delete users, bookings and flights.
+- Admins can change the seat layout by uploading a new "chartIn.txt" file.
+  However, it is important that the format defaults are maintained: The first representing the headings for the
+  columns
+  representing the seats; the first column representing the rows of seats in the aircraft. Please make sure that you
+  include the six seat letters from A to F only.\
+  Example:\
+  1 A B C D E F \
+  2 A B C D E F \
+  3 A B C D E F
+- Administrators can access and download a statistics page that displays the number and proportion of free and reserved
+  seats, as well as lists of all available and unavailable seats. Further, all user information (except
+  passwords) are shown. The information can be downloaded to a text file. See depiction below:
+
+![](project/seats/flightseats/static/img/images/show_stats.png)
+
 ## Tests (optional: only if you have tests)
 
 Describe and show how to run the tests with code examples.
 
 ## Contributions:
 
-Leon: statistics area setup/text/download button, login/logout integration, base conception, seat
-reservation/cancellation (booking function), representation of booked/free seats on the webpage inclusive colouring +
-synchronization with database,
-setting up default accounts and flights, ChartIn fileread implementation into booking function, help page setup,
-integration of conditional header and homepage greeting if logged in, everything in Javascript (especially SweetAlert
-Notifications), logout page
-with timer, header and navigation bar
-improvements
+Leon:
 
-Jan: setting up the whole Django framework, statistics area download http request, login/logout and user model
-implementation, navigation bar
-implementation, ChartIn fileread
-implementation into admin page
+- Statistics (Setup/Formatting/Download button)
+- Login/Logout integration
+- Booking function (reservation/cancellation)
+- Custom data setup (Users, Flights)
+- Seat Display 
+- ChartIn fileread
+- Conditional page header after login
+- Javascript (esp. SweetAlert notifications for booking, logout)
+- Logout
+- Refactoring html files
+- Header/Navigation bar improvements 
 
-Sönke: starting page, help page, graphics, readme
+Jan:
 
-Paul: refactoring of booking function, communications management, quality management and adherence to the PEP 8 Style
-Guide and
-best practice guidelines, exhaustive commenting, exhaustive programming of tests
+- setting up the whole Django framework
+- statistics area download http request
+- login/logout and user model implementation
+- navigation bar implementation
+- ChartIn fileread implementation into admin page
+
+- Django framework setup
+- Statistics download http request
+- Login/Logout
+- User model implementation
+- Navigation bar implementation
+- ChartIn upload
+
+Sönke:
+
+- Home page
+- Help page
+- Webpage design
+- Logo design
+- Readme 
+
+Paul:
+
+- Booking function (reservation/cancellation)
+- Testing
+- Refactoring
+- Code style
+
 
 ## License Agreement
 
 ### Power of Attorney Statement
 
-I, the signee, am working on the project ''AngStHasenFlights'' under the supervision of Prof. Dr. Bela Gipp. The
+I, the signee, am working on the project 'AngStHasenFlights' under the supervision of Prof. Dr. Bela Gipp. The
 specified project involves the creation of software and documentation that shall be placed under an open source license.
 
 I hereby grant Prof. Dr. Bela Gipp full authorization to perform any legal acts necessary, including making declarations
@@ -120,8 +146,6 @@ open source license. I am aware that this will permanently exclude any commercia
 I hereby confirm that I have read and understood the Apache Licence 2.0
 at: https://tldrlegal.com/license/apache-license-2.0-(apache-2.0)#fulltext
 
-Göttingen, 30.01.23
+Göttingen, 31.01.23
 
 Leon Löppert, Jan Parlesak, Sönke Hänel, Paul Jarschke
-
-Signature
