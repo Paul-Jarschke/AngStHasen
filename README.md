@@ -29,7 +29,7 @@ A more academic motivation was to put our python skills into practice in the con
 | LeonHase     | notafraidofflying1999 | yes   |
 | Janniboy_xD  | ichmagflugzeuge_x3    | no    |
 | SönkFlug     | appliedstatisticsftw  | no    |
-| PaulderGroße | lecker!paulanerspezi  | no    |
+| PaulDerGroße | lecker!paulanerspezi  | no    |
 
 ### User functions
 
