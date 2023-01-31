@@ -24,12 +24,12 @@ A more academic motivation was to put our python skills into practice in the con
 - This application features sample users out of the box **which should be deleted before the software is taken into
   daily business!!**
 
-| Username     | password             | admin |
-|--------------|----------------------|-------|
-| LeonHase     | notafraidofflying    | yes   |
-| Janniboy_xD  | ichmagflugzeuge_x3   | no    |
-| SönkFlug     | appliedstatisticsftw | no    |
-| PaulderGroße | lecker!paulanerspezi | no    |
+| Username     | password              | admin |
+|--------------|-----------------------|-------|
+| LeonHase     | notafraidofflying1999 | yes   |
+| Janniboy_xD  | ichmagflugzeuge_x3    | no    |
+| SönkFlug     | appliedstatisticsftw  | no    |
+| PaulderGroße | lecker!paulanerspezi  | no    |
 
 ### User functions
 
