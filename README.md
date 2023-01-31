@@ -100,6 +100,7 @@ Leon:
 - integration of conditional header and homepage greeting if logged in
 - everything in Javascript (especially SweetAlert notifications for rejected and successful bookings or logout)
 - logout page with timer
+- html design adjustments on each page
 - header and navigation bar improvements
 
 Jan:
