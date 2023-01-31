@@ -27,7 +27,7 @@ A more academic motivation was to put our python skills into practice in the con
 | Username     | password             | admin |
 |--------------|----------------------|-------|
 | LeonHase     | notafraidofflying    | yes   |
-| Jannyboy_xD  | ichmagflugzeuge_x3   | no    |
+| Janniboy_xD  | ichmagflugzeuge_x3   | no    |
 | SönkFlug     | appliedstatisticsftw | no    |
 | PaulderGroße | lecker!paulanerspezi | no    |
 
