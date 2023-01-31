@@ -110,8 +110,6 @@ In the following we listed both folders with their corresponding tests.
 - Forms, URLs, Views (mostly testing the registration in various ways)
 
 
-2)
-
 ## Contributions:
 
 Leon Löppert:
