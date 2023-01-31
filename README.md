@@ -65,12 +65,14 @@ Please follow the following steps to install the AngStHasenFlights Django enviro
 
 - Users with admin rights are shown and granted access to the admin page.
 - Admins (and only admins) can edit and delete users, bookings and flights.
-- Admins can change the seat layout by uploading a new "chartIn.txt" file. Therefore, you have to be logged in as an admin (LeonHase) and access the admin page and access the Books panel.
+- Admins can change the seat layout by uploading a new "chartIn.txt" file. Therefore, you have to be logged in as an
+  admin (LeonHase) and access the admin page and access the Books panel.
 
 ![](project/seats/flightseats/static/img/images/new_chartIn_upload.png)
 
 - However, it is important that the format defaults are maintained: The first representing the headings for the
-  columns representing the seats; the first column representing the rows of seats in the aircraft. Please make sure that you
+  columns representing the seats; the first column representing the rows of seats in the aircraft. Please make sure that
+  you
   include the six seat letters from A to F only.\
   Example:\
   1 A B C D E F \
@@ -84,8 +86,8 @@ Please follow the following steps to install the AngStHasenFlights Django enviro
 
 ## Tests
 
-For our application, we included unittests for user-inputs. This applies to the registration of new users, the login of 
-valid users, the seat reservation and the upload of a seat-layout (chartIn.txt). Additionally, we included many other 
+For our application, we included unittests for user-inputs. This applies to the registration of new users, the login of
+valid users, the seat reservation and the upload of a seat-layout (chartIn.txt). Additionally, we included many other
 unittests to test the functionality of our models, urls, forms and views that sum up to a total number of 35 tests.
 
 Running all test at once is fairly simple:
@@ -103,21 +105,24 @@ There are two different folders that contain all test files and can be found und
 In the following we listed both folders with their corresponding tests.
 
 "AngStHasen/project/seats/flightseats/test_flightseats"
+
 - Booking function
 - Txt import
 - Login
 - Models, URLs, Views
 
 "AngStHasen/project/seats/users/test_users"
-- Forms, URLs, Views (mostly testing the registration in various ways)
 
+- Forms, URLs, Views (mostly testing the registration in various ways)
 
 ## Contributions:
 
 Leon Löppert:
 
 - Login/Logout integration (esp. conditional header and text on home after login, logout page)
-- Booking function (reservation/cancellation)
+- Setup of blank pages (e.g., help and booking page)
+- Booking function (idea, reservation/cancellation implementation, form submission conditions and rejections, link to
+  database)
 - Custom data setup (Users, Flights)
 - ChartIn fileread and overwrite
 - Seat display with the help of ChartIn_reservations.txt
@@ -138,16 +143,16 @@ Sönke Hänel:
 
 - Home page
 - Help page
-- Webpage design
-- Logo design
+- Webpage design / Logo
 - Readme
 
 Paul Jarschke:
 
 - Booking function (reservation/cancellation)
-- Testing
+- Implementing tests
 - Refactoring/commenting
 - Code style
+- Readme
 
 ## License Agreement
 
