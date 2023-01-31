@@ -65,8 +65,11 @@ Please follow the following steps to install the AngStHasenFlights Django enviro
 
 - Users with admin rights are shown and granted access to the admin page.
 - Admins (and only admins) can edit and delete users, bookings and flights.
-- Admins can change the seat layout by uploading a new "chartIn.txt" file. Therefore, you have to be logged in as an admin (LeonHase) and access the admin page and access the Books panel. You can use this URL: http://127.0.0.1:8000/admin/flightseats/book/
-  However, it is important that the format defaults are maintained: The first representing the headings for the
+- Admins can change the seat layout by uploading a new "chartIn.txt" file. Therefore, you have to be logged in as an admin (LeonHase) and access the admin page and access the Books panel.
+
+
+
+- However, it is important that the format defaults are maintained: The first representing the headings for the
   columns representing the seats; the first column representing the rows of seats in the aircraft. Please make sure that you
   include the six seat letters from A to F only.\
   Example:\
