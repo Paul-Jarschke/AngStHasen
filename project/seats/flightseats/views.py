@@ -1,7 +1,8 @@
 # This file defines the general functionality of the website itself. Combines python objects with html files.
 from django.shortcuts import render
-from .models import Flight, Seats, Book, UserBooking
+from .models import Flight, Seats, Book
 import numpy as np
+from datetime import datetime as dt
 
 
 def home(request):
@@ -20,6 +21,59 @@ def home(request):
 
 
 def flights(request):
+    # Create custom flights for our DB
+    # if condition is True:  # guarantee that we have at least four custom flights in our DB
+    if len(Flight.objects.all()) < 4:  # guarantee that we have at least four custom flights in our DB
+        Flight.objects.all().delete()
+
+        # From Hamburg to Arlanda/Stockholm
+        Flight.objects.create(
+            year=2023,
+            month=10,
+            day=22,
+            airline='Lufthansa',
+            flight_number=1954,
+            origin_airport='HAM',
+            dest_airport='ARN',
+            departure='12:49'
+        )
+
+        # From Berlin to New York
+        Flight.objects.create(
+            year=2023,
+            month=3,
+            day=1,
+            airline='Lufthansa',
+            flight_number=982,
+            origin_airport='BER',
+            dest_airport='JFK',
+            departure='09:10'
+        )
+
+        # From Frankfurt to Dubai
+        Flight.objects.create(
+            year=2023,
+            month=8,
+            day=12,
+            airline='Emirates',
+            flight_number=1044,
+            origin_airport='FRA',
+            dest_airport='DXB',
+            departure='20:22'
+        )
+
+        # From Nuremberg to Palma de Mallorca
+        Flight.objects.create(
+            year=2023,
+            month=4,
+            day=24,
+            airline='RYANAIR',
+            flight_number=121,
+            origin_airport='NUE',
+            dest_airport='PMI',
+            departure='14:12'
+        )
+
     context = {
         'flights_bookable': Flight.objects.all()[0:1],  # first object is clickable/bookable
         'flights_rest': Flight.objects.all()[1:],  # bookable
@@ -63,10 +117,9 @@ def booking(request):
             seat_letter = request.POST.get('seatletter')
             if (seat_choice_row in row_list) and (seat_letter in ['A', 'B', 'C', 'D', 'E', 'F']) and (
                     seat_choice_row + seat_letter) not in booked_seats:
-                book = Book(seat_choice=seat_choice_row + seat_letter)
+                book = Book(seat_choice=seat_choice_row + seat_letter, reserved_by=request.user,
+                            booking_time=dt.today().strftime('%Y-%m-%d %H:%M:%S'))
                 book.save()
-                reservations = UserBooking(seat_choice=seat_choice_row + seat_letter, reserved_by=request.user)
-                reservations.save()
     else:
         auth_ind = "False"
 

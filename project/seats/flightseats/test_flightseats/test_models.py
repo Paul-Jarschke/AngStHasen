@@ -1,5 +1,5 @@
 from django.test import TestCase
-from ..models import Flight, Book, Seats, User, UserBooking, Statistics
+from ..models import Flight, Book, Seats, UserBooking, Statistics
 
 
 class TestModelsStr(TestCase):
