@@ -108,24 +108,21 @@ There are two different folders that contain all test files and can be found und
 
 Leon Löppert:
 
-- Statistics (Setup/Formatting/Download button)
-- Login/Logout integration
+- Login/Logout integration (esp. conditional header and text on home after login, logout page)
 - Booking function (reservation/cancellation)
 - Custom data setup (Users, Flights)
-- Seat Display 
-- ChartIn fileread
-- Conditional page header after login
+- ChartIn fileread and overwrite
+- Seat display with the help of ChartIn_reservations.txt
 - Javascript (esp. SweetAlert notifications for booking, logout)
-- Logout
-- Refactoring html files
-- Header/Navigation bar improvements 
+- Refactoring html files/Webpage design/Header/Navigation bar improvements
+- Statistics (setup/Formatting/Download button)
 
 Jan Parlesak:
 
-- Django framework setup
+- Django framework and project setup
 - Statistics download http request
-- Login/Logout
-- User model implementation
+- Login/logout/registration
+- User, Flight, and Book model implementation
 - Navigation bar implementation
 - ChartIn upload
 
@@ -135,15 +132,14 @@ Sönke Hänel:
 - Help page
 - Webpage design
 - Logo design
-- Readme 
+- Readme
 
 Paul Jarschke:
 
 - Booking function (reservation/cancellation)
 - Testing
-- Refactoring
+- Refactoring/commenting
 - Code style
-
 
 ## License Agreement
 
