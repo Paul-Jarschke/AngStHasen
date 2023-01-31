@@ -1,10 +1,12 @@
-# the models define the structure of the database
+# The models.py defines the structure and tables of the database
+# Defines our django models "Flight", "Book", and "Statistics"
 
 from django.contrib import admin
 from django.db import models
 from django.http import HttpResponse
 
 
+# Contains information about the flights
 class Flight(models.Model):
     year = models.IntegerField(default=0)
     month = models.IntegerField(default=0)
@@ -19,6 +21,7 @@ class Flight(models.Model):
         return self.airline
 
 
+# Contains information about a booking, such as the seat choice, the person who made the reservation, and the booking time.
 class Book(models.Model):
     seat_choice = models.CharField(max_length=30, default="none", unique=True)
     reserved_by = models.CharField(max_length=30, default="none")
@@ -28,9 +31,8 @@ class Book(models.Model):
         return self.seat_choice
 
 
+# Contains information about all the seats on a flight. Information depending on ChartIn.txt
 class Seats(models.Model):
-    # booked = models.BooleanField()
-    # update datasets
     column_row_number = models.CharField(max_length=250, default="1")
     column_a = models.CharField(max_length=250, default="A")
     column_b = models.CharField(max_length=250, default="B")
@@ -43,6 +45,7 @@ class Seats(models.Model):
         return self.column_row_number
 
 
+# Pseudo model for statistics page. No variables in table.
 class Statistics(models.Model):
     class Meta:
         verbose_name_plural = "Statistics page"

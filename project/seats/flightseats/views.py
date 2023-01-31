@@ -126,6 +126,7 @@ def booking(request):
 
     # Delete previous seat entries and create new ones
     Seats.objects.all().delete()
+    # Create database of available seats depending on ChartIn.txt
     for i in range(len(seat_data)):
         Seats.objects.create(
             column_row_number=seat_data[i][0],
