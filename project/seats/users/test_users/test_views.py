@@ -1,14 +1,12 @@
-from django.test import RequestFactory, TestCase
-from django.urls import reverse
 from django.contrib.messages.storage.fallback import FallbackStorage
 from django.contrib.auth.models import User
+from django.test import RequestFactory, TestCase
+from django.urls import reverse
 from ..views import register
 
 
 class RegisterViewTest(TestCase):
-    """
-        This class is used to test the registration procedure.
-    """
+    """This class tests the registration view."""
 
     def setUp(self):
         # Create request factory object to create test requests
@@ -21,9 +19,7 @@ class RegisterViewTest(TestCase):
         )
 
     def test_register_view_valid_post(self):
-        """
-        This method tests the view's behavior when a valid POST request is made to the view.
-        """
+        """This method tests the view's behavior when a valid POST request is made to the view."""
 
         # Create POST request with valid data
         request = self.factory.post(reverse('register'), {
@@ -54,16 +50,16 @@ class RegisterViewTest(TestCase):
         self.assertEqual(str(messages._queued_messages[0]), 'Account created for newuser')
 
     def test_register_view_invalid_post(self):
-        """
-        This method tests the view's behavior when an invalid POST request is made to the view.
-        """
+        """This method tests the view's behavior when an invalid POST request is made to the view."""
 
         # Create POST request with invalid data (username is missing)
         request = self.factory.post(reverse('register'), {
             'username': '',
-            'email': 'newuser@example.com',
-            'password1': 'newpass123',
-            'password2': 'newpass123',
+            'first_name': 'Test',
+            'last_name': 'User',
+            'email': 'testuser@example.com',
+            'password1': 'y`3jk^+PHNm5PSAA',
+            'password2': 'y`3jk^+PHNm5PSAA'
         })
 
         # Set request user and session attribute
@@ -83,9 +79,7 @@ class RegisterViewTest(TestCase):
         self.assertEqual(len(messages), 0)
 
     def test_register_view_get_request(self):
-        """
-        This method tests the view's behavior when a GET request is made to the view.
-        """
+        """This method tests the view's behavior when a GET request is made to the view."""
 
         # Create GET request using factory
         request = self.factory.get(reverse('register'))
