@@ -140,7 +140,7 @@ open source license. I am aware that this will permanently exclude any commercia
 I hereby confirm that I have read and understood the Apache Licence 2.0
 at: https://tldrlegal.com/license/apache-license-2.0-(apache-2.0)#fulltext
 
-Göttingen, 30.01.23
+Göttingen, 31.01.23
 
 Leon Löppert, Jan Parlesak, Sönke Hänel, Paul Jarschke
 
