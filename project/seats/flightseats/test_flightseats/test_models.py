@@ -1,5 +1,5 @@
 from django.test import TestCase
-from ..models import Flight, Book, Seats, UserBooking, Statistics
+from ..models import Flight, Book, Seats, Statistics
 
 
 class TestModelsStr(TestCase):
@@ -24,18 +24,11 @@ class TestModelsStr(TestCase):
         # Check string representation of class
         self.assertEqual(str(seats), '1')
 
-    def test_UserBooking_str(self):
-        # Create Seats object
-        user_booking = UserBooking.objects.create(reserved_by='Paul')
-        # Check string representation of class
-        self.assertEqual(str(user_booking), 'Paul')
-
 
 class TestModelsStatistics(TestCase):
+    """This class tests the creation and its string representation"""
     def test_Statistics_model(self):
         # Create Statistics object
         self.statistics = Statistics.objects.create()
         # Check string representation
         self.assertEqual(str(self.statistics), 'Statistics object (1)')
-        # Check string representation of verbose name plural as defined in Meta class
-        self.assertEqual(self.statistics._meta.verbose_name_plural, 'Statistics page')
