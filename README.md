@@ -80,14 +80,24 @@ Describe and show how to run the tests with code examples.
 
 ## Contributions:
 
-Leon: statistics area, login/logout integration, base conception, seat reservation/cancellation, depiction of the seats,
-default accounts, fileread implementation, help page
+Leon: statistics area setup/text/download button, login/logout integration, base conception, seat
+reservation/cancellation (booking function), representation of booked/free seats on the webpage inclusive colouring +
+synchronization with database,
+setting up default accounts and flights, ChartIn fileread implementation into booking function, help page setup,
+integration of conditional header and homepage greeting if logged in, everything in Javascript (especially SweetAlert
+Notifications), logout page
+with timer, header and navigation bar
+improvements
 
-Jan: statistics area, login implementation, login/logout integration, navigation bar implementation
+Jan: setting up the whole Django framework, statistics area download http request, login/logout and user model
+implementation, navigation bar
+implementation, ChartIn fileread
+implementation into admin page
 
 Sönke: starting page, help page, graphics, readme
 
-Paul: refactoring of functions, communications management, quality management and adherence to the PEP 8 Style Guide and
+Paul: refactoring of booking function, communications management, quality management and adherence to the PEP 8 Style
+Guide and
 best practice guidelines, exhaustive commenting, exhaustive programming of tests
 
 ## License Agreement
