@@ -1,6 +1,4 @@
-# file registers pages to the admin page and defines every functionality needed on the admin page
-
-
+# This file registers pages to the admin page and defines every functionality needed on the admin page
 from django.contrib import admin
 from django.urls import path
 from .models import Flight, Book, Statistics, EmptyModelAdmin
