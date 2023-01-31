@@ -19,6 +19,8 @@ class Flight(models.Model):
 
 class Book(models.Model):
     seat_choice = models.CharField(max_length=30, default="none", unique=True)
+    reserved_by = models.CharField(max_length=30, default="none")
+    booking_time = models.CharField(max_length=30, default="none")
 
     def __str__(self):
         return self.seat_choice
@@ -39,24 +41,12 @@ class Seats(models.Model):
         return self.column_row_number
 
 
-class UserBooking(models.Model):
-    seat_choice = models.CharField(max_length=30, default="none", unique=True)
-    reserved_by = models.CharField(max_length=30, default="none")
-
-    def __str__(self):
-        return self.reserved_by
-
-
-
-
-
 class Statistics(models.Model):
     class Meta:
         verbose_name_plural = "Statistics page"
 
 
 class EmptyModelAdmin(admin.ModelAdmin):
-
 
     def has_add_permission(self, request):
         return False
@@ -65,8 +55,10 @@ class EmptyModelAdmin(admin.ModelAdmin):
         return False
 
     def changelist_view(self, request, extra_context=None):
-        from .statistics import all_seats, free_seats2, booked_seats, count_all, count_book, count_free, ratio_book, ratio_free, \
-        user_data, count_users # must be situated here, otherwise you receive an error that book model is not yet loaded.
+        from .statistics import all_seats, free_seats2, booked_seats, count_all, count_book, count_free, ratio_book, \
+            ratio_free, \
+            user_data, \
+            count_users  # must be situated here, otherwise you receive an error that book model is not yet loaded.
 
         content = {
             'all_seats': all_seats,
@@ -83,8 +75,10 @@ class EmptyModelAdmin(admin.ModelAdmin):
         return super().changelist_view(request, extra_context=content)
 
     def stat_download(self):
-        from .statistics import all_seats, free_seats2, booked_seats, count_all, count_book, count_free, ratio_book, ratio_free, \
-        user_data, count_users # must be situated here, otherwise you receive an error that book model is not yet loaded.
+        from .statistics import all_seats, free_seats2, booked_seats, count_all, count_book, count_free, ratio_book, \
+            ratio_free, \
+            user_data, \
+            count_users  # must be situated here, otherwise you receive an error that book model is not yet loaded.
 
         response = HttpResponse(content_type='text/plain')
         response['Content-Disposition'] = 'attachment; filename= booking_statistic.txt'

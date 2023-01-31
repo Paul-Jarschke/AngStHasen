@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path
-from .models import Flight, Book, UserBooking, Statistics, EmptyModelAdmin
+from .models import Flight, Book, Statistics, EmptyModelAdmin
 
 from django.shortcuts import render
 from django import forms
@@ -16,6 +16,7 @@ class TxtImportForm(forms.Form):
 # The SeatAdmin class is a custom admin model for the Book model, which adds a URL for a custom view for uploading a .txt file.
 
 class SeatAdmin(admin.ModelAdmin):
+    list_display = ('seat_choice', 'reserved_by', 'booking_time')
 
     def get_urls(self):
         urls = super().get_urls()
@@ -46,8 +47,11 @@ class SeatAdmin(admin.ModelAdmin):
         return render(request, "admin/txt_upload.html", context)
 
 
+class FlightAdmin(admin.ModelAdmin):
+    list_display = ('airline', 'flight_number', 'origin_airport', 'dest_airport', 'day', 'month', 'year', 'departure')
+
+
 admin.site.register(Book, SeatAdmin)
-admin.site.register(Flight)
+admin.site.register(Flight, FlightAdmin)
 admin.site.unregister(Group)
-admin.site.register(UserBooking)
 admin.site.register(Statistics, EmptyModelAdmin)

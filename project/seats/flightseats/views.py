@@ -1,7 +1,8 @@
 # This file defines the general functionality of the website itself. Combines python objects with html files.
 from django.shortcuts import render
-from .models import Flight, Seats, Book, UserBooking
+from .models import Flight, Seats, Book
 import numpy as np
+from datetime import datetime as dt
 
 
 def home(request):
@@ -116,10 +117,9 @@ def booking(request):
             seat_letter = request.POST.get('seatletter')
             if (seat_choice_row in row_list) and (seat_letter in ['A', 'B', 'C', 'D', 'E', 'F']) and (
                     seat_choice_row + seat_letter) not in booked_seats:
-                book = Book(seat_choice=seat_choice_row + seat_letter)
+                book = Book(seat_choice=seat_choice_row + seat_letter, reserved_by=request.user,
+                            booking_time=dt.today().strftime('%Y-%m-%d %H:%M:%S'))
                 book.save()
-                reservations = UserBooking(seat_choice=seat_choice_row + seat_letter, reserved_by=request.user)
-                reservations.save()
     else:
         auth_ind = "False"
 
