@@ -98,8 +98,16 @@ If you did everything correctly, your terminal should return this:
 You can also run the different test independently, by selecting the desired class/method and running it manually.
 There are two different folders that contain all test files and can be found under the following directories:
 
-1) "AngStHasen/project/seats/flightseats/test_flightseats"
-   - 
+In the following we listed both folders with their corresponding tests.
+
+"AngStHasen/project/seats/flightseats/test_flightseats"
+- Booking function
+- Txt import
+- Login
+- Models, URLs, Views
+
+"AngStHasen/project/seats/users/test_users"
+- Forms, URLs, Views (mostly testing the registration in various ways)
 
 
 2)
