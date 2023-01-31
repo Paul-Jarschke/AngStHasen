@@ -88,20 +88,17 @@ Describe and show how to run the tests with code examples.
 
 Leon:
 
-- statistics area setup/text/download button
-- login/logout integration
-- base conception
-- seat reservation/cancellation (booking function)
-- representation of booked/free seats on the webpage inclusive colouring +
-  synchronization with database
-- setting up default accounts and flights
-- ChartIn fileread implementation into booking function
-- help page setup
-- integration of conditional header and homepage greeting if logged in
-- everything in Javascript (especially SweetAlert notifications for rejected and successful bookings or logout)
-- logout page with timer
-- html design adjustments on each page
-- header and navigation bar improvements
+- Statistics (Setup/Formatting/Download button)
+- Login/Logout integration
+- Booking function (reservation/cancellation)
+- Custom data setup (Users, Flights)
+- Seat Display 
+- ChartIn fileread
+- Conditional page header after login
+- Javascript (esp. SweetAlert notifications for booking, logout)
+- Logout
+- Refactoring html files
+- Header/Navigation bar improvements 
 
 Jan:
 
@@ -111,20 +108,28 @@ Jan:
 - navigation bar implementation
 - ChartIn fileread implementation into admin page
 
+- Django framework setup
+- Statistics download http request
+- Login/Logout
+- User model implementation
+- Navigation bar implementation
+- ChartIn upload
+
 Sönke:
 
-- starting page design
-- help page text
-- logo design
-- readme template
+- Home page
+- Help page
+- Webpage design
+- Logo design
+- Readme 
 
 Paul:
 
-- refactoring of booking function
-- communications management
-- quality management and adherence to the PEP 8 Style Guide and best practice guidelines
-- exhaustive commenting
-- exhaustive programming of tests
+- Booking function (reservation/cancellation)
+- Testing
+- Refactoring
+- Code style
+
 
 ## License Agreement
 
