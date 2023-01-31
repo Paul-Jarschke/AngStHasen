@@ -80,7 +80,7 @@ Please follow the following steps to install the AngStHasenFlights Django enviro
 
 ![](project/seats/flightseats/static/img/images/show_stats.png)
 
-## Tests (optional: only if you have tests)
+## Tests
 
 For our application, we included unittests for user-inputs. This applies to the registration of new users, the login of 
 valid users, the seat reservation and the upload of a seat-layout (chartIn.txt). Additionally, we included many other 
