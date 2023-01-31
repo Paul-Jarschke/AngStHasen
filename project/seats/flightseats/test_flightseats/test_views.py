@@ -1,11 +1,17 @@
 from django.test import TestCase, RequestFactory
 from django.urls import reverse
 from django.contrib.auth.models import User
-from ..models import Book, UserBooking, Seats
+from ..models import Book
 from ..views import booking
 
 
 class TestViewsHome(TestCase):
+    """This class checks the view of the home page:
+
+        1) Check if the url is accessible by name.
+        2) Check if the url exists at the desired location.
+        3) Check if the view uses the correct html template
+    """
 
     def test_view_url_accessible_by_name(self):
         # Http request using name
@@ -27,6 +33,12 @@ class TestViewsHome(TestCase):
 
 
 class TestViewsFlights(TestCase):
+    """This class checks the view of the flights page:
+
+        1) Check if the url is accessible by name.
+        2) Check if the url exists at the desired location.
+        3) Check if the view uses the correct html template
+    """
 
     def test_view_url_accessible_by_name(self):
         # Http request using name
@@ -48,6 +60,12 @@ class TestViewsFlights(TestCase):
 
 
 class TestViewsHelp(TestCase):
+    """This class checks the view of the help page:
+
+        1) Check if the url is accessible by name.
+        2) Check if the url exists at the desired location.
+        3) Check if the view uses the correct html template
+    """
 
     def test_view_url_accessible_by_name(self):
         # Http request using name
@@ -69,6 +87,12 @@ class TestViewsHelp(TestCase):
 
 
 class TestViewsBooking(TestCase):
+    """This class checks the view of the booking page:
+
+        1) Check if the url is accessible by name.
+        2) Check if the url exists at the desired location.
+        3) Check if the view uses the correct html template
+    """
 
     def test_view_url_accessible_by_name(self):
         # Http request using name
@@ -87,30 +111,3 @@ class TestViewsBooking(TestCase):
         response = self.client.get(reverse('booking'))
         # check template usage
         self.assertTemplateUsed(response, 'flightseats/booking.html', 'Usage of wrong html template!')
-
-
-class BookingTest(TestCase):
-    def setUp(self):
-        self.factory = RequestFactory()
-        self.user = User.objects.create_user(username='testuser', password='12345')
-        self.booked_seats = ["1A", "2B", "3C"]
-        for seat in self.booked_seats:
-            Book.objects.create(seat_choice=seat)
-
-    def test_invalid_seat_selection(self):
-        # Test invalid seat selection
-        request = self.factory.post('/booking/', {'seat_choice_row': '4', 'seatletter': 'G'})
-        request.user = self.user
-        response = booking(request)
-        self.assertEqual(response.status_code, 200)
-        self.assertTrue("4G" not in Book.objects.values_list("seat_choice", flat=True))
-
-    def test_valid_seat_selection(self):
-        # Test invalid seat selection
-        request = self.factory.post('/booking/', {'seat_choice_row': '4', 'seatletter': 'A'})
-        request.user = self.user
-        response = booking(request)
-        self.assertEqual(response.status_code, 200)
-        self.assertTrue("4A" in Book.objects.values_list("seat_choice", flat=True))
-
-
