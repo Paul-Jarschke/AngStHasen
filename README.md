@@ -97,11 +97,9 @@ Leon:
 - ChartIn fileread implementation into booking function
 - help page setup
 - integration of conditional header and homepage greeting if logged in
-- everything in Javascript (especially SweetAlert
-  Notifications)
+- everything in Javascript (especially SweetAlert notifications for rejected and successful bookings or logout)
 - logout page with timer
-- header and navigation bar
-  improvements
+- header and navigation bar improvements
 
 Jan:
 
