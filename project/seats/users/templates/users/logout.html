@@ -35,10 +35,14 @@ Swal.fire({
             html: "<div>Redirecting to home in <span id='time'>10</span> seconds!</div>",
             icon: "success",
             allowOutsideClick: false,
-            showConfirmButton:false
-        });
+            showConfirmButton:true,
+            confirmButtonText: 'Go to home.'
+        }).then(function(){window.location.href = "/"});
 };
 bye();
+
+
+
 
 
 
