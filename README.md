@@ -111,9 +111,10 @@ Jan:
 
 Sönke:
 
-- starting page
-- help page, graphics text
-- readme
+- starting page design
+- help page text
+- logo design
+- readme template
 
 Paul:
 
