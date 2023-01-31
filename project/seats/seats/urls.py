@@ -17,6 +17,8 @@ from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from django.urls import path, include
 
+#Similar to the other urls files, this file points user torwards a website or similar. The difference being
+# that this is universal for the whole project
 
 urlpatterns = [
     path('admin/', admin.site.urls),

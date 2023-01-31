@@ -1,4 +1,5 @@
 # This file defines the general functionality of the website itself. Combines python objects with html files.
+# Every function defines what to do when a url request is made. Basically provides an interface
 from django.shortcuts import render
 from .models import Flight, Seats, Book
 import numpy as np

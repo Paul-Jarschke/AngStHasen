@@ -1,3 +1,5 @@
+# the models define the structure of the database
+
 from django.contrib import admin
 from django.db import models
 from django.http import HttpResponse
@@ -74,6 +76,8 @@ class EmptyModelAdmin(admin.ModelAdmin):
         }
         return super().changelist_view(request, extra_context=content)
 
+#the stat download crates an HttpResponse when clicked which writes a text file,
+# including all the data from the statistics-page
     def stat_download(self):
         from .statistics import all_seats, free_seats2, booked_seats, count_all, count_book, count_free, ratio_book, \
             ratio_free, \

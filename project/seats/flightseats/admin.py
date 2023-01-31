@@ -1,3 +1,6 @@
+#file registers pages to the admin page and defines every functionality needed on the admin page
+
+
 from django.contrib import admin
 from django.urls import path
 from .models import Flight, Book, Statistics, EmptyModelAdmin
@@ -9,6 +12,7 @@ from django.contrib.auth.models import Group
 admin.site.site_header = "AngStHasenFlights - Admin Terminal"
 
 
+# using django-forms for a File-upload-field
 class TxtImportForm(forms.Form):
     txt_upload = forms.FileField()
 
@@ -19,14 +23,14 @@ class SeatAdmin(admin.ModelAdmin):
     list_display = ('seat_choice', 'reserved_by', 'booking_time')
 
     def get_urls(self):
-        urls = super().get_urls()
-        new_urls = [path('txt-upload/', self.upload_txt)]
+        urls = super().get_urls()  # get all existing urls
+        new_urls = [path('txt-upload/', self.upload_txt)] # create custom url path
 
         return new_urls + urls
 
     # The method upload_txt handles the uploaded file and writes its contents to a file named chartIn.txt in the flightseats/data directory.
     def upload_txt(self, request):
-        if request.method == "POST":
+        if request.method == "POST":  #using the method post to retieve the uploaded file
             txt_file = request.FILES["txt_upload"]
 
             file_data = txt_file.read().decode('utf8')

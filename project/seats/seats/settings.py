@@ -10,6 +10,9 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
+#Contains the project configuration
+# Used for adding applications, further contains sqlite3 as a default databse
+
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.

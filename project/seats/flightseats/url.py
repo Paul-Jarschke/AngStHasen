@@ -1,3 +1,5 @@
+#defines all urls and the response, when a user comes with a given url
+
 from django.urls import path
 from . import views
 from users import views as views2
