@@ -74,9 +74,9 @@ Please follow the following steps to install the AngStHasenFlights Django enviro
   1 A B C D E F \
   2 A B C D E F \
   3 A B C D E F
-- Administrators can access and download a statistics page that displays the number and percentage of free and reserved
-  seats, as well as lists of all available and unavailable seats and their number, and all user information (except
-  passwords), see depiction below:
+- Administrators can access and download a statistics page that displays the number and proportion of free and reserved
+  seats, as well as lists of all available and unavailable seats. Further, all user information (except
+  passwords) are shown. The information can be downloaded to a text file. See depiction below:
 
 ![](project/seats/flightseats/static/img/images/show_stats.png)
 
@@ -129,7 +129,7 @@ Paul:
 
 ### Power of Attorney Statement
 
-I, the signee, am working on the project ''AngStHasenFlights'' under the supervision of Prof. Dr. Bela Gipp. The
+I, the signee, am working on the project 'AngStHasenFlights' under the supervision of Prof. Dr. Bela Gipp. The
 specified project involves the creation of software and documentation that shall be placed under an open source license.
 
 I hereby grant Prof. Dr. Bela Gipp full authorization to perform any legal acts necessary, including making declarations
@@ -143,5 +143,3 @@ at: https://tldrlegal.com/license/apache-license-2.0-(apache-2.0)#fulltext
 Göttingen, 31.01.23
 
 Leon Löppert, Jan Parlesak, Sönke Hänel, Paul Jarschke
-
-Signature
