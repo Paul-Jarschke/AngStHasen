@@ -82,7 +82,8 @@ Please follow the following steps to install the AngStHasenFlights Django enviro
 
 ## Tests (optional: only if you have tests)
 
-Describe and show how to run the tests with code examples.
+For our application, we included unittests for every user-input. This includes the registration of new users, seat
+reservation and the upload of a seat-layout. We did not include unittest for
 
 ## Contributions:
 
@@ -101,12 +102,6 @@ Leon:
 - Header/Navigation bar improvements 
 
 Jan:
-
-- setting up the whole Django framework
-- statistics area download http request
-- login/logout and user model implementation
-- navigation bar implementation
-- ChartIn fileread implementation into admin page
 
 - Django framework setup
 - Statistics download http request
