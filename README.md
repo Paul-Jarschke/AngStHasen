@@ -25,11 +25,11 @@ Please make sure you are using a version of Python that is not older than Python
 
 Please follow the following steps to install the AngStHasenFlights Django environment:
 
-1. clone the repository using the command line command: "git clone https://github.com/prichi99/AngStHasen.git".
-2. open the project-folder "angsthasen/project/seats" of the project in your terminal with the cd command
-3. install the required dependencies. To do this, just enter the command "pip install -r requirements.txt" in the
+1. Clone the repository using the command line command: "git clone https://github.com/prichi99/AngStHasen.git".
+2. Open the project-folder "angsthasen/project/seats" of the project in your terminal with the cd command
+3. Install the required dependencies. To do this, just enter the command "pip install -r requirements.txt" in the
    terminal.
-4. start the project with the command: "python manage.py runserver"
+4. Start the project with the command: "python manage.py runserver"
 
 ## Database troubleshooting:
 
@@ -82,8 +82,18 @@ Please follow the following steps to install the AngStHasenFlights Django enviro
 
 ## Tests (optional: only if you have tests)
 
-For our application, we included unittests for every user-input. This includes the registration of new users, seat
-reservation and the upload of a seat-layout. We did not include unittest for
+For our application, we included unittests for user-inputs. This applies to the registration of new users, the login of 
+valid users, the seat reservation and the upload of a seat-layout (chartIn.txt). Additionally, we included many other 
+unittests to test the functionality of our models, urls, forms and views that sum up to a total number of 35 tests.
+
+Running all test at once is fairly simple:
+
+1. Open the project-folder "angsthasen/project/seats" of the project in your terminal
+2. Run the command: python manage.py test
+
+If you did everything correctly, your terminal should return this:
+
+![](project/seats/flightseats/static/img/images/successful_test_run.png)
 
 ## Contributions:
 
