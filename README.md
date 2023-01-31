@@ -56,13 +56,23 @@ A more academic motivation was to put our python skills into practice in the con
 
 Please make sure you are using a version of Python that is not older than Python 3.8!
 
-Please follow the following steps to install AngStHasenFlights:
+Please follow the following steps to install the AngStHasenFlights Django environment:
 
 1. clone the repository using the command line command: "git clone https://github.com/prichi99/AngStHasen.git".
-2. open the project-folder "angsthasen/project/seats" of the project in your terminal
+2. open the project-folder "angsthasen/project/seats" of the project in your terminal with the cd command
 3. install the required dependencies. To do this, just enter the command "pip install -r requirements.txt" in the
    terminal.
 4. start the project with the command: "python manage.py runserver"
+
+## Database troubleshooting:
+
+1. If you do not use our database on the first runup, you need to perform the following commands in the respective order
+   to get the server running:
+   => "python manage.py makemigrations"
+   => "python manage.py migrate"
+   => "python manage.py runserver"
+2. When there are further database errors, delete the database and all migration files (except the __init__.py) and
+   retry step 1.
 
 ## Tests (optional: only if you have tests)
 
