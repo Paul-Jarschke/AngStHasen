@@ -55,9 +55,9 @@ Please follow the following steps to install the AngStHasenFlights Django enviro
 
 ### User functions
 
-- Typical user functions register, login, logout and get help from the website are implemented.
-- In our demo version users can only select one flight. For this flight they can reserve free seats in the respective
-  overview page, see depiction below:
+- Typical user functions like register, login, logout and a help page are implemented on the website.
+- In our demo version users can only select one flight (HAM to ARN). For this flight they can reserve free seats in the
+  respective page, see depiction below:
 
 ![](project/seats/flightseats/static/img/images/book_seat.png)
 
