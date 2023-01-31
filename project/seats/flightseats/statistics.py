@@ -1,6 +1,7 @@
 from .models import Book
 from django.contrib.auth import get_user_model
 
+# Load in chartIn and count rows
 input = open("flightseats/data/chartIn.txt", 'r')
 nrow = len(input.readlines())
 

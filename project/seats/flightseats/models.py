@@ -48,6 +48,8 @@ class Statistics(models.Model):
         verbose_name_plural = "Statistics page"
 
 
+# We create an EmptyModelAdmin for the Statistics page since this is just a pseudo model with no data. We need this to create an empty page where no data can be added and only html input can be shown.
+# See templates/admin/flightseats/statistics/change_list.html for what is being displayeed in this empty model page.
 class EmptyModelAdmin(admin.ModelAdmin):
 
     def has_add_permission(self, request):
@@ -76,8 +78,8 @@ class EmptyModelAdmin(admin.ModelAdmin):
         }
         return super().changelist_view(request, extra_context=content)
 
-#the stat download crates an HttpResponse when clicked which writes a text file,
-# including all the data from the statistics-page
+    # the stat download crates an HttpResponse when clicked which writes a text file,
+    # including all the data from the statistics-page
     def stat_download(self):
         from .statistics import all_seats, free_seats2, booked_seats, count_all, count_book, count_free, ratio_book, \
             ratio_free, \
