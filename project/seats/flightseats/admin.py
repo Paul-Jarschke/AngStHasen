@@ -24,13 +24,13 @@ class SeatAdmin(admin.ModelAdmin):
 
     def get_urls(self):
         urls = super().get_urls()  # get all existing urls
-        new_urls = [path('txt-upload/', self.upload_txt)]  # create custom url path
+        new_urls = [path('txt-upload/', self.upload_txt)]  # create custom url path für the ChartIn txt upload
 
         return new_urls + urls
 
     # The method upload_txt handles the uploaded file and writes its contents to a file named chartIn.txt in the flightseats/data directory.
     def upload_txt(self, request):
-        if request.method == "POST":  # using the method post to retieve the uploaded file
+        if request.method == "POST":  # using the method post to retrieve the uploaded file
             txt_file = request.FILES["txt_upload"]
 
             file_data = txt_file.read().decode('utf8')
